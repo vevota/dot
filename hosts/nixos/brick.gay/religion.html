@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>religion.brick.gay</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0a0a0f;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+}
+
+canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #c9a84c;
+  text-shadow: 0 0 40px rgba(201,168,76,0.3);
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 0.3em;
+  font-weight: 300;
+  animation: fadeIn 3s ease-out;
+}
+
+p {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: fadeIn 3s ease-out 1s forwards;
+  color: rgba(201,168,76,0.7);
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="overlay">
+  <h1>✠ RELIGION ✠</h1>
+  <p>pattern of jesus</p>
+</div>
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+
+function resize() {
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const cx = c.width / 2;
+const cy = c.height / 2;
+const maxR = Math.min(c.width, c.height) * 0.6;
+const layers = 12;
+const sides = [3, 4, 5, 6, 8, 12];
+let t = 0;
+
+function draw() {
+  ctx.clearRect(0, 0, c.width, c.height);
+
+  const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR);
+  gradient.addColorStop(0, '#1a1423');
+  gradient.addColorStop(0.5, '#0f0d1a');
+  gradient.addColorStop(1, '#050508');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, c.width, c.height);
+
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  for (let l = 0; l < layers; l++) {
+    const r = maxR * (0.08 + (l / layers) * 0.85);
+    const n = sides[l % sides.length];
+    const rot = t * (0.02 + l * 0.005);
+    const alpha = 0.08 + (l / layers) * 0.15;
+
+    ctx.save();
+    ctx.rotate(rot);
+
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(201, 168, 76, ${alpha})`;
+    ctx.lineWidth = 1 + (l / layers) * 1.5;
+    for (let i = 0; i <= n * 4; i++) {
+      const a = (i / (n * 4)) * Math.PI * 2;
+      const rr = r + Math.sin(a * n + t * 0.01) * r * 0.15;
+      const x = Math.cos(a) * rr;
+      const y = Math.sin(a) * rr;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // cross
+  const crossSize = maxR * 0.08;
+  ctx.save();
+  ctx.rotate(Math.sin(t * 0.003) * 0.1);
+  ctx.shadowColor = '#c9a84c';
+  ctx.shadowBlur = 30;
+  ctx.strokeStyle = '#c9a84c';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(0, -crossSize);
+  ctx.lineTo(0, crossSize);
+  ctx.moveTo(-crossSize, 0);
+  ctx.lineTo(crossSize, 0);
+  ctx.stroke();
+  ctx.restore();
+
+  // outer circles
+  ctx.save();
+  ctx.rotate(-t * 0.005);
+  for (let i = 0; i < 24; i++) {
+    const a = (i / 24) * Math.PI * 2;
+    const rr = maxR * 0.7;
+    const x = Math.cos(a) * rr;
+    const y = Math.sin(a) * rr;
+    ctx.beginPath();
+    ctx.arc(x, y, 2 + Math.sin(t * 0.02 + i) * 1, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(201, 168, 76, ${0.2 + Math.sin(t * 0.02 + i) * 0.1})`;
+    ctx.fill();
+  }
+  ctx.restore();
+
+  ctx.restore();
+
+  t++;
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>

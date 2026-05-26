@@ -1,0 +1,308 @@
+# =============================================================================
+# Music stack — full Spotify replacement (self-hosted)
+# =============================================================================
+#
+# Components:
+#   Navidrome   → http://localhost:4533   music streaming (Subsonic API)
+#   Lidarr      → http://localhost:8686   music collection manager
+#   slskd       → http://localhost:5030   Soulseek P2P downloader
+#   explo       → http://localhost:7288   auto-playlists (daily/weekly/monthly)
+#   aurral      → http://localhost:3001   music requests (like Overseerr)
+#   Tubifarry   → Lidarr plugin           wires slskd + lyrics into Lidarr
+#
+# Music data lives under /var/lib/music/:
+#   downloads/    lidarr incomplete downloads
+#   library/      finished imports → navidrome scans this
+#   explo/        explo playlists (mounted as /data in the container)
+#
+# =============================================================================
+# INSTALL INSTRUCTIONS
+# =============================================================================
+#
+# --- Step 1: enable the module ---
+#
+#   In jim-nixos/configuration.nix, uncomment this line:
+#     imports = [ ./music-stack.nix ];
+#
+# --- Step 2: create a Soulseek account ---
+#
+#   Download a client from https://www.slsknet.org, launch it, and register
+#   a username + password. You can uninstall the client afterwards.
+#
+# --- Step 3: create the slskd credentials file ---
+#
+#     sudo mkdir -p /var/lib/slskd
+#     echo 'SLSKD_SLSK_USERNAME=your-username' | sudo tee /var/lib/slskd/slskd.env
+#     echo 'SLSKD_SLSK_PASSWORD=your-password' | sudo tee -a /var/lib/slskd/slskd.env
+#     sudo chmod 600 /var/lib/slskd/slskd.env
+#
+# --- Step 4: sign up for MusicBrainz + ListenBrainz ---
+#
+#   https://musicbrainz.org/         (metadata)
+#   https://listenbrainz.org/        (sign in with MusicBrainz — recommendations)
+#
+#   Do this on a Thursday/Friday so ListenBrainz has time to build your first
+#   weekly recommendation playlist by Monday.
+#
+# --- Step 5: rebuild ---
+#
+#     nh os switch
+#
+# --- Step 6: post-install setup ---
+#
+#   6a. Open Lidarr (http://localhost:8686) → Settings → Plugins.
+#       Install Tubifarry by pasting this URL:
+#         https://github.com/TypNull/Tubifarry/releases/latest/download/Tubifarry.zip
+#       Then configure:
+#         • Soulseek (point at http://localhost:5030 with your creds)
+#         • Lyrics Enhancer
+#         • Search Sniper
+#
+#   6b. Open Navidrome (http://localhost:4533) → Profile (top-right avatar).
+#       Enable "Scrobble to ListenBrainz."
+#
+#   6c. Open aurral (http://localhost:3001) → follow the setup wizard.
+#       Connect it to Lidarr and Navidrome.
+#       Click "Apply Davo's Recommended Settings."
+#
+#   6d. (Optional) Set up a reverse proxy if you want these accessible from
+#       outside your LAN. Caddy example:
+#
+#         services.caddy.virtualHosts."music.example.com".extraConfig = ''
+#           reverse_proxy localhost:4533
+#         '';
+#
+# --- Daily use ---
+#
+#   • Add artists in Lidarr or request them through aurral.
+#   • Lidarr searches Soulseek via Tubifarry and downloads matching releases.
+#   • Stream from Navidrome directly, or use any Subsonic-compatible client:
+#       https://www.navidrome.org/apps/
+#   • explo generates daily/weekly/monthly playlists automatically.
+#   • ListenBrainz sends a fresh "Discover" playlist every Monday.
+#
+# =============================================================================
+{
+  pkgs, lib,
+  ...
+}: let
+  musicRoot = "/var/lib/music";
+  indexHtml = ./brick.gay/index.html;
+  musicHtml = ./brick.gay/music.html;
+  religionHtml = ./brick.gay/religion.html;
+  brickbuilderHtml = ./brick.gay/brickbuilder.html;
+in {
+  # --- Podman (for explo + aurral containers) ---
+  virtualisation.podman.enable = true;
+  virtualisation.oci-containers.backend = "podman";
+
+  virtualisation.oci-containers.containers = {
+    # explo — auto-generates daily/weekly/monthly playlists from listening history
+    explo = {
+      image = "ghcr.io/lumepart/explo:latest";
+      extraOptions = [
+        "--network=host"
+        "--pull=always"
+        "--env-file" "/var/lib/music/secrets/explo.env"
+      ];
+      volumes = [
+        "${musicRoot}/explo:/data"
+      ];
+    };
+
+    # aurral — music request management (Overseerr for music)
+    aurral = {
+      image = "ghcr.io/lklynet/aurral:latest";
+      extraOptions = [
+        "--network=host"
+        "--pull=always"
+        "--env-file" "/var/lib/music/secrets/aurral.env"
+      ];
+      volumes = [
+        "aurral-data:/app/backend/data"
+      ];
+    };
+    # lidarr -- music collection manager (containerized, nightly + plugin support)
+    lidarr = {
+      image = "lscr.io/linuxserver/lidarr:nightly";
+      extraOptions = [
+        "--network=host"
+        "--pull=always"
+      ];
+      environment = {
+        PUID = "306";
+        PGID = "306";
+        TZ = "America/Los_Angeles";
+      };
+      volumes = [
+        "/var/lib/lidarr:/config"
+        "/mnt/Phantom/Media/Musicretag/Music:/mnt/Phantom/Media/Musicretag/Music"
+        "/mnt/Phantom/Media/Musicretag/Importing:/mnt/Phantom/Media/Musicretag/Importing"
+      ];
+    };
+
+  };
+
+  # --- Navidrome — music streaming server ---
+  services.navidrome = {
+    enable = true;
+    settings = {
+      MusicFolder = "/mnt/Phantom/Media/Musicretag/Music";
+      DataFolder = "/var/lib/navidrome/data";
+      LogLevel = "info";
+      Address = "0.0.0.0";
+      Port = 4533;
+      # Scrobbling — enable in Navidrome UI after first login
+      LastFM.Enabled = true;
+      ListenBrainz.Enabled = true;
+    };
+  };
+
+#   # --- Lidarr — music collection manager + Tubifarry plugin ---
+#   services.lidarr = {
+#     enable = true;
+#     dataDir = "/var/lib/lidarr";
+#     settings.update.automatically = false; # Nix manages the version
+# 
+# 
+#     # Tubifarry plugin — install via Lidarr web UI:
+# 
+#     #   Settings → Plugins → paste: https://github.com/TypNull/Tubifarry/releases/latest/download/Tubifarry.zip
+#   };
+
+  # --- Use official Lidarr nightly for plugin support ---
+#   systemd.services.lidarr.serviceConfig = {
+#     ExecStart = lib.mkForce "/opt/lidarr-nightly/Lidarr -nobrowser -data=/var/lib/lidarr";
+#     Environment = [
+#       "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1"
+#       "LD_LIBRARY_PATH=/opt/lidarr-nightly:/nix/store/chqq8mpmpyfi9kgsngya71akv5xicn03-gcc-15.2.0-lib/lib:/nix/store/y18pnbvfarnilsmgayswvi1khaw9wbsc-openssl-3.6.2/lib:/nix/store/61a1nwx3w6rqyaisj5rn1sal1981apm7-zlib-1.3.2/lib"
+#     ];
+#   };
+
+
+  # --- slskd — Soulseek P2P downloader ---
+  services.slskd = {
+    enable = true;
+    openFirewall = true; # opens port 50300 for Soulseek protocol
+    environmentFile = "/var/lib/slskd/slskd.env";
+
+    settings = {
+      directories = {
+        downloads = "/mnt/Phantom/Media/Musicretag/Importing";
+        incomplete = "/mnt/Phantom/Media/Musicretag/Importing/.incomplete";
+      };
+      web.port = 5030;
+      # Share music back to the network (optional — set to false to leech only)
+      shares.directories = ["/mnt/Phantom/Media/Musicretag/Music"];
+    };
+  };
+
+  # --- Shared music directories (group: music) ---
+  users.groups.music = {};
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/music/secrets 0700 root root -"
+    "d ${musicRoot}             0775 root music - -"
+    "d ${musicRoot}/downloads   0775 root music - -"
+    "d ${musicRoot}/library     0775 root music - -"
+    "d ${musicRoot}/downloads/.incomplete 0775 root music - -"
+    "d /mnt/Phantom/Media/Musicretag/Music/.incomplete 0775 slskd slskd - -"
+    "d /mnt/Phantom/Media/Musicretag/Importing 0777 slskd slskd - -"
+    "a /mnt/Phantom/Media/Musicretag/Music - - - d:u:lidarr:rwx"
+    "a /mnt/Phantom/Media/Musicretag/Music - - - d:o:rwx"
+    "a /mnt/Phantom/Media/Musicretag/Importing - - - d:o:rwx"
+    "a /mnt/Phantom/Media/Musicretag/Importing - - - d:u:lidarr:rwx"
+    "d /mnt/Phantom/Media/Musicretag/Importing/.incomplete 0775 slskd slskd - -"
+    "d ${musicRoot}/explo       0775 root music - -"
+    "a /mnt/Phantom/Media/Musicretag/Music - - - u:navidrome:rwx"
+    "a /mnt/Phantom/Media/Musicretag/Music - - - u:lidarr:rwx"
+  ];
+
+  users.groups.lidarr = {};
+  users.users.lidarr = {
+    isSystemUser = true;
+    group = "lidarr";
+    extraGroups = ["music"];
+  };
+  users.users.navidrome.extraGroups = ["music"];
+  users.users.slskd.extraGroups = ["music"];
+
+  # --- Let slskd write into /mnt/Phantom ---
+  systemd.services.slskd = {
+    requires = [ "systemd-tmpfiles-setup.service" ];
+    after = [ "systemd-tmpfiles-setup.service" ];
+    serviceConfig = {
+      ProtectSystem = lib.mkForce false;
+      PrivateMounts = lib.mkForce false;
+      PrivateUsers = lib.mkForce false;
+      ReadOnlyPaths = lib.mkForce [ ];
+    };
+  };
+
+
+  # --- Open firewall for web UIs ---
+  networking.firewall.allowedTCPPorts = [
+    80    # nginx (HTTP / ACME challenge)
+    443   # nginx (HTTPS)
+    4533  # navidrome
+    5030  # slskd web UI
+    8686  # lidarr
+    7288  # explo
+    3001  # aurral
+  ];
+
+  # --- Let's Encrypt (SSL certificates) ---
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "ryananjain1@gmail.com";
+  };
+
+  # --- Index page (served on port 80 + 443 with Let's Encrypt SSL) ---
+  services.nginx = {
+    enable = true;
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
+    virtualHosts = {
+      "brick.gay" = {
+        default = true;
+        locations."/" = {
+          root = builtins.dirOf indexHtml;
+          index = builtins.baseNameOf indexHtml;
+        };
+      };
+      "music.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          root = builtins.dirOf musicHtml;
+          index = builtins.baseNameOf musicHtml;
+        };
+      };
+      "ascension.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          root = builtins.dirOf brickbuilderHtml;
+          index = builtins.baseNameOf brickbuilderHtml;
+        };
+      };
+      "religion.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          root = builtins.dirOf religionHtml;
+          index = builtins.baseNameOf religionHtml;
+        };
+      };
+    };
+  };
+
+  # --- Optional: reverse proxy hint ---
+  # To expose these services via nginx/caddy, add virtualHost entries.
+  # Example with services.nginx:
+  #   services.nginx.virtualHosts."music.example.com" = {
+  #     locations."/" = { proxyPass = "http://127.0.0.1:4533"; };
+  #   };
+}
