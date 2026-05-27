@@ -114,7 +114,7 @@ function updateDiskChart(range) {
   if (btn) { btn.style.color = '#66FFFF'; btn.style.borderColor = '#66FFFF'; }
 
   const filtered = filterHistory(range);
-  if (filtered.length < 2) return;
+  if (filtered.length < 1) return;
 
   const labels = filtered.map(d => {
     const t = new Date(d.ts);
@@ -227,7 +227,7 @@ let albumTimeChart;
 
 function updateAlbumChart(range) {
   const filtered = filterHistory(range);
-  if (filtered.length < 2) return;
+  if (filtered.length < 1) return;
 
   const labels = filtered.map(d => {
     const t = new Date(d.ts);
