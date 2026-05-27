@@ -5,6 +5,7 @@
 <meta name="description" content="COLLECTION STATS. The Creator tracks the celestial wall.">
 <title>COLLECTION: CELESTIAL STATS</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 </head>
 <body text="#CCCCCC" link="#66FFFF" vlink="#FF0099" style="background: #050510 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMwNTA1MTAiLz4KPGNpcmNsZSBjeD0iMjMiIGN5PSIxNSIgcj0iMS4yIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjkiLz4KPGNpcmNsZSBjeD0iNjciIGN5PSI0MiIgcj0iMC44IiBmaWxsPSIjYWFkZGZmIiBvcGFjaXR5PSIwLjciLz4KPGNpcmNsZSBjeD0iMTIzIiBjeT0iOCIgcj0iMSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC41Ii8+CjxjaXJjbGUgY3g9IjE2NyIgY3k9IjU1IiByPSIxLjUiIGZpbGw9IiNmZmRkYWEiIG9wYWNpdHk9IjAuOCIvPgo8Y2lyY2xlIGN4PSI0NSIgY3k9Ijc4IiByPSIwLjYiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNCIvPgo8Y2lyY2xlIGN4PSI4OSIgY3k9Ijk0IiByPSIxIiBmaWxsPSIjZmZjY2ZmIiBvcGFjaXR5PSIwLjYiLz4KPGNpcmNsZSBjeD0iMTQyIiBjeT0iNjciIHI9IjAuOCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC43Ii8+CjxjaXJjbGUgY3g9IjE3OCIgY3k9IjEyMyIgcj0iMS4yIiBmaWxsPSIjYWFiYmZmIiBvcGFjaXR5PSIwLjUiLz4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxNDUiIHI9IjAuNyIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC42Ii8+CjxjaXJjbGUgY3g9IjU2IiBjeT0iMTY3IiByPSIxIiBmaWxsPSIjZmZjY2FhIiBvcGFjaXR5PSIwLjQiLz4KPGNpcmNsZSBjeD0iOTgiIGN5PSIxMzQiIHI9IjEuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC44Ii8+CjxjaXJjbGUgY3g9IjEzNCIgY3k9IjE3OCIgcj0iMC44IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjUiLz4KPGNpcmNsZSBjeD0iMzQiIGN5PSI0NSIgcj0iMC41IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjMiLz4KPGNpcmNsZSBjeD0iMTU2IiBjeT0iMzQiIHI9IjAuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4zIi8+CjxjaXJjbGUgY3g9Ijc4IiBjeT0iMTg4IiByPSIxIiBmaWxsPSIjYWFkZGZmIiBvcGFjaXR5PSIwLjciLz4KPGNpcmNsZSBjeD0iMTEyIiBjeT0iMTEyIiByPSIwLjYiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNCIvPgo8Y2lyY2xlIGN4PSIxODkiIGN5PSI4OSIgcj0iMC44IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjYiLz4KPGNpcmNsZSBjeD0iNCIgY3k9Ijg4IiByPSIwLjUiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMyIvPgo8Y2lyY2xlIGN4PSIxNDUiIGN5PSIxNDUiIHI9IjAuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4zIi8+CjxjaXJjbGUgY3g9IjY3IiBjeT0iMTM0IiByPSIwLjciIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNSIvPgo8Y2lyY2xlIGN4PSIxOTgiIGN5PSIxNzYiIHI9IjAuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC40Ii8+CjxjaXJjbGUgY3g9IjIzIiBjeT0iMTk4IiByPSIwLjYiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4=') repeat;">
 
@@ -80,6 +81,7 @@ stats collection statistics disk usage format flac mp3 m4a ape wav ogg opus albu
 <script>
 let diskChart, formatChart, albumChart;
 let historyData = [];
+Chart.register(ChartDataLabels);
 const MB = 1024*1024;
 const GB = MB*1024;
 const TB = GB*1024;
@@ -136,10 +138,10 @@ function updateDiskChart(range) {
     options: {
       responsive: false,
       hover: { mode: 'index', intersect: false },
-      plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace' } } } },
+      plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } } },
       scales: {
-        x: { ticks: { color: '#666', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-        y: { ticks: { color: '#666', font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
+        x: { ticks: { color: '#CCCCCC', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
       }
     }
   });
@@ -160,22 +162,22 @@ function updateCharts(data) {
   const fmtLabels = [], fmtValues = [], fmtColors = [];
   const pairs = [['flac','#FF0099'],['mp3','#66FFFF'],['m4a','#AAFFCC'],['ogg','#FFDDAA'],['wav','#CCAAFF'],['ape','#FFCC66'],['opus','#8B4513']];
   for (const [k,c] of pairs) {
-    if (fmtData[k] > 0) { fmtLabels.push(k.toUpperCase()+' ('+fmtData[k].toLocaleString()+')'); fmtValues.push(fmtData[k]); fmtColors.push(c); }
+    if (fmtData[k] > 0) { var pct = Math.round(fmtData[k] / totalTracks * 100); fmtLabels.push(k.toUpperCase()+' ('+fmtData[k].toLocaleString()+') '+pct+'%'); fmtValues.push(fmtData[k]); fmtColors.push(c); }
   }
   formatChart = new Chart(document.getElementById('formatChart'), {
-    type: 'pie',
+    type: 'doughnut',
     data: { labels: fmtLabels, datasets: [{ data: fmtValues, backgroundColor: fmtColors, borderColor: '#050510', borderWidth: 2 }] },
-    options: { responsive: false, plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } } } } }
+    options: { responsive: false, cutout: '50%', plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } },  } }
   });
 
   if (albumChart) albumChart.destroy();
   albumChart = new Chart(document.getElementById('albumChart'), {
     type: 'doughnut',
     data: {
-      labels: ['HAVE (' + have.toLocaleString() + ')', 'MISSING (' + data.lib.missing.toLocaleString() + ')'],
+      labels: ['HAVE (' + have.toLocaleString() + ') ' + Math.round(have / data.lib.albums * 100) + '%', 'MISSING (' + data.lib.missing.toLocaleString() + ') ' + Math.round(data.lib.missing / data.lib.albums * 100) + '%'],
       datasets: [{ data: [have, data.lib.missing], backgroundColor: ['#FF0099', '#66FFFF'], borderColor: '#050510', borderWidth: 2 }]
     },
-    options: { responsive: false, plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } } } } }
+    options: { responsive: false, plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } } } }
   });
 }
 
@@ -204,7 +206,7 @@ async function fetchLatest() {
   try {
     const r = await fetch('latest.json');
     const data = await r.json();
-    document.getElementById('updateTime').textContent = 'LAST UPDATE: ' + data.ts.replace('T', ' ').replace('Z', '') + ' UTC';
+    document.getElementById('updateTime').textContent = 'LAST UPDATE: ' + data.ts.slice(0, 16).replace('T', ' ') + ' UTC';
     updateCharts(data);
   } catch(e) { console.log('fetch latest failed', e); }
 }
@@ -233,8 +235,6 @@ function updateAlbumChart(range) {
     return (t.getMonth()+1)+'/'+t.getDate()+' '+t.getHours().toString().padStart(2, '0')+':00';
   });
   const total = filtered.map(d => d.lib.albums);
-  const missing = filtered.map(d => d.lib.missing);
-  const have = filtered.map(d => d.lib.albums - d.lib.missing);
 
   if (albumTimeChart) albumTimeChart.destroy();
   albumTimeChart = new Chart(document.getElementById('albumTimeChart'), {
@@ -242,18 +242,16 @@ function updateAlbumChart(range) {
     data: {
       labels,
       datasets: [
-        { label: 'Total Albums', data: total, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.05)', fill: false, tension: 0.3, pointRadius: 0 },
-        { label: 'Have', data: have, borderColor: '#AAFFCC', backgroundColor: 'rgba(170,255,204,0.1)', fill: true, tension: 0.3, pointRadius: 0 },
-        { label: 'Missing', data: missing, borderColor: '#FF0099', backgroundColor: 'rgba(255,0,153,0.05)', fill: false, tension: 0.3, pointRadius: 0 }
+        { label: 'Total Albums', data: total, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.08)', fill: true, tension: 0.3, pointRadius: 0 }
       ]
     },
     options: {
       responsive: false,
       hover: { mode: 'index', intersect: false },
-      plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace', size: 9 } } } },
+      plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 9 } } } },
       scales: {
-        x: { ticks: { color: '#666', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-        y: { ticks: { color: '#666', font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
+        x: { ticks: { color: '#CCCCCC', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
       }
     }
   });
@@ -263,6 +261,7 @@ fetchLatest();
 fetchHistory();
 fetchDailyPick();
 setInterval(fetchLatest, 60000);
+setInterval(fetchHistory, 600000);
 </script>
 <!-- DAILY PICK -->
 <center><hr width="100%"></center>
@@ -336,13 +335,7 @@ setInterval(fetchLatest, 60000);
   var shootingStars = [];
   var shootTimer = 0;
 
-  // Pulsar
-  var pulsar = {
-    x: 0.3 + Math.random() * 0.4,
-    y: 0.2 + Math.random() * 0.3,
-    angle: 0,
-    period: 4 + Math.random() * 3
-  };
+
 
   function drawStar(ctx2, x, y, size, color, alpha, scale) {
     // Ship jitter
@@ -433,26 +426,7 @@ setInterval(fetchLatest, 60000);
       ctx.fill();
     }
 
-    // Pulsar beam
-    var p = pulsar;
-    p.angle += 0.003 * p.period;
-    var beamAngle = p.angle;
-    var px = p.x * w;
-    var py = p.y * h;
-    var beamLen = Math.min(w, h) * 0.8;
-    ctx.globalAlpha = 0.03 + 0.02 * Math.sin(p.angle * 4);
-    ctx.fillStyle = '#AADDFF';
-    ctx.beginPath();
-    ctx.moveTo(px, py);
-    ctx.arc(px, py, beamLen, beamAngle - 0.08, beamAngle + 0.08);
-    ctx.closePath();
-    ctx.fill();
-    // Pulsar star
-    ctx.globalAlpha = 0.4 + 0.3 * Math.sin(p.angle * 4);
-    ctx.beginPath();
-    ctx.arc(px, py, 2.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fill();
+
 
     // Far layer
     for (var i = 0; i < farStars.length; i++) {
