@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="COLLECTION STATS. The Creator tracks the celestial wall.">
+<title>COLLECTION: CELESTIAL STATS</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body text="#CCCCCC" link="#66FFFF" vlink="#FF0099" style="background:#050510">
+
+<center>
+<font color="#FF0000" size="7"><b>
+<marquee behavior="scroll" direction="left" scrollamount="4">★ THE CREATOR COUNTS THE BRICKS OF THE CELESTIAL WALL ★</marquee>
+</b></font>
+</center>
+<center><hr width="100%"></center>
+<center><font size="+3" color="#66FFFF"><b>★ COLLECTION STATS ★</b></font></center>
+<center><font size="+1" color="#666666"><span id="updateTime"></span></font></center>
+<center><hr width="100%"></center>
+
+<!-- SUMMARY CARDS -->
+<center>
+<table border="0" width="95%" cellpadding="8">
+<tr align="center">
+<td width="20%" bgcolor="#0a0a20" style="border:1px solid #FF0099"><font size="+2" color="#FF0099"><b><span id="statAlbums">-</span></b></font><br><font size="-1" color="#666666">ALBUMS</font></td>
+<td width="20%" bgcolor="#0a0a20" style="border:1px solid #66FFFF"><font size="+2" color="#66FFFF"><b><span id="statMissing">-</span></b></font><br><font size="-1" color="#666666">MISSING</font></td>
+<td width="20%" bgcolor="#0a0a20" style="border:1px solid #FFCC66"><font size="+2" color="#FFCC66"><b><span id="statArtists">-</span></b></font><br><font size="-1" color="#666666">ARTISTS</font></td>
+<td width="20%" bgcolor="#0a0a20" style="border:1px solid #AAFFCC"><font size="+2" color="#AAFFCC"><b><span id="statTracks">-</span></b></font><br><font size="-1" color="#666666">TRACKS</font></td>
+<td width="20%" bgcolor="#0a0a20" style="border:1px solid #FFDDAA"><font size="+2" color="#FFDDAA"><b><span id="statDisk">-</span></b></font><br><font size="-1" color="#666666">DISK USED</font></td>
+</tr>
+</table>
+</center>
+
+<center><hr width="80%" size="1"></center>
+
+<!-- DISK USAGE CHART -->
+<center><font size="+2" color="#FF0099"><b>★ DISK USAGE OVER TIME ★</b></font></center>
+<center>
+<button onclick="setRange(24)" id="r24" style="background:#000;color:#66FFFF;border:1px solid #66FFFF;padding:4px 16px;cursor:pointer;font-family:monospace">24H</button>
+<button onclick="setRange(168)" id="r168" style="background:#000;color:#666;border:1px solid #333;padding:4px 16px;cursor:pointer;font-family:monospace">7D</button>
+<button onclick="setRange(720)" id="r720" style="background:#000;color:#666;border:1px solid #333;padding:4px 16px;cursor:pointer;font-family:monospace">30D</button>
+<button onclick="setRange(0)" id="r0" style="background:#000;color:#666;border:1px solid #333;padding:4px 16px;cursor:pointer;font-family:monospace">ALL</button>
+</center>
+<center><canvas id="diskChart" width="700" height="250" style="border:1px solid #333;margin-top:8px"></canvas></center>
+
+<center><hr width="80%" size="1"></center>
+
+<!-- FORMAT PIE + VOLUME -->
+<center>
+<table border="0" width="90%">
+<tr>
+<td width="50%" align="center">
+<font size="+2" color="#FF0099"><b>★ FORMAT BREAKDOWN ★</b></font><br>
+<canvas id="formatChart" width="300" height="250"></canvas>
+</td>
+<td width="50%" align="center">
+<font size="+2" color="#FF0099"><b>★ LIBRARY SUMMARY ★</b></font><br>
+<canvas id="albumChart" width="300" height="250"></canvas>
+</td>
+</tr>
+</table>
+</center>
+
+<center><hr width="85%" size="1"></center>
+<center>
+<h3><b><font color="#FFCC66">
+| <a href="../index.html">BRICK.GAY</a> | <a href="../music.html">CELESTIAL GATEWAY</a> | <a href="../brickbuilder.html">THE WALL</a> | STATS |
+</font></b></h3>
+</center>
+
+<font color="#000000" size="-2">
+stats collection statistics disk usage format flac mp3 m4a ape wav ogg opus albums missing artists tracks celestial wall brick
+</font>
+
+<script>
+let diskChart, formatChart, albumChart;
+let historyData = [];
+const MB = 1024*1024;
+const GB = MB*1024;
+const TB = GB*1024;
+
+function fmtSize(bytes) {
+  if (bytes >= TB) return (bytes/TB).toFixed(1)+'T';
+  if (bytes >= GB) return (bytes/GB).toFixed(1)+'G';
+  return (bytes/MB).toFixed(0)+'M';
+}
+
+function fmtSizeFull(bytes) {
+  return (bytes/TB).toFixed(2)+'T';
+}
+
+let currentRange = 168;
+
+function filterHistory(rangeHours) {
+  if (rangeHours === 0) return historyData;
+  const cutoff = Date.now() - rangeHours * 3600 * 1000;
+  return historyData.filter(d => new Date(d.ts).getTime() >= cutoff);
+}
+
+function updateDiskChart(range) {
+  currentRange = range;
+  document.querySelectorAll('button[id^="r"]').forEach(b => {
+    b.style.color = '#666';
+    b.style.borderColor = '#333';
+  });
+  const btn = document.getElementById('r' + (range || '0'));
+  if (btn) { btn.style.color = '#66FFFF'; btn.style.borderColor = '#66FFFF'; }
+
+  const filtered = filterHistory(range);
+  if (filtered.length < 2) return;
+
+  const labels = filtered.map(d => {
+    const t = new Date(d.ts);
+    return t.getHours().toString().padStart(2, '0') + ':' + t.getMinutes().toString().padStart(2, '0');
+  });
+  const used = filtered.map(d => Math.round(d.disk.used / GB));
+  const avail = filtered.map(d => Math.round(d.disk.avail / GB));
+
+  if (diskChart) diskChart.destroy();
+  diskChart = new Chart(document.getElementById('diskChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Used (GB)', data: used, borderColor: '#FF0099', backgroundColor: 'rgba(255,0,153,0.1)', fill: true, tension: 0.3, pointRadius: 1 },
+        { label: 'Free (GB)', data: avail, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.05)', fill: true, tension: 0.3, pointRadius: 1 }
+      ]
+    },
+    options: {
+      responsive: false,
+      plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace' } } } },
+      scales: {
+        x: { ticks: { color: '#666', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#666', font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
+      }
+    }
+  });
+}
+
+function updateCharts(data) {
+  const totalTracks = (data.fmt.flac||0) + (data.fmt.mp3||0) + (data.fmt.m4a||0) + (data.fmt.ape||0) + (data.fmt.wav||0) + (data.fmt.ogg||0) + (data.fmt.opus||0);
+  const have = data.lib.albums - data.lib.missing;
+
+  document.getElementById('statAlbums').textContent = data.lib.albums.toLocaleString();
+  document.getElementById('statMissing').textContent = data.lib.missing.toLocaleString();
+  document.getElementById('statArtists').textContent = data.lib.artists.toLocaleString();
+  document.getElementById('statTracks').textContent = totalTracks.toLocaleString();
+  document.getElementById('statDisk').textContent = data.disk.pct + '%';
+
+  if (formatChart) formatChart.destroy();
+  const fmtData = data.fmt;
+  const fmtLabels = [], fmtValues = [], fmtColors = [];
+  const pairs = [['flac','#8B4513'],['mp3','#FF0099'],['m4a','#66FFFF'],['ogg','#AAFFCC'],['wav','#FFDDAA'],['ape','#FFCC66'],['opus','#CCAAFF']];
+  for (const [k,c] of pairs) {
+    if (fmtData[k] > 0) { fmtLabels.push(k.toUpperCase()+' ('+fmtData[k].toLocaleString()+')'); fmtValues.push(fmtData[k]); fmtColors.push(c); }
+  }
+  formatChart = new Chart(document.getElementById('formatChart'), {
+    type: 'pie',
+    data: { labels: fmtLabels, datasets: [{ data: fmtValues, backgroundColor: fmtColors, borderColor: '#050510', borderWidth: 2 }] },
+    options: { responsive: false, plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } } } } }
+  });
+
+  if (albumChart) albumChart.destroy();
+  albumChart = new Chart(document.getElementById('albumChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['HAVE (' + have.toLocaleString() + ')', 'MISSING (' + data.lib.missing.toLocaleString() + ')'],
+      datasets: [{ data: [have, data.lib.missing], backgroundColor: ['#66FFFF', '#FF0099'], borderColor: '#050510', borderWidth: 2 }]
+    },
+    options: { responsive: false, plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } } } } }
+  });
+}
+
+async function fetchLatest() {
+  try {
+    const r = await fetch('latest.json');
+    const data = await r.json();
+    document.getElementById('updateTime').textContent = 'LAST UPDATE: ' + data.ts.replace('T', ' ').replace('Z', '') + ' UTC';
+    updateCharts(data);
+  } catch(e) { console.log('fetch latest failed', e); }
+}
+
+async function fetchHistory() {
+  try {
+    const r = await fetch('history.jsonl');
+    const text = await r.text();
+    historyData = text.trim().split('\n').filter(l => l).map(l => JSON.parse(l));
+    updateDiskChart(currentRange);
+  } catch(e) { console.log('fetch history failed', e); }
+}
+
+function setRange(hours) { updateDiskChart(hours); }
+
+fetchLatest();
+fetchHistory();
+setInterval(fetchLatest, 60000);
+</script>
+</body>
+</html>

@@ -91,6 +91,7 @@
   musicHtml = ./brick.gay/music.html;
   religionHtml = ./brick.gay/religion.html;
   brickbuilderHtml = ./brick.gay/brickbuilder.html;
+  statsHtml = ./brick.gay/stats/index.html;
 in {
   # --- Podman (for explo + aurral containers) ---
   virtualisation.podman.enable = true;
@@ -192,6 +193,7 @@ in {
         incomplete = "/mnt/Phantom/Media/Musicretag/Importing/.incomplete";
       };
       web.port = 5030;
+      flags.no_share_scan = true;
       # Share music back to the network (optional — set to false to leech only)
       shares.directories = ["/mnt/Phantom/Media/Musicretag/Music"];
     };
@@ -288,6 +290,12 @@ in {
           index = builtins.baseNameOf brickbuilderHtml;
         };
       };
+      "stats.brick.gay" = {
+        locations."/" = {
+          root = builtins.dirOf statsHtml;
+          index = builtins.baseNameOf statsHtml;
+        };
+      };
       "religion.brick.gay" = {
         enableACME = true;
         forceSSL = true;
@@ -296,6 +304,24 @@ in {
           index = builtins.baseNameOf religionHtml;
         };
       };
+    };
+  };
+
+  # --- Collection stats collector ---
+  systemd.services.collection-stats = {
+    description = "Collect music collection statistics";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/var/lib/collection-stats/collector.sh";
+      User = "root";
+    };
+  };
+  systemd.timers.collection-stats = {
+    description = "Run collection stats every hour";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
     };
   };
 
