@@ -19,30 +19,6 @@
 <center><hr width="100%"></center>
 
 
-<!-- DAILY PICK -->
-<center><hr width="100%"></center>
-<center>
-<div id="dailyPick" style="display:none; width:520px; background:#0a0a20; border:1px solid #FF0099; padding:12px; margin:10px auto; cursor:pointer;" onclick="window.open(document.getElementById('dailyPick').dataset.url, '_blank')">
-  <font size="+1" color="#FF0099"><b>★ THE CREATOR'S DAILY SELECTION ★</b></font><br>
-  <table border="0" width="100%">
-  <tr>
-    <td width="120" rowspan="3" valign="top">
-      <div id="dailyCoverWrap" style="width:120px;height:120px;background:#1a1a30;border:1px solid #333;margin-right:12px;position:relative;">
-        <img id="dailyCover" src="" style="width:120px;height:120px;object-fit:cover;display:none;" onerror="this.style.display='none';document.getElementById('dailyCoverPlaceholder').style.display='block'">
-        <div id="dailyCoverPlaceholder" style="display:block;width:120px;height:120px;line-height:120px;text-align:center;"><font size="+3" color="#333">?</font></div>
-      </div>
-    </td>
-    <td valign="top">
-      <font size="+2" color="#66FFFF"><b><span id="dailyArtist">-</span></b></font><br>
-      <font size="+1" color="#CCCCCC"><span id="dailyAlbum">-</span></font><br>
-      <font size="+1" color="#FFCC66"><span id="dailyRating">-</span></font>
-    </td>
-  </tr>
-  </table>
-</div>
-</center>
-<center><hr width="100%"></center>
-
 <center>
 <table border="0" width="95%" cellpadding="8">
 <tr align="center">
@@ -245,5 +221,29 @@ fetchHistory();
 fetchDailyPick();
 setInterval(fetchLatest, 60000);
 </script>
+<!-- DAILY PICK -->
+<center><hr width="100%"></center>
+<center>
+<div id="dailyPick" style="display:none; width:520px; background:#0a0a20; border:1px solid #FF0099; padding:12px; margin:10px auto; cursor:pointer;" onclick="window.open(document.getElementById('dailyPick').dataset.url, '_blank')">
+  <font size="+1" color="#FF0099"><b>★ THE CREATOR'S DAILY SELECTION ★</b></font><br>
+  <table border="0" width="100%">
+  <tr>
+    <td width="120" rowspan="3" valign="top">
+      <div id="dailyCoverWrap" style="width:120px;height:120px;background:#1a1a30;border:1px solid #333;margin-right:12px;position:relative;">
+        <img id="dailyCover" src="" style="width:120px;height:120px;object-fit:cover;display:none;" onerror="this.style.display='none';document.getElementById('dailyCoverPlaceholder').style.display='block'">
+        <div id="dailyCoverPlaceholder" style="display:block;width:120px;height:120px;line-height:120px;text-align:center;"><font size="+3" color="#333">?</font></div>
+      </div>
+    </td>
+    <td valign="top">
+      <font size="+2" color="#66FFFF"><b><span id="dailyArtist">-</span></b></font><br>
+      <font size="+1" color="#CCCCCC"><span id="dailyAlbum">-</span></font><br>
+      <font size="+1" color="#FFCC66"><span id="dailyRating">-</span></font>
+    </td>
+  </tr>
+  </table>
+</div>
+</center>
+<center><hr width="100%"></center>
+
 </body>
 </html>
