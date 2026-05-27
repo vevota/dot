@@ -273,6 +273,12 @@ in {
           root = builtins.dirOf indexHtml;
           index = builtins.baseNameOf indexHtml;
         };
+        locations."= /stats/latest.json" = {
+          alias = "/var/lib/collection-stats/latest.json";
+        };
+        locations."= /stats/history.jsonl" = {
+          alias = "/var/lib/collection-stats/history.jsonl";
+        };
       };
       "music.brick.gay" = {
         enableACME = true;
