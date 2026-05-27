@@ -277,8 +277,8 @@ setInterval(fetchLatest, 60000);
 
   var mx = 0, my = 0;
   document.addEventListener('mousemove', function(e) {
-    mx = (e.clientX / window.innerWidth - 0.5) * 2 * 20;
-    my = (e.clientY / window.innerHeight - 0.5) * 2 * 20;
+    mx = (e.clientX / window.innerWidth - 0.5) * 2 * 100;
+    my = (e.clientY / window.innerHeight - 0.5) * 2 * 100;
   });
 
   function draw() {
@@ -316,6 +316,18 @@ ctx.clearRect(0, 0, w, h);
       var alpha = Math.min(1, (maxZ - s.z) / (maxZ * 0.8));
       var size = s.r * Math.max(0.3, scale);
 
+      if (size > 1.5 && alpha > 0.5) {
+        // Planet glow - bright core with soft halo
+        var grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, size * 3);
+        grad.addColorStop(0, '#FFFFFF');
+        grad.addColorStop(0.1, s.c);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.beginPath();
+        ctx.arc(sx, sy, size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.globalAlpha = alpha * 0.7;
+        ctx.fill();
+      }
       ctx.beginPath();
       ctx.arc(sx, sy, size, 0, Math.PI * 2);
       ctx.fillStyle = s.c;
