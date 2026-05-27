@@ -18,7 +18,29 @@
 <center><font size="+1" color="#666666"><span id="updateTime"></span></font></center>
 <center><hr width="100%"></center>
 
-<!-- SUMMARY CARDS -->
+
+<!-- DAILY PICK -->
+<center><hr width="100%"></center>
+<center>
+<div id="dailyPick" style="display:none; width:520px; background:#0a0a20; border:1px solid #FF0099; padding:12px; margin:10px auto; cursor:pointer;" onclick="window.open(document.getElementById('dailyPick').dataset.url, '_blank')">
+  <font size="+1" color="#FF0099"><b>★ THE CREATOR'S DAILY SELECTION ★</b></font><br>
+  <table border="0" width="100%">
+  <tr>
+    <td width="120" rowspan="3" valign="top">
+      <div id="dailyCover" style="width:120px;height:120px;background:#1a1a30;border:1px solid #333;margin-right:12px;"><center><font size="+3" color="#333" style="line-height:120px;">?</font></center></div>
+    </td>
+    <td valign="top">
+      <font size="+2" color="#66FFFF"><b><span id="dailyArtist">-</span></b></font><br>
+      <font size="+1" color="#CCCCCC"><span id="dailyAlbum">-</span></font><br>
+      <font size="+1" color="#FFCC66"><span id="dailyRating">-</span></font><br>
+      <font size="-1" color="#666666"><span id="dailyProgress">-</span></font>
+    </td>
+  </tr>
+  </table>
+</div>
+</center>
+<center><hr width="100%"></center>
+
 <center>
 <table border="0" width="95%" cellpadding="8">
 <tr align="center">
@@ -175,6 +197,23 @@ function updateCharts(data) {
   });
 }
 
+
+async function fetchDailyPick() {
+  try {
+    const r = await fetch('/api/daily-pick.json');
+    const p = await r.json();
+    const el = document.getElementById('dailyPick');
+    document.getElementById('dailyArtist').textContent = p.artist;
+    document.getElementById('dailyAlbum').textContent = p.album;
+    const stars = p.rating === 5.0 ? '★★★★★' : '★★★★½';
+    document.getElementById('dailyRating').textContent = stars;
+    document.getElementById('dailyProgress').textContent = 'Pick ' + p.shownCount + ' of ' + p.totalCount;
+    el.dataset.url = p.youtubeUrl;
+    el.style.display = 'block';
+  } catch(e) { console.log('daily pick fetch failed', e); }
+}
+fetchDailyPick();
+
 async function fetchLatest() {
   try {
     const r = await fetch('latest.json');
@@ -197,6 +236,7 @@ function setRange(hours) { updateDiskChart(hours); }
 
 fetchLatest();
 fetchHistory();
+fetchDailyPick();
 setInterval(fetchLatest, 60000);
 </script>
 </body>

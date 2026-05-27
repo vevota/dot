@@ -278,6 +278,9 @@ in {
         locations."= /stats/latest.json" = {
           alias = "/var/lib/collection-stats/latest.json";
         };
+        locations."= /api/daily-pick.json" = {
+          alias = "/var/lib/rym/daily-pick.json";
+        };
         locations."= /stats/history.jsonl" = {
           alias = "/var/lib/collection-stats/history.jsonl";
         };
@@ -337,6 +340,24 @@ in {
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "hourly";
+      Persistent = true;
+    };
+  };
+
+  # --- Daily RYM pick ---
+  systemd.services.daily-pick = {
+    description = "Pick a random featured album from RYM ratings";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/var/lib/rym/daily-pick.sh";
+      User = "root";
+    };
+  };
+  systemd.timers.daily-pick = {
+    description = "Run daily pick at midnight";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
       Persistent = true;
     };
   };
