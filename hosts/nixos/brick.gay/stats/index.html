@@ -111,7 +111,10 @@ function updateDiskChart(range) {
 
   const labels = filtered.map(d => {
     const t = new Date(d.ts);
-    return t.getHours().toString().padStart(2, '0') + ':' + t.getMinutes().toString().padStart(2, '0');
+    if (currentRange <= 24) {
+      return t.getHours().toString().padStart(2, '0') + ':' + t.getMinutes().toString().padStart(2, '0');
+    }
+    return (t.getMonth()+1)+'/'+t.getDate()+' '+t.getHours().toString().padStart(2, '0')+':00';
   });
   const used = filtered.map(d => Math.round(d.disk.musicBytes / TB * 100) / 100);
   const avail = filtered.map(d => Math.round(d.disk.avail / GB / 1024 * 100) / 100);
