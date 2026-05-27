@@ -339,6 +339,7 @@ in {
   # --- Collection stats collector ---
   systemd.services.collection-stats = {
     description = "Collect music collection statistics";
+    path = with pkgs; [ coreutils gawk gnused curl python3 ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "/var/lib/collection-stats/collector.sh";
@@ -357,6 +358,7 @@ in {
   # --- Daily RYM pick ---
   systemd.services.daily-pick = {
     description = "Pick a random featured album from RYM ratings";
+    path = with pkgs; [ coreutils python3 ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "/var/lib/rym/daily-pick.sh";
