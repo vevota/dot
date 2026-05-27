@@ -117,7 +117,7 @@ function updateDiskChart(range) {
     return (t.getMonth()+1)+'/'+t.getDate()+' '+t.getHours().toString().padStart(2, '0')+':00';
   });
   const used = filtered.map(d => Math.round(d.disk.musicBytes / GB * 10) / 10);
-  const avail = filtered.map(d => Math.round(d.disk.avail / GB * 10) / 10);
+
 
   if (diskChart) diskChart.destroy();
   diskChart = new Chart(document.getElementById('diskChart'), {
@@ -126,7 +126,6 @@ function updateDiskChart(range) {
       labels,
       datasets: [
         { label: 'Music (GB)', data: used, borderColor: '#FF0099', backgroundColor: 'rgba(255,0,153,0.1)', fill: true, tension: 0.3, pointRadius: 1 },
-        { label: 'Free (GB)', data: avail, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.05)', fill: true, tension: 0.3, pointRadius: 1 }
       ]
     },
     options: {
