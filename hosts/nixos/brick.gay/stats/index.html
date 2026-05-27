@@ -85,7 +85,7 @@ function fmtSize(bytes) {
   return (bytes/MB).toFixed(0)+'M';
 }
 
-function fmtSizeFull(bytes) {
+function fmtSize(bytes) {
   return (bytes/TB).toFixed(2)+'T';
 }
 
@@ -116,8 +116,8 @@ function updateDiskChart(range) {
     }
     return (t.getMonth()+1)+'/'+t.getDate()+' '+t.getHours().toString().padStart(2, '0')+':00';
   });
-  const used = filtered.map(d => Math.round(d.disk.musicBytes / TB * 100) / 100);
-  const avail = filtered.map(d => Math.round(d.disk.avail / GB / 1024 * 100) / 100);
+  const used = filtered.map(d => Math.round(d.disk.musicBytes / GB * 10) / 10);
+  const avail = filtered.map(d => Math.round(d.disk.avail / GB * 10) / 10);
 
   if (diskChart) diskChart.destroy();
   diskChart = new Chart(document.getElementById('diskChart'), {
@@ -125,8 +125,8 @@ function updateDiskChart(range) {
     data: {
       labels,
       datasets: [
-        { label: 'Music (TB)', data: used, borderColor: '#FF0099', backgroundColor: 'rgba(255,0,153,0.1)', fill: true, tension: 0.3, pointRadius: 1 },
-        { label: 'Free (TB)', data: avail, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.05)', fill: true, tension: 0.3, pointRadius: 1 }
+        { label: 'Music (GB)', data: used, borderColor: '#FF0099', backgroundColor: 'rgba(255,0,153,0.1)', fill: true, tension: 0.3, pointRadius: 1 },
+        { label: 'Free (GB)', data: avail, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.05)', fill: true, tension: 0.3, pointRadius: 1 }
       ]
     },
     options: {
@@ -148,7 +148,7 @@ function updateCharts(data) {
   document.getElementById('statMissing').textContent = data.lib.missing.toLocaleString();
   document.getElementById('statArtists').textContent = data.lib.artists.toLocaleString();
   document.getElementById('statTracks').textContent = totalTracks.toLocaleString();
-  document.getElementById('statDisk').textContent = fmtSizeFull(data.disk.musicBytes);
+  document.getElementById('statDisk').textContent = fmtSize(Math.round(data.disk.musicBytes / GB * 10) / 10) + ' GB';
 
   if (formatChart) formatChart.destroy();
   const fmtData = data.fmt;
