@@ -168,7 +168,7 @@ function updateCharts(data) {
     type: 'doughnut',
     data: {
       labels: ['HAVE (' + have.toLocaleString() + ')', 'MISSING (' + data.lib.missing.toLocaleString() + ')'],
-      datasets: [{ data: [have, data.lib.missing], backgroundColor: ['#66FFFF', '#FF0099'], borderColor: '#050510', borderWidth: 2 }]
+      datasets: [{ data: [have, data.lib.missing], backgroundColor: ['#FF0099', '#66FFFF'], borderColor: '#050510', borderWidth: 2 }]
     },
     options: { responsive: false, plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } } } } }
   });
