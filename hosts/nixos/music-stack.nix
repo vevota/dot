@@ -285,7 +285,7 @@ in {
           alias = "/var/lib/collection-stats/history.jsonl";
         };
       };
-      "music.brick.gay" = {
+      "stack.brick.gay" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
@@ -301,7 +301,7 @@ in {
           index = builtins.baseNameOf brickbuilderHtml;
         };
       };
-      "stats.brick.gay" = {
+      "music.brick.gay" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
