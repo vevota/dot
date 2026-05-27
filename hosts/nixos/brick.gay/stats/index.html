@@ -27,13 +27,15 @@
   <table border="0" width="100%">
   <tr>
     <td width="120" rowspan="3" valign="top">
-      <div id="dailyCover" style="width:120px;height:120px;background:#1a1a30;border:1px solid #333;margin-right:12px;"><center><font size="+3" color="#333" style="line-height:120px;">?</font></center></div>
+      <div id="dailyCoverWrap" style="width:120px;height:120px;background:#1a1a30;border:1px solid #333;margin-right:12px;position:relative;">
+        <img id="dailyCover" src="" style="width:120px;height:120px;object-fit:cover;display:none;" onerror="this.style.display='none';document.getElementById('dailyCoverPlaceholder').style.display='block'">
+        <div id="dailyCoverPlaceholder" style="display:block;width:120px;height:120px;line-height:120px;text-align:center;"><font size="+3" color="#333">?</font></div>
+      </div>
     </td>
     <td valign="top">
       <font size="+2" color="#66FFFF"><b><span id="dailyArtist">-</span></b></font><br>
       <font size="+1" color="#CCCCCC"><span id="dailyAlbum">-</span></font><br>
-      <font size="+1" color="#FFCC66"><span id="dailyRating">-</span></font><br>
-      <font size="-1" color="#666666"><span id="dailyProgress">-</span></font>
+      <font size="+1" color="#FFCC66"><span id="dailyRating">-</span></font>
     </td>
   </tr>
   </table>
@@ -207,7 +209,11 @@ async function fetchDailyPick() {
     document.getElementById('dailyAlbum').textContent = p.album;
     const stars = p.rating === 5.0 ? '★★★★★' : '★★★★½';
     document.getElementById('dailyRating').textContent = stars;
-    document.getElementById('dailyProgress').textContent = 'Pick ' + p.shownCount + ' of ' + p.totalCount;
+    if (p.coverUrl) {
+      document.getElementById('dailyCover').src = p.coverUrl;
+      document.getElementById('dailyCover').style.display = 'block';
+      document.getElementById('dailyCoverPlaceholder').style.display = 'none';
+    }
     el.dataset.url = p.youtubeUrl;
     el.style.display = 'block';
   } catch(e) { console.log('daily pick fetch failed', e); }
