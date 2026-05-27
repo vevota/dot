@@ -26,7 +26,7 @@
 <td width="20%" bgcolor="#0a0a20" style="border:1px solid #66FFFF"><font size="+2" color="#66FFFF"><b><span id="statMissing">-</span></b></font><br><font size="-1" color="#666666">MISSING</font></td>
 <td width="20%" bgcolor="#0a0a20" style="border:1px solid #FFCC66"><font size="+2" color="#FFCC66"><b><span id="statArtists">-</span></b></font><br><font size="-1" color="#666666">ARTISTS</font></td>
 <td width="20%" bgcolor="#0a0a20" style="border:1px solid #AAFFCC"><font size="+2" color="#AAFFCC"><b><span id="statTracks">-</span></b></font><br><font size="-1" color="#666666">TRACKS</font></td>
-<td width="20%" bgcolor="#0a0a20" style="border:1px solid #FFDDAA"><font size="+2" color="#FFDDAA"><b><span id="statDisk">-</span></b></font><br><font size="-1" color="#666666">DISK USED</font></td>
+<td width="20%" bgcolor="#0a0a20" style="border:1px solid #FFDDAA"><font size="+2" color="#FFDDAA"><b><span id="statDisk">-</span></b></font><br><font size="-1" color="#666666">MUSIC SIZE</font></td>
 </tr>
 </table>
 </center>
@@ -113,8 +113,8 @@ function updateDiskChart(range) {
     const t = new Date(d.ts);
     return t.getHours().toString().padStart(2, '0') + ':' + t.getMinutes().toString().padStart(2, '0');
   });
-  const used = filtered.map(d => Math.round(d.disk.used / GB));
-  const avail = filtered.map(d => Math.round(d.disk.avail / GB));
+  const used = filtered.map(d => Math.round(d.disk.musicBytes / TB * 100) / 100);
+  const avail = filtered.map(d => Math.round(d.disk.avail / GB / 1024 * 100) / 100);
 
   if (diskChart) diskChart.destroy();
   diskChart = new Chart(document.getElementById('diskChart'), {
@@ -122,8 +122,8 @@ function updateDiskChart(range) {
     data: {
       labels,
       datasets: [
-        { label: 'Used (GB)', data: used, borderColor: '#FF0099', backgroundColor: 'rgba(255,0,153,0.1)', fill: true, tension: 0.3, pointRadius: 1 },
-        { label: 'Free (GB)', data: avail, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.05)', fill: true, tension: 0.3, pointRadius: 1 }
+        { label: 'Music (TB)', data: used, borderColor: '#FF0099', backgroundColor: 'rgba(255,0,153,0.1)', fill: true, tension: 0.3, pointRadius: 1 },
+        { label: 'Free (TB)', data: avail, borderColor: '#66FFFF', backgroundColor: 'rgba(102,255,255,0.05)', fill: true, tension: 0.3, pointRadius: 1 }
       ]
     },
     options: {
@@ -145,7 +145,7 @@ function updateCharts(data) {
   document.getElementById('statMissing').textContent = data.lib.missing.toLocaleString();
   document.getElementById('statArtists').textContent = data.lib.artists.toLocaleString();
   document.getElementById('statTracks').textContent = totalTracks.toLocaleString();
-  document.getElementById('statDisk').textContent = data.disk.pct + '%';
+  document.getElementById('statDisk').textContent = fmtSizeFull(data.disk.musicBytes);
 
   if (formatChart) formatChart.destroy();
   const fmtData = data.fmt;
