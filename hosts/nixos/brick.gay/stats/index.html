@@ -147,7 +147,7 @@ function updateCharts(data) {
   document.getElementById('statMissing').textContent = data.lib.missing.toLocaleString();
   document.getElementById('statArtists').textContent = data.lib.artists.toLocaleString();
   document.getElementById('statTracks').textContent = totalTracks.toLocaleString();
-  document.getElementById('statDisk').textContent = fmtSize(Math.round(data.disk.musicBytes / GB * 10) / 10) + ' GB';
+  document.getElementById('statDisk').textContent = Math.round(data.disk.musicBytes / GB).toLocaleString() + ' GB';
 
   if (formatChart) formatChart.destroy();
   const fmtData = data.fmt;
