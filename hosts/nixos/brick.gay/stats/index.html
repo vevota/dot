@@ -130,6 +130,7 @@ function updateDiskChart(range) {
     },
     options: {
       responsive: false,
+      hover: { mode: 'index', intersect: false },
       plugins: { legend: { labels: { color: '#CCCCCC', font: { family: 'monospace' } } } },
       scales: {
         x: { ticks: { color: '#666', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
@@ -152,7 +153,7 @@ function updateCharts(data) {
   if (formatChart) formatChart.destroy();
   const fmtData = data.fmt;
   const fmtLabels = [], fmtValues = [], fmtColors = [];
-  const pairs = [['flac','#8B4513'],['mp3','#FF0099'],['m4a','#66FFFF'],['ogg','#AAFFCC'],['wav','#FFDDAA'],['ape','#FFCC66'],['opus','#CCAAFF']];
+  const pairs = [['flac','#FF0099'],['mp3','#66FFFF'],['m4a','#AAFFCC'],['ogg','#FFDDAA'],['wav','#CCAAFF'],['ape','#FFCC66'],['opus','#8B4513']];
   for (const [k,c] of pairs) {
     if (fmtData[k] > 0) { fmtLabels.push(k.toUpperCase()+' ('+fmtData[k].toLocaleString()+')'); fmtValues.push(fmtData[k]); fmtColors.push(c); }
   }
