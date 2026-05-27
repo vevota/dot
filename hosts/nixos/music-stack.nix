@@ -269,6 +269,8 @@ in {
     virtualHosts = {
       "brick.gay" = {
         default = true;
+        enableACME = true;
+        forceSSL = true;
         locations."/" = {
           root = builtins.dirOf indexHtml;
           index = builtins.baseNameOf indexHtml;
@@ -297,6 +299,8 @@ in {
         };
       };
       "stats.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
         locations."/" = {
           root = builtins.dirOf statsHtml;
           index = builtins.baseNameOf statsHtml;
