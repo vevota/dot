@@ -318,6 +318,13 @@ in {
           alias = "/var/lib/rym/daily-pick.json";
         };
       };
+      "stats.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          return = "302 https://music.brick.gay$request_uri";
+        };
+      };
       "religion.brick.gay" = {
         enableACME = true;
         forceSSL = true;
