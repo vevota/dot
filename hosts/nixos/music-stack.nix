@@ -314,6 +314,9 @@ in {
         locations."= /history.jsonl" = {
           alias = "/var/lib/collection-stats/history.jsonl";
         };
+        locations."= /api/daily-pick.json" = {
+          alias = "/var/lib/rym/daily-pick.json";
+        };
       };
       "religion.brick.gay" = {
         enableACME = true;
