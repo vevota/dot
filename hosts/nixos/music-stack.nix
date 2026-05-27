@@ -295,6 +295,12 @@ in {
           root = builtins.dirOf statsHtml;
           index = builtins.baseNameOf statsHtml;
         };
+        locations."= /latest.json" = {
+          alias = "/var/lib/collection-stats/latest.json";
+        };
+        locations."= /history.jsonl" = {
+          alias = "/var/lib/collection-stats/history.jsonl";
+        };
       };
       "religion.brick.gay" = {
         enableACME = true;
