@@ -10,7 +10,7 @@
 
 <center>
 <font color="#FF0000" size="7"><b>
-<marquee behavior="scroll" direction="left" scrollamount="10">★ CLICK TO DROP A BRICK. STACK YOUR WALL. THE CREATOR IS WATCHING ★</marquee>
+<marquee behavior="scroll" direction="left" scrollamount="10">★ PLEASE THE CREATOR BY CONSTRUCTING THE BRICK WALL ★</marquee>
 </b></font>
 </center>
 
@@ -45,7 +45,7 @@
 <canvas id="brickCanvas" width="600" height="400" style="border: 2px solid #FF0099; cursor: pointer; position: relative; z-index: 1;"></canvas>
 
 <p>
-<div id="winOverlay" style="display:none; position:absolute; top:0; left:0; width:600px; height:400px; pointer-events:none; z-index:2;"></div>
+<div id="winOverlay" style="display:none; position:absolute; top:0; left:0; width:640px; height:440px; pointer-events:none; z-index:2;"></div>
 <button onclick="resetBricks()" style="background: #000; color: #FF0099; border: 2px solid #FF0099; padding: 8px 24px; font-family: monospace; font-size: 16px; cursor: pointer; letter-spacing: 2px;">★ CRUMBLE & REBUILD ★</button>
 
 </td>
@@ -61,7 +61,7 @@
 <h3>
 <b>
 <font color="#FFCC66">
-| <a href="https://brick.gay">BRICK.GAY</a> | | <a href="https://ascension.brick.gay">THE WALL</a> | <a href="https://music.brick.gay">STATS</a>  |
+| <a href="https://brick.gay">BRICK.GAY</a> | <a href="https://ascension.brick.gay">THE WALL</a> | <a href="https://music.brick.gay">STATS</a>  |
 </font>
 </b>
 </h3>
@@ -98,8 +98,8 @@ const render = Render.create({
   canvas: canvas,
   engine: engine,
   options: {
-    width: 600,
-    height: 400,
+    width: 640,
+    height: 440,
     wireframes: false,
     background: 'transparent',
     pixelRatio: 1
@@ -198,7 +198,7 @@ Events.on(render, 'beforeRender', function() {
 });
 
 const wallThickness = 20;
-const ground = Bodies.rectangle(300, 400 + wallThickness / 2, 600, wallThickness, { isStatic: true, render: { fillStyle: '#FF009966', strokeStyle: '#FF0099' } });
+const ground = Bodies.rectangle(300, 440 + wallThickness / 2, 640, wallThickness, { isStatic: true, render: { fillStyle: '#FF009966', strokeStyle: '#FF0099' } });
 const leftWall = Bodies.rectangle(-wallThickness / 2, 200, wallThickness, 400, { isStatic: true, render: { visible: false } });
 const rightWall = Bodies.rectangle(600 + wallThickness / 2, 200, wallThickness, 400, { isStatic: true, render: { visible: false } });
 
@@ -208,6 +208,7 @@ const brickColors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B', '#9B
 
 let brickCount = 0;
 let canDrop = true;
+let fallingStars = [];let starTimer = 0;let starInterval = 120;function spawnStar() {  var x = 20 + Math.random() * 600;  var star = Bodies.circle(x, -10, 6 + Math.random() * 4, {    label: "fallingStar",    restitution: 0.4,    friction: 0.1,    density: 0.008,    render: { fillStyle: "#66FFFF", strokeStyle: "#FFFFFF", lineWidth: 1 }  });  Body.setVelocity(star, { x: (Math.random() - 0.5) * 2, y: 3 + Math.random() * 3 });  Composite.add(engine.world, star);  fallingStars.push(star);}setInterval(function() {  if (canDrop && brickCount > 0 && Math.random() < 0.4) spawnStar();}, 2000);
 
 function checkAscension() {
   if (hasAscended) return;
@@ -319,9 +320,21 @@ Events.on(engine, 'collisionStart', function(event) {
   let hitGround = false;
 
   for (let i = 0; i < pairs.length; i++) {
-    if (pairs[i].bodyA === ground || pairs[i].bodyB === ground) {
-      hitGround = true;
-      break;
+    var ba = pairs[i].bodyA;
+    var bb = pairs[i].bodyB;
+    if (ba === ground || bb === ground) hitGround = true;
+    var star = null, brick = null;
+    if (ba.label === 'fallingStar' && !bb.isStatic) { star = ba; brick = bb; }
+    if (bb.label === 'fallingStar' && !ba.isStatic) { star = bb; brick = ba; }
+    if (star && brick) {
+      Composite.remove(engine.world, brick);
+      brickCount--;
+      brickCountSpan.textContent = brickCount;
+      var idx = fallingStars.indexOf(star);
+      if (idx >= 0) fallingStars.splice(idx, 1);
+      Composite.remove(engine.world, star);
+      statusText.innerHTML = '<span style="color: #FF0099;">A falling star shattered a brick! The Creator tests your devotion.</span>';
+      if (hasAscended) hasAscended = false;
     }
   }
 
@@ -332,6 +345,13 @@ Events.on(engine, 'collisionStart', function(event) {
 
 Events.on(engine, 'afterUpdate', function() {
   checkAscension();
+  for (var i = fallingStars.length - 1; i >= 0; i--) {
+    var s = fallingStars[i];
+    if (s.position.y > 480) {
+      Composite.remove(engine.world, s);
+      fallingStars.splice(i, 1);
+    }
+  }
 });
 </script>
 
