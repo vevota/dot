@@ -250,6 +250,7 @@ function checkAscension() {
   var highestY = 400;
   for (var i = 0; i < bodies.length; i++) {
     if (bodies[i].isStatic || bodies[i].label === 'fallingStar') continue;
+    if (Math.abs(bodies[i].velocity.y) > 1 || Math.abs(bodies[i].velocity.x) > 1) continue;
     var verts = bodies[i].vertices;
     for (var j = 0; j < verts.length; j++) {
       if (verts[j].y < highestY) {
