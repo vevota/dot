@@ -196,18 +196,22 @@ Events.on(render, 'beforeRender', function() {
   ctx2.fillStyle = 'rgba(102, 255, 255, 0.4)';
   ctx2.fillText('★ CELESTIAL PLANE ★', 240, ASCEND_Y - 4);
 
-  // Draw falling stars as star shapes
+});
+
+// afterRender - draw falling stars on top
+Events.on(render, 'afterRender', function() {
+  var ctx3 = render.canvas.getContext('2d');
   for (var si = 0; si < fallingStars.length; si++) {
     var fs = fallingStars[si];
     var scx = fs.position.x;
     var scy = fs.position.y;
-    var sr = 8;
+    var sr = 10;
     var scolor = ['#FFDD44','#FFCC33','#FFEE66','#FFFFFF','#FFEECC'][si % 5];
-    ctx2.save();
-    ctx2.shadowBlur = 12;
-    ctx2.shadowColor = scolor;
-    ctx2.fillStyle = scolor;
-    ctx2.beginPath();
+    ctx3.save();
+    ctx3.shadowBlur = 15;
+    ctx3.shadowColor = scolor;
+    ctx3.fillStyle = scolor;
+    ctx3.beginPath();
     for (var sp = 0; sp < 5; sp++) {
       var a1 = (sp * 4 * Math.PI / 5) - Math.PI / 2;
       var a2 = a1 + (2 * Math.PI / 5);
@@ -215,14 +219,14 @@ Events.on(render, 'beforeRender', function() {
       var oy = scy + sr * Math.sin(a1);
       var ix = scx + sr * 0.4 * Math.cos(a2);
       var iy = scy + sr * 0.4 * Math.sin(a2);
-      if (sp === 0) ctx2.moveTo(ox, oy);
-      else ctx2.lineTo(ox, oy);
-      ctx2.lineTo(ix, iy);
+      if (sp === 0) ctx3.moveTo(ox, oy);
+      else ctx3.lineTo(ox, oy);
+      ctx3.lineTo(ix, iy);
     }
-    ctx2.closePath();
-    ctx2.fill();
-    ctx2.shadowBlur = 0;
-    ctx2.restore();
+    ctx3.closePath();
+    ctx3.fill();
+    ctx3.shadowBlur = 0;
+    ctx3.restore();
   }
 });
 
