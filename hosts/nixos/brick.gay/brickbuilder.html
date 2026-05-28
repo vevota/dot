@@ -194,40 +194,52 @@ Events.on(render, 'beforeRender', function() {
   var font = '10px monospace';
   ctx2.font = font;
   ctx2.fillStyle = 'rgba(102, 255, 255, 0.4)';
-  ctx2.fillText('★ CELESTIAL PLANE ★', 240, ASCEND_Y - 4);
+  ctx2.fillText("★ CELESTIAL PLANE ★", 240, ASCEND_Y - 4);
+  ctx2.fillStyle = "#FF0000";
+  for (var si = 0; si < fallingStars.length; si++) {
+    var fs = fallingStars[si];
+    ctx2.beginPath();
+    ctx2.arc(fs.position.x, fs.position.y, 10, 0, Math.PI * 2);
+    ctx2.fillStyle = "#FFDD44";
+    ctx2.shadowBlur = 20;
+    ctx2.shadowColor = "#FFDD44";
+    ctx2.fill();
+    ctx2.shadowBlur = 0;
+  }
 
 });
 
 // afterRender - draw falling stars on top
-// Overlay canvas for stars - draws on top of everything
-var starCanvas = document.createElement('canvas');
-starCanvas.width = 640;
-starCanvas.height = 440;
-starCanvas.style.position = 'absolute';
-starCanvas.style.top = canvas.offsetTop + 'px';
-starCanvas.style.left = canvas.offsetLeft + 'px';
-starCanvas.style.pointerEvents = 'none';
-starCanvas.style.zIndex = '2';
-canvas.parentNode.appendChild(starCanvas);
-var starCtx = starCanvas.getContext('2d');
-
-function drawStarOverlay() {
-  starCtx.clearRect(0, 0, 640, 440);
+Events.on(render, 'afterRender', function() {
+  var ctx3 = render.canvas.getContext('2d');
   for (var si = 0; si < fallingStars.length; si++) {
     var fs = fallingStars[si];
     var scx = fs.position.x;
     var scy = fs.position.y;
-    starCtx.beginPath();
-    starCtx.arc(scx, scy, 8, 0, Math.PI * 2);
-    starCtx.fillStyle = '#FFDD44';
-    starCtx.shadowBlur = 15;
-    starCtx.shadowColor = '#FFDD44';
-    starCtx.fill();
-    starCtx.shadowBlur = 0;
+    var sr = 10;
+    var scolor = ['#FFDD44','#FFCC33','#FFEE66','#FFFFFF','#FFEECC'][si % 5];
+    ctx3.save();
+    ctx3.shadowBlur = 15;
+    ctx3.shadowColor = scolor;
+    ctx3.fillStyle = scolor;
+    ctx3.beginPath();
+    for (var sp = 0; sp < 5; sp++) {
+      var a1 = (sp * 4 * Math.PI / 5) - Math.PI / 2;
+      var a2 = a1 + (2 * Math.PI / 5);
+      var ox = scx + sr * Math.cos(a1);
+      var oy = scy + sr * Math.sin(a1);
+      var ix = scx + sr * 0.4 * Math.cos(a2);
+      var iy = scy + sr * 0.4 * Math.sin(a2);
+      if (sp === 0) ctx3.moveTo(ox, oy);
+      else ctx3.lineTo(ox, oy);
+      ctx3.lineTo(ix, iy);
+    }
+    ctx3.closePath();
+    ctx3.fill();
+    ctx3.shadowBlur = 0;
+    ctx3.restore();
   }
-  requestAnimationFrame(drawStarOverlay);
-}
-drawStarOverlay();
+});
 
 const wallThickness = 20;
 const ground = Bodies.rectangle(300, 440 + wallThickness / 2, 640, wallThickness, { isStatic: true, render: { fillStyle: '#FF009966', strokeStyle: '#FF0099' } });
