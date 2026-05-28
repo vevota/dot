@@ -208,7 +208,7 @@ const brickColors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B', '#9B
 
 let brickCount = 0;
 let canDrop = true;
-let fallingStars = [];let starTimer = 0;let starInterval = 120;function spawnStar() {  var x = 20 + Math.random() * 600;  var star = Bodies.circle(x, -10, 6 + Math.random() * 4, {    label: "fallingStar",    restitution: 0.4,    friction: 0.1,    density: 0.008,    render: { fillStyle: "#FFDD44", strokeStyle: "#FFFFFF", lineWidth: 1 }  });  Body.setVelocity(star, { x: (Math.random() - 0.5) * 2, y: 3 + Math.random() * 3 });  Composite.add(engine.world, star);  fallingStars.push(star);}var starDropCount = 0;
+let fallingStars = [];let starTimer = 0;let starInterval = 120;function spawnStar() {  var x = 20 + Math.random() * 600;  var star = Bodies.circle(x, -10, 6 + Math.random() * 4, {    label: "fallingStar",    restitution: 0.4,    friction: 0.1,    density: 0.008,    render: { visible: false }  });  Body.setVelocity(star, { x: (Math.random() - 0.5) * 2, y: 3 + Math.random() * 3 });  Composite.add(engine.world, star);  fallingStars.push(star);}var starDropCount = 0;
 setInterval(function() {  if (canDrop && brickCount > 0 && Math.random() < 0.7) spawnStar();}, 800);
 
 function checkAscension() {
@@ -216,7 +216,7 @@ function checkAscension() {
   var bodies = Composite.allBodies(engine.world);
   var highestY = 400;
   for (var i = 0; i < bodies.length; i++) {
-    if (bodies[i].isStatic) continue;
+    if (bodies[i].isStatic || bodies[i].label === 'fallingStar') continue;
     var verts = bodies[i].vertices;
     for (var j = 0; j < verts.length; j++) {
       if (verts[j].y < highestY) {
