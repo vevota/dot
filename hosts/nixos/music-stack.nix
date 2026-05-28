@@ -193,9 +193,9 @@ in {
         incomplete = "/mnt/Phantom/Media/Musicretag/Importing/.incomplete";
       };
       web.port = 5030;
-      flags.no_share_scan = true;
+      flags.no_share_scan = false;
       # Share music back to the network (optional — set to false to leech only)
-      shares.directories = ["/mnt/Phantom/Media/Musicretag/Music"];
+      shares.directories = ["/var/lib/slskd/shared"];
     };
   };
 

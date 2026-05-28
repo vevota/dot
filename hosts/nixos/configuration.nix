@@ -15,7 +15,7 @@
   fileSystems."/mnt/Phantom" = {
     device = "192.168.7.100:/mnt/Phantom";
     fsType = "nfs";
-    options = [ "vers=3" "nofail" "noatime" "hard" "intr" "_netdev" ];
+    options = [ "vers=4.2" "nofail" "noatime" "hard" "intr" "_netdev" ];
 };
 
 # --- NFS share for Phantom drive ---

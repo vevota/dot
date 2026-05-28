@@ -83,7 +83,7 @@ let diskChart, formatChart, albumChart;
 let historyData = [];
 Chart.register(ChartDataLabels);
 const MB = 1024*1024;
-const GB = MB*1024;
+const GB = 1000*1000*1000;
 const TB = GB*1024;
 
 function fmtSize(bytes) {
@@ -138,7 +138,7 @@ function updateDiskChart(range) {
     options: {
       responsive: false,
       hover: { mode: 'index', intersect: false },
-      plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } } },
+      plugins: { datalabels: { display: false }, legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } } },
       scales: {
         x: { ticks: { color: '#CCCCCC', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
         y: { ticks: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
@@ -167,7 +167,7 @@ function updateCharts(data) {
   formatChart = new Chart(document.getElementById('formatChart'), {
     type: 'doughnut',
     data: { labels: fmtLabels, datasets: [{ data: fmtValues, backgroundColor: fmtColors, borderColor: '#050510', borderWidth: 2 }] },
-    options: { responsive: false, cutout: '50%', plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } },  } }
+    options: { responsive: false, cutout: '50%', plugins: { datalabels: { display: false }, legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } },  } }
   });
 
   if (albumChart) albumChart.destroy();
@@ -177,7 +177,7 @@ function updateCharts(data) {
       labels: ['HAVE (' + have.toLocaleString() + ') ' + Math.round(have / data.lib.albums * 100) + '%', 'MISSING (' + data.lib.missing.toLocaleString() + ') ' + Math.round(data.lib.missing / data.lib.albums * 100) + '%'],
       datasets: [{ data: [have, data.lib.missing], backgroundColor: ['#FF0099', '#66FFFF'], borderColor: '#050510', borderWidth: 2 }]
     },
-    options: { responsive: false, plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } } } }
+    options: { responsive: false, plugins: { datalabels: { display: false }, legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } } } }
   });
 }
 
@@ -248,7 +248,7 @@ function updateAlbumChart(range) {
     options: {
       responsive: false,
       hover: { mode: 'index', intersect: false },
-      plugins: { legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 9 } } } },
+      plugins: { datalabels: { display: false }, legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 9 } } } },
       scales: {
         x: { ticks: { color: '#CCCCCC', maxTicksLimit: 12, font: { family: 'monospace', size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
         y: { ticks: { color: '#CCCCCC', font: { family: 'monospace', size: 10 } }, grid: { color: 'rgba(255,255,255,0.08)' } }
