@@ -208,7 +208,7 @@ const brickColors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B', '#9B
 
 let brickCount = 0;
 let canDrop = true;
-let fallingStars = [];let starTimer = 0;let starInterval = 120;function spawnStar() {  var x = 20 + Math.random() * 600;  var star = Bodies.circle(x, -10, 6 + Math.random() * 4, {    label: "fallingStar",    restitution: 0.4,    friction: 0.1,    density: 0.008,    render: { fillStyle: "#66FFFF", strokeStyle: "#FFFFFF", lineWidth: 1 }  });  Body.setVelocity(star, { x: (Math.random() - 0.5) * 2, y: 3 + Math.random() * 3 });  Composite.add(engine.world, star);  fallingStars.push(star);}var starDropCount = 0;
+let fallingStars = [];let starTimer = 0;let starInterval = 120;function spawnStar() {  var x = 20 + Math.random() * 600;  var star = Bodies.circle(x, -10, 6 + Math.random() * 4, {    label: "fallingStar",    restitution: 0.4,    friction: 0.1,    density: 0.008,    render: { fillStyle: "#FFDD44", strokeStyle: "#FFFFFF", lineWidth: 1 }  });  Body.setVelocity(star, { x: (Math.random() - 0.5) * 2, y: 3 + Math.random() * 3 });  Composite.add(engine.world, star);  fallingStars.push(star);}var starDropCount = 0;
 setInterval(function() {  if (canDrop && brickCount > 0 && Math.random() < 0.7) spawnStar();}, 800);
 
 function checkAscension() {
@@ -327,14 +327,14 @@ Events.on(engine, 'collisionStart', function(event) {
   for (let i = 0; i < pairs.length; i++) {
     var ba = pairs[i].bodyA;
     var bb = pairs[i].bodyB;
-    if (ba === ground || bb === ground) hitGround = true;
+    if ((ba === ground || bb === ground) && ba.label !== 'fallingStar' && bb.label !== 'fallingStar') hitGround = true;
     var star = null, brick = null;
     if (ba.label === 'fallingStar' && !bb.isStatic) { star = ba; brick = bb; }
     if (bb.label === 'fallingStar' && !ba.isStatic) { star = bb; brick = ba; }
     if (star && brick) {
       Composite.remove(engine.world, brick);
-      brickCount--;
-      brickCountSpan.textContent = brickCount;
+      if (brickCount > 0) brickCount--;
+      brickCountSpan.textContent = Math.max(0, brickCount);
       var idx = fallingStars.indexOf(star);
       if (idx >= 0) fallingStars.splice(idx, 1);
       Composite.remove(engine.world, star);
@@ -350,8 +350,33 @@ Events.on(engine, 'collisionStart', function(event) {
 
 Events.on(engine, 'afterUpdate', function() {
   checkAscension();
+  var starColors = ['#FFDD44','#FFCC33','#FFEE66','#FFFFFF','#FFEECC'];
   for (var i = fallingStars.length - 1; i >= 0; i--) {
     var s = fallingStars[i];
+    var scx = s.position.x;
+    var scy = s.position.y;
+    var sr = 8;
+    var ctx2 = engine.render.canvas.getContext('2d');
+    var starColor = starColors[i % starColors.length];
+    ctx2.fillStyle = starColor;
+    ctx2.beginPath();
+    for (var sp = 0; sp < 5; sp++) {
+      var a1 = (sp * 4 * Math.PI / 5) - Math.PI / 2;
+      var a2 = a1 + (2 * Math.PI / 5);
+      var ox = scx + sr * Math.cos(a1);
+      var oy = scy + sr * Math.sin(a1);
+      var ix = scx + sr * 0.4 * Math.cos(a2);
+      var iy = scy + sr * 0.4 * Math.sin(a2);
+      if (sp === 0) ctx2.moveTo(ox, oy);
+      else ctx2.lineTo(ox, oy);
+      ctx2.lineTo(ix, iy);
+    }
+    ctx2.closePath();
+    ctx2.fill();
+    ctx2.shadowBlur = 10;
+    ctx2.shadowColor = starColor;
+    ctx2.fill();
+    ctx2.shadowBlur = 0;
     if (s.position.y > 480) {
       Composite.remove(engine.world, s);
       fallingStars.splice(i, 1);
