@@ -209,7 +209,6 @@ Events.on(render, 'beforeRender', function() {
 
 });
 
-// afterRender - draw falling stars on top
 const wallThickness = 20;
 const ground = Bodies.rectangle(300, 440 + wallThickness / 2, 640, wallThickness, { isStatic: true, render: { fillStyle: '#FF009966', strokeStyle: '#FF0099' } });
 const leftWall = Bodies.rectangle(-wallThickness / 2, 200, wallThickness, 400, { isStatic: true, render: { visible: false } });
