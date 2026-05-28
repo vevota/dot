@@ -363,6 +363,12 @@ Events.on(engine, 'collisionStart', function(event) {
   for (let i = 0; i < pairs.length; i++) {
     var ba = pairs[i].bodyA;
     var bb = pairs[i].bodyB;
+    if ((ba === ground || bb === ground) && ba.label === 'fallingStar') {
+      Composite.remove(engine.world, ba.label === 'fallingStar' ? ba : bb);
+      var sidx = fallingStars.indexOf(ba.label === 'fallingStar' ? ba : bb);
+      if (sidx >= 0) { fallingStars.splice(sidx, 1); }
+      continue;
+    }
     if ((ba === ground || bb === ground) && ba.label !== 'fallingStar' && bb.label !== 'fallingStar') hitGround = true;
     var star = null, brick = null;
     if (ba.label === 'fallingStar' && !bb.isStatic) { star = ba; brick = bb; }
