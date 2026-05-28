@@ -208,7 +208,8 @@ const brickColors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#B8860B', '#9B
 
 let brickCount = 0;
 let canDrop = true;
-let fallingStars = [];let starTimer = 0;let starInterval = 120;function spawnStar() {  var x = 20 + Math.random() * 600;  var star = Bodies.circle(x, -10, 6 + Math.random() * 4, {    label: "fallingStar",    restitution: 0.4,    friction: 0.1,    density: 0.008,    render: { fillStyle: "#66FFFF", strokeStyle: "#FFFFFF", lineWidth: 1 }  });  Body.setVelocity(star, { x: (Math.random() - 0.5) * 2, y: 3 + Math.random() * 3 });  Composite.add(engine.world, star);  fallingStars.push(star);}setInterval(function() {  if (canDrop && brickCount > 0 && Math.random() < 0.4) spawnStar();}, 2000);
+let fallingStars = [];let starTimer = 0;let starInterval = 120;function spawnStar() {  var x = 20 + Math.random() * 600;  var star = Bodies.circle(x, -10, 6 + Math.random() * 4, {    label: "fallingStar",    restitution: 0.4,    friction: 0.1,    density: 0.008,    render: { fillStyle: "#66FFFF", strokeStyle: "#FFFFFF", lineWidth: 1 }  });  Body.setVelocity(star, { x: (Math.random() - 0.5) * 2, y: 3 + Math.random() * 3 });  Composite.add(engine.world, star);  fallingStars.push(star);}var starDropCount = 0;
+setInterval(function() {  if (canDrop && brickCount > 0 && Math.random() < 0.7) spawnStar();}, 800);
 
 function checkAscension() {
   if (hasAscended) return;
@@ -234,8 +235,11 @@ function checkAscension() {
   return false;
 }
 
+var lastDropTime = 0;
 function dropBrick(clientX, clientY) {
-  if (!canDrop || hasAscended) return;
+  var now = Date.now();
+  if (!canDrop || hasAscended || now - lastDropTime < 500) return;
+  lastDropTime = now;
 
   const rect = canvas.getBoundingClientRect();
   const scaleX = canvas.width / rect.width;
