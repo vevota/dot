@@ -195,14 +195,12 @@ Events.on(render, 'beforeRender', function() {
   ctx2.font = font;
   ctx2.fillStyle = 'rgba(102, 255, 255, 0.4)';
   ctx2.fillText("★ CELESTIAL PLANE ★", 240, ASCEND_Y - 4);
-  ctx2.fillStyle = "#FF0000";
+  
   for (var si = 0; si < fallingStars.length; si++) {
     var fs = fallingStars[si];
     ctx2.beginPath();
     ctx2.arc(fs.position.x, fs.position.y, 10, 0, Math.PI * 2);
     ctx2.fillStyle = "#FFDD44";
-    ctx2.shadowBlur = 20;
-    ctx2.shadowColor = "#FFDD44";
     ctx2.fill();
     ctx2.shadowBlur = 0;
   }
