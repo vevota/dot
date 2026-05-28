@@ -37,7 +37,7 @@
 
 <font size="+2" color="#FF0099"><b>HEIGHT: <span id="brickCount">0</span> BRICKS</b></font>
 &nbsp;&nbsp;&nbsp;
-<font size="+2" color="#66FFFF"><b>ASCEND: <span id="heightBar">0</span>%</b></font>
+<font size="+2" color="#66FFFF"><b>ASCEND: <span id="starCount" style="color:#FFDD44">0</span> stars</font><font size="+1" color="#FF0099"><span id="heightBar">0</span>%</b></font>
 <br>
 <font size="+1" color="#FFCC66" id="statusText">Click the canvas to place your first brick and start your ascension.</font>
 
@@ -203,6 +203,7 @@ Events.on(render, 'beforeRender', function() {
     ctx2.fillStyle = "#FFDD44";
     ctx2.fill();
     ctx2.shadowBlur = 0;
+  document.getElementById("starCount").textContent = fallingStars.length;
   }
 
 });
