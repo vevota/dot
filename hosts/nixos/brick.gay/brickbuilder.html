@@ -205,28 +205,13 @@ Events.on(render, 'afterRender', function() {
     var fs = fallingStars[si];
     var scx = fs.position.x;
     var scy = fs.position.y;
-    var sr = 10;
-    var scolor = ['#FFDD44','#FFCC33','#FFEE66','#FFFFFF','#FFEECC'][si % 5];
-    ctx3.save();
-    ctx3.shadowBlur = 15;
-    ctx3.shadowColor = scolor;
-    ctx3.fillStyle = scolor;
     ctx3.beginPath();
-    for (var sp = 0; sp < 5; sp++) {
-      var a1 = (sp * 4 * Math.PI / 5) - Math.PI / 2;
-      var a2 = a1 + (2 * Math.PI / 5);
-      var ox = scx + sr * Math.cos(a1);
-      var oy = scy + sr * Math.sin(a1);
-      var ix = scx + sr * 0.4 * Math.cos(a2);
-      var iy = scy + sr * 0.4 * Math.sin(a2);
-      if (sp === 0) ctx3.moveTo(ox, oy);
-      else ctx3.lineTo(ox, oy);
-      ctx3.lineTo(ix, iy);
-    }
-    ctx3.closePath();
+    ctx3.arc(scx, scy, 8, 0, Math.PI * 2);
+    ctx3.fillStyle = '#FFDD44';
+    ctx3.shadowBlur = 15;
+    ctx3.shadowColor = '#FFDD44';
     ctx3.fill();
     ctx3.shadowBlur = 0;
-    ctx3.restore();
   }
 });
 
