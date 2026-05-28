@@ -15,7 +15,7 @@
   fileSystems."/mnt/Phantom" = {
     device = "192.168.7.100:/mnt/Phantom";
     fsType = "nfs";
-    options = [ "vers=3" "noatime" "hard" "intr" "_netdev" ];
+    options = [ "vers=3" "nofail" "noatime" "hard" "intr" "_netdev" ];
 };
 
 # --- NFS share for Phantom drive ---
@@ -29,14 +29,14 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   networking.interfaces.ens18.useDHCP = false;
   networking.interfaces.ens18.ipv4.addresses = [{
     address = "192.168.7.102";
     prefixLength = 24;
-  }];
-  networking.defaultGateway = "192.168.7.1";
+  }]; # Define your hostname.
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  networking.defaultGateway = "192.168.7.1";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -155,7 +155,7 @@
   programs.nh = {
     enable = true;
     # Point at wherever you cloned the dotfiles repo:
-    flake = "/home/mrmusic/dotfiles/jim-nixos";
+    flake = "/home/mrmusic/dot/hosts/nixos";
     clean.enable = true;
   };
 
