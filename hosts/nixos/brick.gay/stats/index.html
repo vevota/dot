@@ -81,7 +81,7 @@ stats collection statistics disk usage format flac mp3 m4a ape wav ogg opus albu
 <script>
 let diskChart, formatChart, albumChart;
 let historyData = [];
-Chart.register(ChartDataLabels);
+try { Chart.register(ChartDataLabels); } catch(e) {} 
 const MB = 1024*1024;
 const GB = 1000*1000*1000;
 const TB = GB*1024;

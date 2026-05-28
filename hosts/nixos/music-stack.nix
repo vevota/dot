@@ -88,7 +88,7 @@
 }: let
   musicRoot = "/var/lib/music";
   indexHtml = ./brick.gay/index.html;
-  musicHtml = ./brick.gay/music.html;
+  musicHtml = ./brick.gay/stack.html;
   religionHtml = ./brick.gay/religion.html;
   brickbuilderHtml = ./brick.gay/brickbuilder.html;
   statsHtml = ./brick.gay/stats/index.html;
