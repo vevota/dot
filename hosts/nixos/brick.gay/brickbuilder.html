@@ -250,6 +250,7 @@ function checkAscension() {
   var highestY = 400;
   for (var i = 0; i < bodies.length; i++) {
     if (bodies[i].isStatic || bodies[i].label === 'fallingStar') continue;
+    if (bodies[i].birthTime && Date.now() - bodies[i].birthTime < 1500) continue;
     if (Math.abs(bodies[i].velocity.y) > 1 || Math.abs(bodies[i].velocity.x) > 1) continue;
     var verts = bodies[i].vertices;
     for (var j = 0; j < verts.length; j++) {
@@ -298,6 +299,7 @@ function dropBrick(clientX, clientY) {
   const angle = (Math.random() - 0.5) * 0.15;
 
   const brick = Bodies.rectangle(x, y, w, h, {
+    birthTime: Date.now(),
     angle: angle,
     density: 0.006 + Math.random() * 0.003,
     friction: 0.75,
