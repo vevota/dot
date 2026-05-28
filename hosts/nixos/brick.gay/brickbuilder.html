@@ -199,21 +199,35 @@ Events.on(render, 'beforeRender', function() {
 });
 
 // afterRender - draw falling stars on top
-Events.on(render, 'afterRender', function() {
-  var ctx3 = render.canvas.getContext('2d');
+// Overlay canvas for stars - draws on top of everything
+var starCanvas = document.createElement('canvas');
+starCanvas.width = 640;
+starCanvas.height = 440;
+starCanvas.style.position = 'absolute';
+starCanvas.style.top = canvas.style.top;
+starCanvas.style.left = canvas.style.left;
+starCanvas.style.pointerEvents = 'none';
+starCanvas.style.zIndex = '2';
+canvas.parentNode.appendChild(starCanvas);
+var starCtx = starCanvas.getContext('2d');
+
+function drawStarOverlay() {
+  starCtx.clearRect(0, 0, 640, 440);
   for (var si = 0; si < fallingStars.length; si++) {
     var fs = fallingStars[si];
     var scx = fs.position.x;
     var scy = fs.position.y;
-    ctx3.beginPath();
-    ctx3.arc(scx, scy, 8, 0, Math.PI * 2);
-    ctx3.fillStyle = '#FFDD44';
-    ctx3.shadowBlur = 15;
-    ctx3.shadowColor = '#FFDD44';
-    ctx3.fill();
-    ctx3.shadowBlur = 0;
+    starCtx.beginPath();
+    starCtx.arc(scx, scy, 8, 0, Math.PI * 2);
+    starCtx.fillStyle = '#FFDD44';
+    starCtx.shadowBlur = 15;
+    starCtx.shadowColor = '#FFDD44';
+    starCtx.fill();
+    starCtx.shadowBlur = 0;
   }
-});
+  requestAnimationFrame(drawStarOverlay);
+}
+drawStarOverlay();
 
 const wallThickness = 20;
 const ground = Bodies.rectangle(300, 440 + wallThickness / 2, 640, wallThickness, { isStatic: true, render: { fillStyle: '#FF009966', strokeStyle: '#FF0099' } });
