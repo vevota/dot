@@ -42,7 +42,7 @@
 <font size="+1" color="#FFCC66" id="statusText">Click the canvas to place your first brick and start your ascension.</font>
 
 <p>
-<canvas id="brickCanvas" width="600" height="400" style="border: 2px solid #FF0099; cursor: pointer; position: relative; z-index: 1;"></canvas>
+<canvas id="brickCanvas" width="600" height="400" style="border: 2px solid #FF0099; cursor: pointer; position: relative; z-index: 1; touch-action: none;"></canvas>
 
 <p>
 <div id="winOverlay" style="display:none; position:absolute; top:0; left:0; width:640px; height:440px; pointer-events:none; z-index:2;"></div>
@@ -238,7 +238,7 @@ function checkAscension() {
 var lastDropTime = 0;
 function dropBrick(clientX, clientY) {
   var now = Date.now();
-  if (!canDrop || hasAscended || now - lastDropTime < 500) return;
+  if (!canDrop || hasAscended || now - lastDropTime < 333) return;
   lastDropTime = now;
 
   const rect = canvas.getBoundingClientRect();
@@ -288,7 +288,8 @@ function dropBrick(clientX, clientY) {
   }
 }
 
-canvas.addEventListener('click', function(e) {
+canvas.addEventListener("click", function(e) {
+  e.preventDefault();
   dropBrick(e.clientX, e.clientY);
 });
 
