@@ -152,7 +152,7 @@ function updateCharts(data) {
   const totalTracks = (data.fmt.flac||0) + (data.fmt.mp3||0) + (data.fmt.m4a||0) + (data.fmt.ape||0) + (data.fmt.wav||0) + (data.fmt.ogg||0) + (data.fmt.opus||0);
   const have = data.lib.albums - data.lib.missing;
 
-  document.getElementById('statAlbums').textContent = data.lib.albums.toLocaleString();
+  document.getElementById('statAlbums').textContent = (data.lib.albums - data.lib.missing).toLocaleString();
   document.getElementById('statMissing').textContent = data.lib.missing.toLocaleString();
   document.getElementById('statArtists').textContent = data.lib.artists.toLocaleString();
   document.getElementById('statTracks').textContent = totalTracks.toLocaleString();
@@ -235,7 +235,7 @@ function updateAlbumChart(range) {
     if (range <= 24) return t.getHours().toString().padStart(2, '0') + ':' + t.getMinutes().toString().padStart(2, '0');
     return (t.getMonth()+1)+'/'+t.getDate()+' '+t.getHours().toString().padStart(2, '0')+':00';
   });
-  const total = filtered.map(d => d.lib.albums);
+  const total = filtered.map(d => d.lib.albums - d.lib.missing);
 
   if (albumTimeChart) albumTimeChart.destroy();
   albumTimeChart = new Chart(document.getElementById('albumTimeChart'), {
