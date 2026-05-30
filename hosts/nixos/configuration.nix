@@ -117,6 +117,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [ "python3.13-beets-2.5.1" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.nix-ld.enable = true;
@@ -129,6 +130,7 @@
     vim
     wget
       micro
+    beets
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
