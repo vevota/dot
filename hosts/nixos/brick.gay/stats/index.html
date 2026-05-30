@@ -190,7 +190,7 @@ async function fetchDailyPick() {
     const el = document.getElementById('dailyPick');
     document.getElementById('dailyArtist').textContent = p.artist;
     document.getElementById('dailyAlbum').textContent = p.album;
-    const stars = p.rating === 5.0 ? '★★★★★' : '★★★★½';
+    const r = Math.round(p.rating * 2) / 2; const stars = r >= 5 ? '★★★★★' : r >= 4.5 ? '★★★★½' : r >= 4 ? '★★★★' : r >= 3.5 ? '★★★½' : r >= 3 ? '★★★' : r >= 2.5 ? '★★½' : r >= 2 ? '★★' : r >= 1.5 ? '★½' : r >= 1 ? '★' : '☆☆☆☆☆';
     document.getElementById('dailyRating').textContent = stars;
     if (p.coverUrl) {
       document.getElementById('dailyCover').src = p.coverUrl;
