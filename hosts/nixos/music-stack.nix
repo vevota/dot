@@ -204,7 +204,7 @@ in {
       web.port = 5030;
       flags.no_share_scan = false;
       # Share music back to the network (optional — set to false to leech only)
-      shares.directories = ["/var/lib/slskd/shared"];
+      shares.directories = ["/mnt/melody/media"];
     };
   };
 
