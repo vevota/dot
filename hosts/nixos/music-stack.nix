@@ -92,6 +92,7 @@
   religionHtml = ./brick.gay/religion.html;
   brickbuilderHtml = ./brick.gay/brickbuilder.html;
   statsHtml = ./brick.gay/stats/index.html;
+  drivesHtml = ./brick.gay/drives/index.html;
 in {
   # --- Podman (for explo + aurral containers) ---
   virtualisation.podman.enable = true;
@@ -340,6 +341,17 @@ in {
         locations."/" = {
           root = builtins.dirOf religionHtml;
           index = builtins.baseNameOf religionHtml;
+        };
+      };
+      "drives.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          root = builtins.dirOf drivesHtml;
+          index = "index.html";
+        };
+        locations."= /drives.json" = {
+          root = builtins.dirOf drivesHtml;
         };
       };
     };

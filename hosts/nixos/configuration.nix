@@ -12,6 +12,15 @@
     ];
 
   # --- Mount Phantom drive at system path ---
+  # --- VirtioFS mount for melody pool ---
+  boot.kernelModules = [ "virtiofs" ];
+
+  fileSystems."/mnt/melody" = {
+    device = "melodyVirt";
+    fsType = "virtiofs";
+    options = [ "defaults" ];
+  };
+
   fileSystems."/mnt/Phantom" = {
     device = "192.168.7.100:/mnt/Phantom";
     fsType = "nfs";

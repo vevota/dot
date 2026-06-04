@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="MELODY POOL — DRIVE HEALTH MONITORING">
+<title>BRICK.GAY — DRIVE HEALTH</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+body { background: #050510; color: #CCCCCC; font-family: monospace; margin: 0; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; }
+h1 { color: #66FFFF; font-size: 24px; text-align: center; }
+h2 { color: #FF0099; font-size: 16px; }
+.updated { text-align: center; color: #666; font-size: 12px; margin-bottom: 20px; }
+.pool-card { background: #0a0a20; border: 1px solid #333; padding: 16px; margin-bottom: 20px; }
+.pool-health { display: inline-block; padding: 4px 12px; font-size: 14px; font-weight: bold; border-radius: 3px; }
+.online { background: #003300; color: #00FF00; border: 1px solid #00FF00; }
+.degraded { background: #332200; color: #FFCC00; border: 1px solid #FFCC00; }
+.faulted { background: #330000; color: #FF0000; border: 1px solid #FF0000; }
+.drive-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+.drive-card { background: #0a0a20; border: 1px solid #FF0099; padding: 12px; flex: 1; min-width: 280px; }
+.drive-card h3 { color: #FFCC66; font-size: 14px; margin: 0 0 8px 0; }
+.stat { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; border-bottom: 1px solid #1a1a30; }
+.stat:last-child { border-bottom: none; }
+.stat-label { color: #888; }
+.stat-value { color: #CCCCCC; }
+.stat-value.warn { color: #FFCC00; }
+.stat-value.error { color: #FF0000; }
+.stat-value.ok { color: #00FF00; }
+.error-msg { color: #FF6666; text-align: center; padding: 40px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>★ MELODY POOL — DRIVE HEALTH ★</h1>
+<div id="content">
+<p class="error-msg">Loading drive health data...</p>
+</div>
+<div class="updated" id="lastUpdate"></div>
+</div>
+<script>
+async function fetchHealth() {
+  try {
+    const r = await fetch("/drives/drives.json");
+    const d = await r.json();
+    render(d);
+  } catch(e) {
+    document.getElementById("content").innerHTML = "<p class='error-msg'>No drive health data available yet.<br>Run the health check script on Proxmox to populate.</p>";
+  }
+}
+function render(d) {
+  const h = d.pool.health;
+  const cls = h === "ONLINE" ? "online" : h === "DEGRADED" ? "degraded" : "faulted";
+  let html = "";
+  html += "<div class="pool-card">";
+  html += "<div style="display:flex;justify-content:space-between;align-items:center;">";
+  html += "<span style="color:#FFCC66;font-size:18px;">melody</span>";
+  html += "<span class="pool-health " + cls + "">" + h + "</span>";
+  html += "</div>";
+  html += "<div class="stat"><span class="stat-label">Pool Size</span><span class="stat-value">" + d.pool.size + "</span></div>";
+  html += "<div class="stat"><span class="stat-label">Allocated</span><span class="stat-value">" + d.pool.allocated + "</span></div>";
+  html += "<div class="stat"><span class="stat-label">Last Scrub</span><span class="stat-value">" + (d.pool.scrub || "never") + "</span></div>";
+  html += "<div class="stat"><span class="stat-label">Errors</span><span class="stat-value">" + d.pool.errors + "</span></div>";
+  html += "</div>";
+  for (let i = 0; i < d.drives.length; i++) {
+    const dr = d.drives[i];
+    html += "<div class="drive-card">";
+    html += "<h3>Drive " + (i + 1) + " &#8212; " + dr.serial + "</h3>";
+    html += "<div class="stat"><span class="stat-label">Model</span><span class="stat-value">" + dr.model + "</span></div>";
+    html += "<div class="stat"><span class="stat-label">Temperature</span><span class="stat-value">" + dr.temp + "&deg;C</span></div>";
+    html += "<div class="stat"><span class="stat-label">Power-On Hours</span><span class="stat-value">" + dr.power_on_hours + "</span></div>";
+    html += "<div class="stat"><span class="stat-label">Reallocated Sectors</span><span class="stat-value">" + dr.reallocated_sectors + "</span></div>";
+    html += "<div class="stat"><span class="stat-label">Pending Sectors</span><span class="stat-value">" + dr.pending_sectors + "</span></div>";
+    html += "<div class="stat"><span class="stat-label">SMART Status</span><span class="stat-value">" + dr.smart_status + "</span></div>";
+    html += "</div>";
+  }
+  document.getElementById("content").innerHTML = html;
+  if (d.last_updated) {
+    document.getElementById("lastUpdate").textContent = "Last updated: " + d.last_updated;
+  }
+}
+fetchHealth();
+</script>
+</body>
+</html>

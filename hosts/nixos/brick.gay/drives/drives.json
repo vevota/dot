@@ -1,0 +1,31 @@
+{
+  "pool": {
+    "name": "melody",
+    "health": "UNKNOWN",
+    "size": "N/A",
+    "allocated": "N/A",
+    "scrub": "never",
+    "errors": "N/A"
+  },
+  "drives": [
+    {
+      "serial": "N/A",
+      "model": "N/A",
+      "temp": "N/A",
+      "power_on_hours": "N/A",
+      "reallocated_sectors": "N/A",
+      "pending_sectors": "N/A",
+      "smart_status": "N/A"
+    },
+    {
+      "serial": "N/A",
+      "model": "N/A",
+      "temp": "N/A",
+      "power_on_hours": "N/A",
+      "reallocated_sectors": "N/A",
+      "pending_sectors": "N/A",
+      "smart_status": "N/A"
+    }
+  ],
+  "last_updated": "No data yet. Run health check script on Proxmox."
+}
