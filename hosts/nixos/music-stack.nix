@@ -205,7 +205,7 @@ in {
       web.port = 5030;
       flags.no_share_scan = false;
       # Share music back to the network (optional — set to false to leech only)
-      shares.directories = ["/mnt/melody/media"];
+      shares.directories = ["/mnt/melody/media/Music"];
     };
   };
 
