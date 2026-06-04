@@ -137,18 +137,27 @@ in {
       };
       volumes = [
         "/var/lib/lidarr:/config"
-        "/mnt/Phantom/Media/Musicretag/Music:/mnt/Phantom/Media/Musicretag/Music"
-        "/mnt/Phantom/Media/Musicretag/Importing:/mnt/Phantom/Media/Musicretag/Importing"
+        "/mnt/melody/media/Music:/mnt/melody/media/Music"
+        "/mnt/melody/media/Importing:/mnt/melody/media/Importing"
       ];
     };
 
   };
+  # --- VirtioFS mount for melody pool ---
+  boot.kernelModules = [ "virtiofs" ];
+
+  fileSystems."/mnt/melody" = {
+    device = "melodyVirt";
+    fsType = "virtiofs";
+    options = [ "defaults" ];
+  };
+
 
   # --- Navidrome — music streaming server ---
   services.navidrome = {
     enable = true;
     settings = {
-      MusicFolder = "/mnt/Phantom/Media/Musicretag/Music";
+      MusicFolder = "/mnt/melody/media/Music";
       DataFolder = "/var/lib/navidrome/data";
       LogLevel = "info";
       Address = "0.0.0.0";
@@ -189,8 +198,8 @@ in {
 
     settings = {
       directories = {
-        downloads = "/mnt/Phantom/Media/Musicretag/Importing";
-        incomplete = "/mnt/Phantom/Media/Musicretag/Importing/.incomplete";
+        downloads = "/mnt/melody/media/Importing";
+        incomplete = "/mnt/melody/media/Importing/.incomplete";
       };
       web.port = 5030;
       flags.no_share_scan = false;
@@ -208,16 +217,16 @@ in {
     "d ${musicRoot}/downloads   0775 root music - -"
     "d ${musicRoot}/library     0775 root music - -"
     "d ${musicRoot}/downloads/.incomplete 0775 root music - -"
-    "d /mnt/Phantom/Media/Musicretag/Music/.incomplete 0775 slskd slskd - -"
-    "d /mnt/Phantom/Media/Musicretag/Importing 0777 slskd slskd - -"
-    "a /mnt/Phantom/Media/Musicretag/Music - - - d:u:lidarr:rwx"
-    "a /mnt/Phantom/Media/Musicretag/Music - - - d:o:rwx"
-    "a /mnt/Phantom/Media/Musicretag/Importing - - - d:o:rwx"
-    "a /mnt/Phantom/Media/Musicretag/Importing - - - d:u:lidarr:rwx"
-    "d /mnt/Phantom/Media/Musicretag/Importing/.incomplete 0775 slskd slskd - -"
+    "d /mnt/melody/media/Music/.incomplete 0775 slskd slskd - -"
+    "d /mnt/melody/media/Importing 0777 slskd slskd - -"
+    "a /mnt/melody/media/Music - - - d:u:lidarr:rwx"
+    "a /mnt/melody/media/Music - - - d:o:rwx"
+    "a /mnt/melody/media/Importing - - - d:o:rwx"
+    "a /mnt/melody/media/Importing - - - d:u:lidarr:rwx"
+    "d /mnt/melody/media/Importing/.incomplete 0775 slskd slskd - -"
     "d ${musicRoot}/explo       0775 root music - -"
-    "a /mnt/Phantom/Media/Musicretag/Music - - - u:navidrome:rwx"
-    "a /mnt/Phantom/Media/Musicretag/Music - - - u:lidarr:rwx"
+    "a /mnt/melody/media/Music - - - u:navidrome:rwx"
+    "a /mnt/melody/media/Music - - - u:lidarr:rwx"
   ];
 
   users.groups.lidarr = {};
