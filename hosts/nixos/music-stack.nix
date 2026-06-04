@@ -351,7 +351,7 @@ in {
           index = "index.html";
         };
         locations."= /drives.json" = {
-          root = builtins.dirOf drivesHtml;
+          alias = "/mnt/melody/media/drives/drives.json";
         };
       };
     };
