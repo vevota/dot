@@ -403,4 +403,45 @@ in {
   #   services.nginx.virtualHosts."music.example.com" = {
   #     locations."/" = { proxyPass = "http://127.0.0.1:4533"; };
   #   };
+
+  # --- deSEC DDNS: keep brick.gay DNS updated when IP changes ---
+  systemd.services.desec-ddns = {
+    description = "Update deSEC DNS A record for brick.gay";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    path = [ pkgs.curl pkgs.dnsutils ];
+    serviceConfig.EnvironmentFile = "/var/lib/music/secrets/desec.env";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      set -euo pipefail
+      TOKEN=$DESEC_TOKEN
+      API="https://desec.io/api/v1/domains/brick.gay/rrsets"
+      IP=$(curl -4sf --connect-timeout 10 ifconfig.me 2>/dev/null || curl -4sf --connect-timeout 10 icanhazip.com 2>/dev/null)
+      if [ -z "$IP" ]; then
+        echo "ERROR: Could not determine public IP"
+        exit 1
+      fi
+      CURRENT=$(dig +short brick.gay @1.1.1.1 +noall +answer 2>/dev/null || dig +short brick.gay @1.0.0.1 +noall +answer 2>/dev/null || dig +short brick.gay @8.8.8.8 2>/dev/null)
+      if [ "$CURRENT" = "$IP" ]; then
+        echo "OK: brick.gay already points to $IP, no update needed"
+        exit 0
+      fi
+      HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH         -H "Authorization: Token $TOKEN"         -H "Content-Type: application/json"         "$API/A/"         -d "{\"records\":[\"$IP\"]}")
+      if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "204" ]; then
+        echo "OK: brick.gay -> $IP (PATCH $HTTP_CODE)"
+      else
+        curl -sf -X POST           -H "Authorization: Token $TOKEN"           -H "Content-Type: application/json"           "$API/"           -d "{\"subname\":\"\",\"type\":\"A\",\"ttl\":300,\"records\":[\"$IP\"]}"
+        echo "OK: brick.gay -> $IP (POST created)"
+      fi
+    '';
+  };
+  systemd.timers.desec-ddns = {
+    description = "Update brick.gay DNS every 30 minutes";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*:0/30";
+      Persistent = true;
+    };
+  };
+
 }
