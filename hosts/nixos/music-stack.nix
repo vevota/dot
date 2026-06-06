@@ -203,7 +203,8 @@ in {
         incomplete = "/mnt/melody/media/Importing/.incomplete";
       };
       web.port = 5030;
-      global.upload.speed_limit = 256;
+      global.upload.speed_limit = 512;
+      global.download.speed_limit = 10240;
       flags.no_share_scan = false;
       # Share music back to the network (optional — set to false to leech only)
       shares.directories = ["/mnt/melody/media/Music"];
