@@ -421,17 +421,17 @@ in {
         echo "ERROR: Could not determine public IP"
         exit 1
       fi
-      CURRENT=$(dig +short brick.gay @1.1.1.1 +noall +answer 2>/dev/null || dig +short brick.gay @1.0.0.1 +noall +answer 2>/dev/null || dig +short brick.gay @8.8.8.8 2>/dev/null)
+      CURRENT=$(dig +short gateway.brick.gay @1.1.1.1 +noall +answer 2>/dev/null || dig +short gateway.brick.gay @1.0.0.1 +noall +answer 2>/dev/null || dig +short gateway.brick.gay @8.8.8.8 2>/dev/null)
       if [ "$CURRENT" = "$IP" ]; then
-        echo "OK: brick.gay already points to $IP, no update needed"
+        echo "OK: gateway.brick.gay already points to $IP, no update needed"
         exit 0
       fi
-      HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH         -H "Authorization: Token $TOKEN"         -H "Content-Type: application/json"         "$API/A/"         -d "{\"records\":[\"$IP\"]}")
+      HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH         -H "Authorization: Token $TOKEN"         -H "Content-Type: application/json"         "$API/gateway/A/"         -d "{\"records\":[\"$IP\"]}")
       if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "204" ]; then
-        echo "OK: brick.gay -> $IP (PATCH $HTTP_CODE)"
+        echo "OK: gateway.brick.gay -> $IP (PATCH $HTTP_CODE)"
       else
-        curl -sf -X POST           -H "Authorization: Token $TOKEN"           -H "Content-Type: application/json"           "$API/"           -d "{\"subname\":\"\",\"type\":\"A\",\"ttl\":300,\"records\":[\"$IP\"]}"
-        echo "OK: brick.gay -> $IP (POST created)"
+        curl -sf -X POST           -H "Authorization: Token $TOKEN"           -H "Content-Type: application/json"           "$API/"           -d "{\"subname\":\"gateway\",\"type\":\"A\",\"ttl\":300,\"records\":[\"$IP\"]}"
+        echo "OK: gateway.brick.gay -> $IP (POST created)"
       fi
     '';
   };
