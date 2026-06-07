@@ -421,18 +421,26 @@ in {
         echo "ERROR: Could not determine public IP"
         exit 1
       fi
-      CURRENT=$(dig +short gateway.brick.gay @1.1.1.1 +noall +answer 2>/dev/null || dig +short gateway.brick.gay @1.0.0.1 +noall +answer 2>/dev/null || dig +short gateway.brick.gay @8.8.8.8 2>/dev/null)
-      if [ "$CURRENT" = "$IP" ]; then
-        echo "OK: gateway.brick.gay already points to $IP, no update needed"
-        exit 0
-      fi
-      HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH         -H "Authorization: Token $TOKEN"         -H "Content-Type: application/json"         "$API/gateway/A/"         -d "{\"records\":[\"$IP\"]}")
-      if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "204" ]; then
-        echo "OK: gateway.brick.gay -> $IP (PATCH $HTTP_CODE)"
-      else
-        curl -sf -X POST           -H "Authorization: Token $TOKEN"           -H "Content-Type: application/json"           "$API/"           -d "{\"subname\":\"gateway\",\"type\":\"A\",\"ttl\":300,\"records\":[\"$IP\"]}"
-        echo "OK: gateway.brick.gay -> $IP (POST created)"
-      fi
+      for SUB in "@" "gateway"; do
+        CURRENT=""
+        if [ "$SUB" = "gateway" ]; then
+          CURRENT=$(dig +short gateway.brick.gay @1.1.1.1 +noall +answer 2>/dev/null || echo "")
+        fi
+        if [ -z "$CURRENT" ]; then
+          CURRENT=$(dig +short brick.gay @1.1.1.1 +noall +answer 2>/dev/null || echo "")
+        fi
+        if [ "$CURRENT" = "$IP" ]; then
+          echo "OK: $SUB.brick.gay already points to $IP, skipping"
+          continue
+        fi
+        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH           -H "Authorization: Token $TOKEN"           -H "Content-Type: application/json"           "$API/$SUB/A/"           -d "{\"records\":[\"$IP\"]}")
+        if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "204" ]; then
+          echo "OK: $SUB.brick.gay -> $IP (PATCH $HTTP_CODE)"
+        else
+          curl -sf -X POST             -H "Authorization: Token $TOKEN"             -H "Content-Type: application/json"             "$API/"             -d "{\"subname\":\"$SUB\",\"type\":\"A\",\"ttl\":300,\"records\":[\"$IP\"]}"
+          echo "OK: $SUB.brick.gay -> $IP (POST created)"
+        fi
+      done
     '';
   };
   systemd.timers.desec-ddns = {
@@ -442,6 +450,39 @@ in {
       OnCalendar = "*:0/30";
       Persistent = true;
     };
+  };
+
+
+  # --- slskd schedule: download 12am-12pm, pause 12pm-12am ---
+  systemd.timers.slskd-start = {
+    description = "Start slskd at midnight";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 00:00:00";
+      Persistent = true;
+    };
+  };
+  systemd.services.slskd-start = {
+    description = "Start slskd (download window begins)";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      systemctl start slskd
+    '';
+  };
+  systemd.timers.slskd-stop = {
+    description = "Stop slskd at noon";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 12:00:00";
+      Persistent = true;
+    };
+  };
+  systemd.services.slskd-stop = {
+    description = "Stop slskd (download window ends)";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      systemctl stop slskd
+    '';
   };
 
 }
