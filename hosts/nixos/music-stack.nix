@@ -329,6 +329,9 @@ in {
         locations."= /api/daily-pick.json" = {
           alias = "/var/lib/rym/daily-pick.json";
         };
+        locations."/api/covers/" = {
+          alias = "/var/lib/rym/covers/";
+        };
       };
       "stats.brick.gay" = {
         enableACME = true;
