@@ -68,9 +68,9 @@
 #   6d. (Optional) Set up a reverse proxy if you want these accessible from
 #       outside your LAN. Caddy example:
 #
-#         services.caddy.virtualHosts."music.example.com".extraConfig = ''
-#           reverse_proxy localhost:4533
-#         '';
+
+
+
 #
 # --- Daily use ---
 #
@@ -365,16 +365,16 @@ in {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://192.168.7.101:8096";
-          extraConfig = ''
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-          '';
+          proxyPass = "http://192.168.7.103:8096";
+
+
+
+
+
+
+
+
+
         };
       };
     };
