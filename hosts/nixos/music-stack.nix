@@ -220,6 +220,7 @@ in {
     "d ${musicRoot}/downloads   0775 root music - -"
     "d ${musicRoot}/library     0775 root music - -"
     "d ${musicRoot}/downloads/.incomplete 0775 root music - -"
+    "d /mnt/melody/media/Music 2777 mrmusic users - -"
     "d /mnt/melody/media/Music/.incomplete 0775 slskd slskd - -"
     "d /mnt/melody/media/Importing 0777 slskd slskd - -"
     "a /mnt/melody/media/Music - - - d:u:lidarr:rwx"
@@ -250,6 +251,7 @@ in {
       PrivateMounts = lib.mkForce false;
       PrivateUsers = lib.mkForce false;
       ReadOnlyPaths = lib.mkForce [ ];
+      UMask = "0000";
     };
   };
 
