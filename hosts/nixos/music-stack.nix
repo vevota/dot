@@ -418,6 +418,23 @@ in {
     };
   };
 
+  # --- slskd share rescan at 6am daily ---
+  systemd.services.slskd-rescan = {
+    description = "Trigger slskd share rescan";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      curl -sf -X POST -H "X-Api-Key: 8859af1947486dcc766928b80213800a"         http://localhost:5030/api/v0/shares/rescan || true
+    '';
+  };
+  systemd.timers.slskd-rescan = {
+    description = "Rescan slskd shares at 6am daily";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 06:00:00";
+      Persistent = true;
+    };
+  };
+
   # --- Optional: reverse proxy hint ---
   # To expose these services via nginx/caddy, add virtualHost entries.
   # Example with services.nginx:
