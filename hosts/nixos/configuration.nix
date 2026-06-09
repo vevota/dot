@@ -30,8 +30,8 @@
 # --- NFS share for Phantom drive ---
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /mnt/Phantom 192.168.7.101(rw,sync,no_subtree_check,no_root_squash)
-    /mnt/melody/media 192.168.7.0/24(rw,sync,no_subtree_check,no_root_squash)
+    /mnt/Phantom 192.168.7.101(fsid=1,rw,sync,no_subtree_check,no_root_squash)
+    /mnt/melody/media 192.168.7.0/24(fsid=2,rw,sync,no_subtree_check,no_root_squash)
     '';
 
 # --- deSEC DDNS: keep brick.gay DNS updated when IP changes ---
