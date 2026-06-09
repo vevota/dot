@@ -425,36 +425,4 @@ in {
   #     locations."/" = { proxyPass = "http://127.0.0.1:4533"; };
   #   };
 
-  # --- slskd schedule: download 12am-12pm, pause 12pm-12am ---
-  systemd.timers.slskd-start = {
-    description = "Start slskd at midnight";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*-*-* 00:00:00";
-      Persistent = true;
-    };
-  };
-  systemd.services.slskd-start = {
-    description = "Start slskd (download window begins)";
-    serviceConfig.Type = "oneshot";
-    script = ''
-      systemctl start slskd
-    '';
-  };
-  systemd.timers.slskd-stop = {
-    description = "Stop slskd at noon";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*-*-* 12:00:00";
-      Persistent = true;
-    };
-  };
-  systemd.services.slskd-stop = {
-    description = "Stop slskd (download window ends)";
-    serviceConfig.Type = "oneshot";
-    script = ''
-      systemctl stop slskd
-    '';
-  };
-
 }
