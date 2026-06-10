@@ -209,6 +209,7 @@ in {
       flags.no_share_scan = false;
       # Share music back to the network (optional — set to false to leech only)
       shares.directories = ["/mnt/melody/media/Music"];
+      soulseek.description = "👻";
     };
   };
 
