@@ -51,8 +51,8 @@ function render(d) {
   const h = d.pool.health;
   const cls = h === "ONLINE" ? "online" : h === "DEGRADED" ? "degraded" : "faulted";
   let html = "";
-  html += "<div class="pool-card">";
-  html += "<div style="display:flex;justify-content:space-between;align-items:center;">";
+  html += '<div class="pool-card">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;">';
   html += "<span style="color:#FFCC66;font-size:18px;">melody</span>";
   html += "<span class="pool-health " + cls + "">" + h + "</span>";
   html += "</div>";
