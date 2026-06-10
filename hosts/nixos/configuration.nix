@@ -178,6 +178,10 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ "python3.13-beets-2.5.1" ];
 
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 7d";
+  };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib zlib openssl ];
