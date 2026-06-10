@@ -150,7 +150,7 @@ function updateDiskChart(range) {
 
 function updateCharts(data) {
   const totalTracks = (data.fmt.flac||0) + (data.fmt.mp3||0) + (data.fmt.m4a||0) + (data.fmt.ape||0) + (data.fmt.wav||0) + (data.fmt.ogg||0) + (data.fmt.opus||0);
-  const have = data.lib.albums - data.lib.missing;
+  const have = data.lib.current || (data.lib.albums - data.lib.missing);
 
   document.getElementById('statAlbums').textContent = (data.lib.albums - data.lib.missing).toLocaleString();
   document.getElementById('statMissing').textContent = data.lib.missing.toLocaleString();
@@ -175,7 +175,7 @@ function updateCharts(data) {
   albumChart = new Chart(document.getElementById('albumChart'), {
     type: 'doughnut',
     data: {
-      labels: ['HAVE (' + have.toLocaleString() + ') ' + Math.round(have / data.lib.albums * 100) + '%', 'MISSING (' + data.lib.missing.toLocaleString() + ') ' + Math.round(data.lib.missing / data.lib.albums * 100) + '%'],
+      labels: ['HAVE (' + have.toLocaleString() + ') ' + Math.round(have / (have + data.lib.missing) * 100) + '%', 'WANTED (' + data.lib.missing.toLocaleString() + ') ' + Math.round(data.lib.missing / (have + data.lib.missing) * 100) + '%'],
       datasets: [{ data: [have, data.lib.missing], backgroundColor: ['#FF0099', '#66FFFF'], borderColor: '#050510', borderWidth: 2 }]
     },
     options: { responsive: false, plugins: { datalabels: { display: false }, legend: { labels: { color: '#FFFFFF', font: { family: 'monospace', size: 10 } } } } }
