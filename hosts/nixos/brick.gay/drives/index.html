@@ -40,7 +40,7 @@ h2 { color: #FF0099; font-size: 16px; }
 <script>
 async function fetchHealth() {
   try {
-    const r = await fetch("/drives/drives.json");
+    const r = await fetch("/drives.json");
     const d = await r.json();
     render(d);
   } catch(e) {
