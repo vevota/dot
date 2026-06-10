@@ -229,6 +229,7 @@ in {
     "a /mnt/melody/media/Importing - - - d:o:rwx"
     "a /mnt/melody/media/Importing - - - d:u:lidarr:rwx"
     "d /mnt/melody/media/Importing/.incomplete 0775 slskd slskd - -"
+    "L+ /var/lib/slskd/shared - - - - /mnt/melody/media/slskd-cache/shared"
     "d ${musicRoot}/explo       0775 root music - -"
     "a /mnt/melody/media/Music - - - u:navidrome:rwx"
     "a /mnt/melody/media/Music - - - u:lidarr:rwx"
