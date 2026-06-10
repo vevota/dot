@@ -203,6 +203,7 @@ in {
         incomplete = "/mnt/melody/media/Importing/.incomplete";
       };
       web.port = 5030;
+      global.upload.slots = 2;
       global.upload.speed_limit = 512;
       global.download.speed_limit = 10240;
       global.download.max_downloads = 15;
