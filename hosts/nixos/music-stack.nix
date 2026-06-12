@@ -452,7 +452,7 @@ in {
     description = "Nightly shutdown at 3am PST";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 11:00:00";
+      OnCalendar = "*-*-* 03:00:00";
       Persistent = true;
     };
   };
@@ -468,7 +468,7 @@ in {
     description = "Morning startup at 9am PST";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 17:00:00";
+      OnCalendar = "*-*-* 09:00:00";
       Persistent = true;
     };
   };
