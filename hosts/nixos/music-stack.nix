@@ -90,6 +90,7 @@
   indexHtml = ./brick.gay/index.html;
   musicHtml = ./brick.gay/stack.html;
   religionHtml = ./brick.gay/religion.html;
+  smokeHtml = ./brick.gay/smoke/index.html;
   brickbuilderHtml = ./brick.gay/brickbuilder.html;
   statsHtml = ./brick.gay/stats/index.html;
   drivesHtml = ./brick.gay/drives/index.html;
@@ -363,6 +364,15 @@ in {
         };
         locations."= /drives.json" = {
           alias = "/mnt/melody/media/drives/drives.json";
+        };
+      };
+
+      "smoke.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          root = builtins.dirOf smokeHtml;
+          index = "index.html";
         };
       };
       "jf.brick.gay" = {
