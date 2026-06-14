@@ -90,6 +90,7 @@
   indexHtml = ./brick.gay/index.html;
   musicHtml = ./brick.gay/stack.html;
   religionHtml = ./brick.gay/religion.html;
+  nadesHtml = ./brick.gay/nades/index.html;
   smokeHtml = ./brick.gay/smoke/index.html;
   brickbuilderHtml = ./brick.gay/brickbuilder.html;
   statsHtml = ./brick.gay/stats/index.html;
@@ -367,6 +368,15 @@ in {
         };
       };
 
+
+      "nades.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          root = builtins.dirOf nadesHtml;
+          index = "index.html";
+        };
+      };
       "smoke.brick.gay" = {
         enableACME = true;
         forceSSL = true;

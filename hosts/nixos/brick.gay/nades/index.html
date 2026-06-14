@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="CS2 nade lineups with video guides">
+<title>NADES.BRICK.GAY - CS2 LINEUPS</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050510;color:#ccc;font-family:monospace;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+h1{color:#66FFFF;font-size:28px;text-align:center;margin-bottom:8px}
+.subtitle{text-align:center;color:#666;font-size:12px;margin-bottom:24px}
+.map-grid{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+.map-btn{background:#0a0a20;color:#ccc;border:1px solid #333;padding:10px 18px;cursor:pointer;font-family:monospace;font-size:14px;border-radius:3px}
+.map-btn:hover{border-color:#66FFFF;color:#66FFFF}
+.map-btn.active{border-color:#FF0099;color:#FF0099;background:#1a0a20}
+.nade-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.nade-card{background:#0a0a20;border:1px solid #333;border-radius:4px;overflow:hidden}
+.nade-card .media{width:100%;aspect-ratio:16/9;background:#111;position:relative;overflow:hidden;cursor:pointer}
+.nade-card .media img{width:100%;height:100%;object-fit:cover}
+.nade-card .media video{width:100%;height:100%;object-fit:cover;display:none}
+.nade-card .media .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;background:rgba(255,0,153,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;cursor:pointer;z-index:2}
+.nade-card .info{padding:10px}
+.nade-card .info .name{color:#FFCC66;font-size:13px;font-weight:bold}
+.nade-card .info .desc{color:#888;font-size:11px;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>STAR CS2 NADES STAR</h1>
+<p class="subtitle">Click a map to view smokes with video guides</p>
+<div class="map-grid" id="mapGrid"></div>
+<div class="nade-grid" id="nadeGrid"></div>
+</div>
+<div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;justify-content:center;align-items:center;cursor:pointer">
+  <video id="lbVideo" style="max-width:90vw;max-height:85vh" controls autoplay></video>
+</div>
+<script>
+const smokes={"dust2":{"name":"Dust II","lineups":[{"name":"XBOX Smoke","desc":"From T spawn, aim at the wire above the left corner of the Xbox billboard. Left-click jump-throw."},{"name":"CT Smoke","desc":"From long doors, line up the right edge of the doors with the cloud above CT. Left-click jump-throw."},{"name":"A Long Doors","desc":"From pit/car, aim at the dark mark on the top of the long doors. Left-click throw."},{"name":"A Cross Smoke","desc":"From A site, aim at the top-right corner of the CT/stairs building. Left-click jump-throw."},{"name":"B Tunnel Smoke","desc":"From T spawn, aim at the third wire from the left on the B tunnel entrance. Left-click jump-throw."},{"name":"B Window Smoke","desc":"From B doors, aim at the top-left corner of the window frame. Left-click throw."},{"name":"CT Spawn Smoke","desc":"From T spawn running mid, aim between the two wires on the tower. Left-click jump-throw."}]},"mirage":{"name":"Mirage","lineups":[{"name":"Window Smoke","desc":"From T spawn/top mid, line up left edge of window with building corner. Left-click jump-throw."},{"name":"Jungle Smoke","desc":"From palace, aim at the triangle on the wall above jungle entrance. Left-click jump-throw."},{"name":"CT Smoke","desc":"From A ramp, aim at the dark spot on the wall above CT boxes. Left-click jump-throw."},{"name":"Underpass Smoke","desc":"From T spawn, aim at the bottom of the lamp post. Left-click jump-throw."},{"name":"Connector Smoke","desc":"From mid, aim at the wire intersection above connector. Left-click jump-throw."},{"name":"Stairs Smoke","desc":"From A ramp, aim at the left edge of the stairs building. Left-click jump-throw."},{"name":"Ticket Booth Smoke","desc":"From T spawn, aim at the right edge of the ticket booth. Left-click jump-throw."}]},"inferno":{"name":"Inferno","lineups":[{"name":"CT Smoke","desc":"From banana, aim at the dark brick above the CT car. Left-click jump-throw."},{"name":"Coffins Smoke","desc":"From banana, aim at the wire above the coffins wall. Left-click jump-throw."},{"name":"Pit Smoke","desc":"From banana, aim at the top-right corner of the pit wall. Left-click jump-throw."},{"name":"Top Mid Smoke","desc":"From mid, aim at the wire intersection above arches. Left-click jump-throw."},{"name":"Arch Smoke","desc":"From mid/balcony, aim at the top of the arch. Left-click jump-throw."},{"name":"Moto Smoke","desc":"From T spawn, aim at the left edge of the moto sign. Left-click jump-throw."},{"name":"Banana Smoke","desc":"From T spawn, aim at the wire above the banana barrels. Left-click jump-throw."}]},"nuke":{"name":"Nuke","lineups":[{"name":"Hut Smoke","desc":"From T red container, aim at the rust spot above hut door. Left-click jump-throw."},{"name":"Heaven Smoke","desc":"From outside/truck, aim at the bolt on the yellow pipe. Left-click jump-throw."},{"name":"Squeaky Smoke","desc":"From outside, aim at the wire above squeaky door. Left-click jump-throw."},{"name":"Ramp Smoke","desc":"From silo, aim at the light above ramp entrance. Left-click jump-throw."},{"name":"Yard Smoke","desc":"From T spawn, aim at the corner of the radio tower. Left-click jump-throw."},{"name":"Main Smoke","desc":"From T red box, aim at the pipe above main doors. Left-click jump-throw."},{"name":"Secret Smoke","desc":"From outside, aim at the vent above secret door. Left-click jump-throw."}]},"ancient":{"name":"Ancient","lineups":[{"name":"Default Smoke A","desc":"From T stairs, aim at the crack in the wall above default. Left-click jump-throw."},{"name":"Cave Smoke","desc":"From mid, aim at the moss between cave and B. Left-click jump-throw."},{"name":"A Site Cross","desc":"From T ramp, aim at the wire above A site entrance. Left-click jump-throw."},{"name":"B Site Smoke","desc":"From T spawn, aim at the tree branch above B. Left-click jump-throw."},{"name":"Lane Smoke","desc":"From mid, aim at the brick corner of lane entrance. Left-click jump-throw."},{"name":"CT Smoke A","desc":"From A ramp, aim at the ledge above CT boxes. Left-click jump-throw."},{"name":"Mid Doors Smoke","desc":"From T spawn, aim at the corner of the temple door. Left-click jump-throw."}]},"anubis":{"name":"Anubis","lineups":[{"name":"Mid Window Smoke","desc":"From T spawn, aim at the rope above mid window. Left-click jump-throw."},{"name":"Bridge Smoke","desc":"From mid, aim at the pillar edge above bridge. Left-click jump-throw."},{"name":"Default Smoke A","desc":"From T ramp, aim at the symbol above default. Left-click jump-throw."},{"name":"Heaven Smoke","desc":"From CT side, aim at the wire above heaven. Left-click jump-throw."},{"name":"B Site Smoke","desc":"From T spawn, aim at the corner of the temple. Left-click jump-throw."},{"name":"CT Smoke B","desc":"From B main, aim at the crack in the wall above CT. Left-click jump-throw."},{"name":"River Smoke","desc":"From CT spawn, aim at the tree branch above river. Left-click jump-throw."}]},"vertigo":{"name":"Vertigo","lineups":[{"name":"Default Smoke A","desc":"From T ramp, aim at the wire above the default plant. Left-click jump-throw."},{"name":"Mid Smoke","desc":"From T ramp, aim at the corner of the mid building. Left-click jump-throw."},{"name":"Stairs Smoke A","desc":"From T ramp, aim at the ledge above stairs. Left-click jump-throw."},{"name":"B Site Smoke","desc":"From T side, aim at the pipe above B entrance. Left-click jump-throw."},{"name":"CT Smoke B","desc":"From B main, aim at the beam above CT. Left-click jump-throw."},{"name":"Ramp Smoke","desc":"From CT spawn, aim at the wire above ramp. Left-click jump-throw."},{"name":"Default Smoke B","desc":"From T side, aim at the pole above default B. Left-click jump-throw."}]}};
+const nadeIds={"dust2":["epau9Q3Dll","MrTSxptCeA","HupX3P0FUE","QUSiBuN0RC","dBt2lcA3vc","KuDym6tvW2","pXWCQLmYhk"],"mirage":["EHvVQ0Ebqm","wsMc7skGQh","h4RLQbKgkO","I60PpERA4N","6UrrcOsJSD","5NzRMI354j","UJiXtqvbkb"],"inferno":["MrAFqNRIOT","Fomlq5TPso","oDxbaepICU","9LzHE8aRot","a2ITuReCiS","xWSXzEwtxB","qNO7ZhaDsF"],"nuke":["Ox2V20EXl2","Sswwq7kpV9","faS2qYaA3o","EsLX408n4d","l3koCgeoHZ","6T37K29Fos","Q9fOLapNdW"],"ancient":["mhHNTLDnNw","05JJVnP8AP","T3Mseb88b9","0JpsvFLFbE","jRgHHBZPeJ","SHv86icIFy","nQ0TRW2zEy"],"anubis":["RPRA6boGge","kmlXeKSDJM","0MzIjwXEIJ","ZQ0D2bZhk7","JbhR4dxPHd","aQBt4qCxLI","Qoj34RwWIE"],"vertigo":["kLpQfwtnrZ","LZ7w8nAhRU","u2AcCDRYoM","T7wlpObMtB","qMX7mv9E5v","cOpgHeMF27","ynNaNJ7Ga9"]};
+
+const mapKeys=Object.keys(smokes);
+let currentMap="dust2";
+
+function renderMapButtons(){
+  const g=document.getElementById("mapGrid");g.innerHTML="";
+  for(const k of mapKeys){
+    const btn=document.createElement("button");
+    btn.className="map-btn"+(k===currentMap?" active":"");
+    btn.textContent=smokes[k].name;
+    btn.onclick=()=>{currentMap=k;renderMapButtons();renderNades();};
+    g.appendChild(btn);
+  }
+}
+
+function renderNades(){
+  const g=document.getElementById("nadeGrid");g.innerHTML="";
+  const data=smokes[currentMap].lineups;
+  const ids=nadeIds[currentMap];
+  for(let i=0;i<data.length;i++){
+    const s=data[i];
+    const id=ids[i];
+    const card=document.createElement("div");card.className="nade-card";
+    const media=document.createElement("div");media.className="media";
+    const img=document.createElement("img");img.src="https://assets.csnades.gg/nades/"+currentMap+"-smoke-"+id+"/lineup.webp";img.alt=s.name;
+    const pb=document.createElement("div");pb.className="play-btn";pb.textContent="\u25B6";
+    const vid=document.createElement("video");vid.src="https://assets.csnades.gg/nades/"+currentMap+"-smoke-"+id+"/thumbnail.mp4";vid.muted=true;vid.loop=true;
+    pb.onclick=function(e){e.stopPropagation();img.style.display="none";pb.style.display="none";vid.style.display="block";vid.play();};
+    media.appendChild(img);media.appendChild(pb);media.appendChild(vid);
+    media.onclick=function(){if(vid.paused&&vid.style.display!="block"){img.style.display="none";pb.style.display="none";vid.style.display="block";vid.play();}else{openLightbox(id,currentMap);}};
+    const info=document.createElement("div");info.className="info";
+    info.innerHTML='<div class="name">'+s.name+'</div><div class="desc">'+s.desc+'</div>';
+    card.appendChild(media);card.appendChild(info);
+    g.appendChild(card);
+  }
+}
+
+function openLightbox(id,map){
+  document.getElementById("lbVideo").src="https://assets.csnades.gg/nades/"+map+"-smoke-"+id+"/hq.mp4";
+  document.getElementById("lightbox").style.display="flex";
+  document.getElementById("lbVideo").play();
+}
+function closeLightbox(){
+  document.getElementById("lightbox").style.display="none";
+  document.getElementById("lbVideo").pause();
+}
+renderMapButtons();renderNades();
+</script>
+</body>
+</html>
