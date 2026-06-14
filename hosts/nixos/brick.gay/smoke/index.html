@@ -134,7 +134,7 @@ function renderSmokes(){
 
 function openLightbox(idx){
   const s=smokes[currentMap].lineups[idx];
-  document.getElementById("lbImg").src=s.img||"";
+  document.getElementById("lbImg").src="images/"+currentMap+"_"+(idx+1)+".svg";
   document.getElementById("lbInfo").textContent=s.name+" - "+s.desc;
   document.getElementById("lightbox").classList.add("open");
 }
