@@ -121,9 +121,10 @@ function renderSmokes(){
     const s=data[i];
     const card=document.createElement("div");card.className="smoke-card";
     const imgDiv=document.createElement("div");imgDiv.className="img";
-    const ph=document.createElement("div");ph.className="placeholder-img";
-    ph.textContent="NO IMAGE YET - Add screenshot "+(i+1);
-    imgDiv.appendChild(ph);
+    const im=document.createElement("img");
+    im.src="images/"+currentMap+"_"+(i+1)+".svg";
+    im.alt=s.name;
+    imgDiv.appendChild(im);
     imgDiv.onclick=()=>openLightbox(i);
     const info=document.createElement("div");info.className="info";
     info.innerHTML='<div class="name">'+s.name+'</div><div class="desc">'+s.desc+'</div>';
