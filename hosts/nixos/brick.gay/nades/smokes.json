@@ -1950,5 +1950,212 @@
       "to": "Mid A Site"
     }
   ],
-  "office": []
+  "office": [],
+  "train": [
+    {
+      "id": "EeLgT4GxlF",
+      "from": "Outside A Main",
+      "to": "Sandwich"
+    },
+    {
+      "id": "6nptB4NQqY",
+      "from": "Dumpster",
+      "to": "Front Red"
+    },
+    {
+      "id": "LkxHCz8FFD",
+      "from": "Dumpster",
+      "to": "Popdog"
+    },
+    {
+      "id": "3XOLKX9E2S",
+      "from": "Dumpster",
+      "to": "Connector"
+    },
+    {
+      "id": "f1n6wv2eh4",
+      "from": "Halls",
+      "to": "Connector"
+    },
+    {
+      "id": "5kw3aEdpF8",
+      "from": "Halls",
+      "to": "Left Bomb"
+    },
+    {
+      "id": "gQgtwOvere",
+      "from": "Halls",
+      "to": "Left Bomb"
+    },
+    {
+      "id": "BhiuxHzEEh",
+      "from": "Outside T Spawn",
+      "to": "Connector"
+    },
+    {
+      "id": "peNzpp2c5I",
+      "from": "T Spawn",
+      "to": "Camera"
+    },
+    {
+      "id": "dxAHFrffrr",
+      "from": "T Spawn",
+      "to": "Connector"
+    },
+    {
+      "id": "5dw9Pi4nqF",
+      "from": "Radio",
+      "to": "Ebox"
+    },
+    {
+      "id": "4b9WtqfjUq",
+      "from": "Outside T Spawn",
+      "to": "Popdog"
+    },
+    {
+      "id": "bGFpbZaC3O",
+      "from": "Radio",
+      "to": "Left A Bomb"
+    },
+    {
+      "id": "TpsP6NvSr2",
+      "from": "Outside T Spawn",
+      "to": "Connector"
+    },
+    {
+      "id": "RnxWvfCBCk",
+      "from": "Outside T Spawn",
+      "to": "Front Red"
+    },
+    {
+      "id": "MtoJgivFNT",
+      "from": "Radio",
+      "to": "Deep Connector"
+    },
+    {
+      "id": "rLtn3h6DR9",
+      "from": "Halls",
+      "to": "Sidewalk"
+    },
+    {
+      "id": "DzQCg2vouo",
+      "from": "Outside T Spawn",
+      "to": "Deep Connector"
+    },
+    {
+      "id": "AujeA8h1VD",
+      "from": "T Spawn",
+      "to": "Ebox"
+    },
+    {
+      "id": "xrTukcDJzL",
+      "from": "Pigeons",
+      "to": "Back Ivey"
+    },
+    {
+      "id": "HyvgiGGBAw",
+      "from": "T Spawn",
+      "to": "Sandwich"
+    },
+    {
+      "id": "d71O4o6Q3Z",
+      "from": "T Spawn",
+      "to": "Left A Bomb"
+    },
+    {
+      "id": "5C0d3JCZyX",
+      "from": "Garbage",
+      "to": "B Connector"
+    },
+    {
+      "id": "Kg21qH3OVl",
+      "from": "Halls",
+      "to": "Sidewalk"
+    },
+    {
+      "id": "RwwqtQ0xZp",
+      "from": "Halls",
+      "to": "Left Bomb"
+    },
+    {
+      "id": "7Uw0IIlLo6",
+      "from": "Backsite",
+      "to": "A Main"
+    },
+    {
+      "id": "VIwLHus9mN",
+      "from": "T Spawn",
+      "to": "Camera"
+    },
+    {
+      "id": "pQzNlKJk7S",
+      "from": "T Spawn",
+      "to": "Connector"
+    },
+    {
+      "id": "WkJNArXBkQ",
+      "from": "T Spawn",
+      "to": "Camera"
+    },
+    {
+      "id": "yl9ZOx4uhG",
+      "from": "T Spawn",
+      "to": "Connector"
+    },
+    {
+      "id": "uqyXb0i7aT",
+      "from": "Upper B",
+      "to": "Heaven Lurk"
+    },
+    {
+      "id": "LK7YgPkeWx",
+      "from": "Dumpster",
+      "to": "Connector"
+    },
+    {
+      "id": "29PSHrIhVq",
+      "from": "Halls",
+      "to": "Back Left Bomb"
+    },
+    {
+      "id": "87GpzKLRtJ",
+      "from": "Halls",
+      "to": "Connector"
+    },
+    {
+      "id": "wR1KOZhzOJ",
+      "from": "Halls",
+      "to": "Sidewalk"
+    },
+    {
+      "id": "oy3SjCjzwY",
+      "from": "Halls",
+      "to": "Left Bomb"
+    },
+    {
+      "id": "KLmQmpqG7z",
+      "from": "Connector",
+      "to": "Bricks"
+    },
+    {
+      "id": "uxSq6UB5as",
+      "from": "Halls",
+      "to": "Back Left Bomb"
+    },
+    {
+      "id": "zPt1Yzau1s",
+      "from": "Back 6",
+      "to": "Ivy"
+    },
+    {
+      "id": "0B1YxbkFPs",
+      "from": "Connector",
+      "to": "A Main"
+    },
+    {
+      "id": "LTnsxzn804",
+      "from": "Connector",
+      "to": "A Main"
+    }
+  ]
 }

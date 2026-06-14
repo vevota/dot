@@ -590,5 +590,79 @@
       "from": "Water",
       "desc": "Stand in water, aim at barrels, left-click"
     }
+  ],
+  "train": [
+    {
+      "id": "EeLgT4GxlF",
+      "from": "Outside A Main",
+      "to": "Sandwich",
+      "desc": "Stand at Outside A Main, aim at top of Sandwich area, left-click jump-throw"
+    },
+    {
+      "id": "6nptB4NQqY",
+      "from": "Dumpster",
+      "to": "Front Red",
+      "desc": "Stand at Dumpster, aim at top of Front Red area, left-click jump-throw"
+    },
+    {
+      "id": "LkxHCz8FFD",
+      "from": "Dumpster",
+      "to": "Popdog",
+      "desc": "Stand at Dumpster, aim at top of Popdog area, left-click jump-throw"
+    },
+    {
+      "id": "3XOLKX9E2S",
+      "from": "Dumpster",
+      "to": "Connector",
+      "desc": "Stand at Dumpster, aim at top of Connector area, left-click jump-throw"
+    },
+    {
+      "id": "f1n6wv2eh4",
+      "from": "Halls",
+      "to": "Connector",
+      "desc": "Stand at Halls, aim at top of Connector area, left-click jump-throw"
+    },
+    {
+      "id": "5kw3aEdpF8",
+      "from": "Halls",
+      "to": "Left Bomb",
+      "desc": "Stand at Halls, aim at top of Left Bomb area, left-click jump-throw"
+    },
+    {
+      "id": "gQgtwOvere",
+      "from": "Halls",
+      "to": "Left Bomb",
+      "desc": "Stand at Halls, aim at top of Left Bomb area, left-click jump-throw"
+    },
+    {
+      "id": "BhiuxHzEEh",
+      "from": "Outside T Spawn",
+      "to": "Connector",
+      "desc": "Stand at Outside T Spawn, aim at top of Connector area, left-click jump-throw"
+    },
+    {
+      "id": "peNzpp2c5I",
+      "from": "T Spawn",
+      "to": "Camera",
+      "desc": "Stand at T Spawn, aim at top of Camera area, left-click jump-throw"
+    },
+    {
+      "id": "dxAHFrffrr",
+      "from": "T Spawn",
+      "to": "Connector",
+      "desc": "Stand at T Spawn, aim at top of Connector area, left-click jump-throw"
+    },
+    {
+      "id": "5dw9Pi4nqF",
+      "from": "Radio",
+      "to": "Ebox",
+      "desc": "Stand at Radio, aim at top of Ebox area, left-click jump-throw"
+    },
+    {
+      "id": "4b9WtqfjUq",
+      "from": "Outside T Spawn",
+      "to": "Popdog",
+      "desc": "Stand at Outside T Spawn, aim at top of Popdog area, left-click jump-throw"
+    }
   ]
 }
