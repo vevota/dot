@@ -1,0 +1,1781 @@
+{
+  "mirage": [
+    {
+      "id": "EHvVQ0Ebqm",
+      "from": "Tetris",
+      "to": "Ticket Booth"
+    },
+    {
+      "id": "wsMc7skGQh",
+      "from": "T Spawn",
+      "to": "Top Mid"
+    },
+    {
+      "id": "h4RLQbKgkO",
+      "from": "Top Mid",
+      "to": "Catwalk"
+    },
+    {
+      "id": "I60PpERA4N",
+      "from": "Back Alley",
+      "to": "Market Window"
+    },
+    {
+      "id": "6UrrcOsJSD",
+      "from": "A Ramp",
+      "to": "Ticket Booth"
+    },
+    {
+      "id": "5NzRMI354j",
+      "from": "Tetris",
+      "to": "Jungle"
+    },
+    {
+      "id": "UJiXtqvbkb",
+      "from": "Back Alley",
+      "to": "Market Door"
+    },
+    {
+      "id": "RiIimkK4X7",
+      "from": "CT Spawn",
+      "to": "Palace"
+    },
+    {
+      "id": "aBPrOAQ8Nj",
+      "from": "Back Alley",
+      "to": "Left Arch"
+    },
+    {
+      "id": "mYfgVqLmrE",
+      "from": "Outside Market",
+      "to": "Palace"
+    },
+    {
+      "id": "MR4TqzEwYg",
+      "from": "Back Alley",
+      "to": "Right Arch"
+    },
+    {
+      "id": "EG0cY5l7c4",
+      "from": "T Spawn Fence",
+      "to": "Ticket Booth"
+    },
+    {
+      "id": "azNiRzhJVG",
+      "from": "T Roof",
+      "to": "Jungle And Connector"
+    },
+    {
+      "id": "R0AVljz79f",
+      "from": "T Roof",
+      "to": "Jungle And Connector"
+    },
+    {
+      "id": "gb1XEv9QbE",
+      "from": "Apts Ramp",
+      "to": "Bottom Connector"
+    },
+    {
+      "id": "Sskz7Ye3wy",
+      "from": "Trash",
+      "to": "B Apts"
+    },
+    {
+      "id": "EcLXg7YIUo",
+      "from": "B Short",
+      "to": "Catwalk"
+    },
+    {
+      "id": "pbyd3lrrEt",
+      "from": "A Ramp",
+      "to": "Top Of Ticket Booth"
+    },
+    {
+      "id": "FmNaL1KYD4",
+      "from": "A Ramp",
+      "to": "Stairs"
+    },
+    {
+      "id": "3sRuAaqnas",
+      "from": "T Spawn",
+      "to": "Mid Window"
+    },
+    {
+      "id": "bbb2QFbxcW",
+      "from": "T Spawn",
+      "to": "Mid Window"
+    },
+    {
+      "id": "cJBJWhl1LR",
+      "from": "Underpass",
+      "to": "Mid Window"
+    },
+    {
+      "id": "TsnQZHobbT",
+      "from": "Palace",
+      "to": "Jungle And Connector"
+    },
+    {
+      "id": "n2xmh8j5FQ",
+      "from": "Market Window",
+      "to": "B Apts"
+    },
+    {
+      "id": "UVjzrMB4Fe",
+      "from": "Underpass",
+      "to": "Jungle And Connector"
+    },
+    {
+      "id": "JZ6XtQiGhz",
+      "from": "Back Alley",
+      "to": "Bench"
+    },
+    {
+      "id": "gZA9I2y25z",
+      "from": "B Site",
+      "to": "Back Apts"
+    },
+    {
+      "id": "GUXzZRmfWN",
+      "from": "Back Alley",
+      "to": "B Short"
+    },
+    {
+      "id": "JCgKV8frFW",
+      "from": "T Roof",
+      "to": "Mid Window"
+    },
+    {
+      "id": "FmxvQLoaRO",
+      "from": "Outside T Apts",
+      "to": "Right Arch"
+    },
+    {
+      "id": "QwQM6wt3Yr",
+      "from": "Back Alley",
+      "to": "B Site"
+    },
+    {
+      "id": "nek37t1584",
+      "from": "CT Spawn",
+      "to": "Apts"
+    },
+    {
+      "id": "Llilne2qVw",
+      "from": "Market",
+      "to": "Apts"
+    },
+    {
+      "id": "bYtseZmLZq",
+      "from": "T Spawn",
+      "to": "Deep Stairs"
+    },
+    {
+      "id": "gix2YshKRu",
+      "from": "T Spawn",
+      "to": "Connector"
+    },
+    {
+      "id": "JzLi8EnTD9",
+      "from": "Back Alley",
+      "to": "Left Arch"
+    },
+    {
+      "id": "vYlJ81oc4t",
+      "from": "A Ramp",
+      "to": "Stairs"
+    },
+    {
+      "id": "IDOx7cwRPw",
+      "from": "A Ramp",
+      "to": "Jungle"
+    },
+    {
+      "id": "B3WhHra1ny",
+      "from": "A Ramp",
+      "to": "Ticket Booth"
+    },
+    {
+      "id": "wmte9z4myM",
+      "from": "Back Alley",
+      "to": "Jungle"
+    },
+    {
+      "id": "VrvjVQyEOz",
+      "from": "T Spawn",
+      "to": "Window"
+    },
+    {
+      "id": "wHtbiQvVAh",
+      "from": "CT Spawn",
+      "to": "A Ramp"
+    },
+    {
+      "id": "4m9u6244Pc",
+      "from": "A Ramp",
+      "to": "Jungle"
+    },
+    {
+      "id": "nqWdwkPE94",
+      "from": "Back Alley",
+      "to": "Stairs"
+    },
+    {
+      "id": "KmFxTHmTl1",
+      "from": "T Roof",
+      "to": "Mid Window"
+    },
+    {
+      "id": "wJW6V2xRXC",
+      "from": "Back Alley",
+      "to": "Window"
+    },
+    {
+      "id": "TF9qUKYZVg",
+      "from": "T Spawn",
+      "to": "Window"
+    },
+    {
+      "id": "yn5F5QAbd6",
+      "from": "Back Alley",
+      "to": "Market Door"
+    },
+    {
+      "id": "m8Ez6rBlxY",
+      "from": "Back Alley",
+      "to": "Bench"
+    },
+    {
+      "id": "mKaiMnuf75",
+      "from": "Back Alley",
+      "to": "Jungle And Connector"
+    },
+    {
+      "id": "HM7RUQkS6z",
+      "from": "T Spawn",
+      "to": "Stairs"
+    },
+    {
+      "id": "5w0tr1Gtez",
+      "from": "T Spawn",
+      "to": "Jungle"
+    },
+    {
+      "id": "8xUT3aGGSl",
+      "from": "T Roof",
+      "to": "Stairs"
+    },
+    {
+      "id": "fbzGcU9SsG",
+      "from": "T Roof",
+      "to": "Jungle and Connector"
+    },
+    {
+      "id": "appaxk5bAM",
+      "from": "Default B",
+      "to": "Market Window"
+    },
+    {
+      "id": "WRXk8COa7F",
+      "from": "T Spawn 1",
+      "to": "Window"
+    },
+    {
+      "id": "mEvGCRjddt",
+      "from": "T Spawn 2",
+      "to": "Window"
+    },
+    {
+      "id": "JTmyfQvWVe",
+      "from": "T Spawn 3",
+      "to": "Window"
+    },
+    {
+      "id": "S7EHNmGtcB",
+      "from": "T Spawn 4",
+      "to": "Window"
+    },
+    {
+      "id": "eecQjUYFsz",
+      "from": "T Spawn 5",
+      "to": "Window"
+    },
+    {
+      "id": "9QreZ6rRWh",
+      "from": "T Spawn 6",
+      "to": "Window"
+    },
+    {
+      "id": "C2ojbNdjhI",
+      "from": "T Spawn 7",
+      "to": "Window"
+    },
+    {
+      "id": "1Kjpo0OZ8H",
+      "from": "T Spawn 8",
+      "to": "Window"
+    },
+    {
+      "id": "0wGowh8mOq",
+      "from": "T Spawn 9",
+      "to": "Window"
+    },
+    {
+      "id": "DQssWxjcaY",
+      "from": "T Spawn 10",
+      "to": "Window"
+    },
+    {
+      "id": "Xr2OxZ31vZ",
+      "from": "A Ramp",
+      "to": "Triple"
+    },
+    {
+      "id": "e3PhY6USgt",
+      "from": "T Spawn",
+      "to": "Catwalk"
+    },
+    {
+      "id": "auTm8L49Cc",
+      "from": "T Spawn",
+      "to": "Window"
+    },
+    {
+      "id": "nwzRlK8VEb",
+      "from": "T Spawn",
+      "to": "Connector"
+    }
+  ],
+  "dust2": [
+    {
+      "id": "epau9Q3Dll",
+      "from": "Lower Tunnels",
+      "to": "XBox"
+    },
+    {
+      "id": "MrTSxptCeA",
+      "from": "CT Mid",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "HupX3P0FUE",
+      "from": "Outside A Long",
+      "to": "Car"
+    },
+    {
+      "id": "QUSiBuN0RC",
+      "from": "T Spawn Corner",
+      "to": "XBox"
+    },
+    {
+      "id": "dBt2lcA3vc",
+      "from": "Long Doors",
+      "to": "A Cross"
+    },
+    {
+      "id": "KuDym6tvW2",
+      "from": "A Long",
+      "to": "A Cross"
+    },
+    {
+      "id": "pXWCQLmYhk",
+      "from": "T Spawn",
+      "to": "XBox"
+    },
+    {
+      "id": "rvINJHyhOX",
+      "from": "Car",
+      "to": "Long Doors"
+    },
+    {
+      "id": "XMJVOfP5Ca",
+      "from": "XBox",
+      "to": "CT Spawn"
+    },
+    {
+      "id": "bIBJix167W",
+      "from": "Short",
+      "to": "Short"
+    },
+    {
+      "id": "pOy1yKGuae",
+      "from": "Outside A Long",
+      "to": "Long Corner"
+    },
+    {
+      "id": "rNJIRUrRfB",
+      "from": "Outside Long",
+      "to": "XBox"
+    },
+    {
+      "id": "F9Y4GUxN3x",
+      "from": "A Ramp",
+      "to": "CT Spawn"
+    },
+    {
+      "id": "mkO4HqnvNi",
+      "from": "Top Mid",
+      "to": "XBox"
+    },
+    {
+      "id": "7KwvY4vQcC",
+      "from": "Upper Tunnels",
+      "to": "B Doors"
+    },
+    {
+      "id": "kNzHMUP7Rq",
+      "from": "Upper Tunnels",
+      "to": "B Doors"
+    },
+    {
+      "id": "aUuxroAy3B",
+      "from": "Catwalk",
+      "to": "B Doors"
+    },
+    {
+      "id": "bWhSI26gxI",
+      "from": "T Spawn",
+      "to": "Long Corner"
+    },
+    {
+      "id": "6dZH5zTBd9",
+      "from": "CT Mid",
+      "to": "B Tunnels"
+    },
+    {
+      "id": "VdDWeYZRCH",
+      "from": "Stairs",
+      "to": "Short"
+    },
+    {
+      "id": "z131FWWazp",
+      "from": "Upper Tunnels",
+      "to": "Tunnels Entry"
+    },
+    {
+      "id": "MtLiZmb0gQ",
+      "from": "Outside B Tunnels",
+      "to": "B Window"
+    },
+    {
+      "id": "gsFTgCKTfN",
+      "from": "Upper Tunnels",
+      "to": "B Plat"
+    },
+    {
+      "id": "j8TYIGVGmk",
+      "from": "B Plat",
+      "to": "Deep Tunnels"
+    },
+    {
+      "id": "UZ3KLsre7g",
+      "from": "Outside B Tunnels",
+      "to": "B Window"
+    },
+    {
+      "id": "U4Lv2Xi4iS",
+      "from": "CT Spawn",
+      "to": "Mid Doors"
+    },
+    {
+      "id": "2dOJ9MUZUf",
+      "from": "CT Spawn",
+      "to": "CT Mid"
+    },
+    {
+      "id": "5AlacnUab0",
+      "from": "Outside B Tunnels",
+      "to": "B Doors"
+    },
+    {
+      "id": "Hmj3j6hIlI",
+      "from": "Elevator",
+      "to": "Long Doors"
+    },
+    {
+      "id": "HgH1nfbqra",
+      "from": "Outside T Spawn",
+      "to": "XBox"
+    },
+    {
+      "id": "te1QMoqVSu",
+      "from": "T Spawn Railing",
+      "to": "Mid Doors"
+    },
+    {
+      "id": "07WR4yNUt0",
+      "from": "Dumpster",
+      "to": "A Cross"
+    },
+    {
+      "id": "y2UOSG64Qm",
+      "from": "Mid Doors",
+      "to": "Hinge"
+    },
+    {
+      "id": "j7l6L9rYhJ",
+      "from": "T Spawn",
+      "to": "Long Doors Anti-Molly"
+    },
+    {
+      "id": "EqBAJgjJJ6",
+      "from": "Top Mid",
+      "to": "CT Spawn"
+    },
+    {
+      "id": "mctcs28uGS",
+      "from": "Upper Tunnels",
+      "to": "B Lurk"
+    },
+    {
+      "id": "Ad1j1yyReH",
+      "from": "T Spawn Railing",
+      "to": "XBox"
+    },
+    {
+      "id": "ubTiXKBc2E",
+      "from": "T Spawn Railing",
+      "to": "XBox"
+    },
+    {
+      "id": "fPVAopyJik",
+      "from": "Outside B Tunnels",
+      "to": "B Doors"
+    },
+    {
+      "id": "N6LQBzQWM5",
+      "from": "Long Doors",
+      "to": "A Cross"
+    },
+    {
+      "id": "PCVGa66zsT",
+      "from": "Car",
+      "to": "Long Doors"
+    },
+    {
+      "id": "TcKrR9F9xq",
+      "from": "Upper Tunnels",
+      "to": "B Doors"
+    },
+    {
+      "id": "MJ5uWbNxSi",
+      "from": "Outside Long",
+      "to": "CT Mid"
+    },
+    {
+      "id": "IkLU41rFxM",
+      "from": "XBox",
+      "to": "CT Spawn Boost"
+    },
+    {
+      "id": "bye3X5vLuZ",
+      "from": "T Spawn",
+      "to": "Mid Doors"
+    },
+    {
+      "id": "ru9uxKQIpD",
+      "from": "Cat",
+      "to": "CT Spawn Boost"
+    },
+    {
+      "id": "EEI28ebmls",
+      "from": "T Spawn",
+      "to": "B Doors"
+    },
+    {
+      "id": "JyNOFqLCgN",
+      "from": "T Spawn",
+      "to": "Window"
+    },
+    {
+      "id": "tgN5CrW541",
+      "from": "CT Mid",
+      "to": "Suicide"
+    }
+  ],
+  "inferno": [
+    {
+      "id": "MrAFqNRIOT",
+      "from": "Banana",
+      "to": "CT"
+    },
+    {
+      "id": "Fomlq5TPso",
+      "from": "Half-Wall",
+      "to": "Coffins"
+    },
+    {
+      "id": "oDxbaepICU",
+      "from": "Alt Mid",
+      "to": "Arches"
+    },
+    {
+      "id": "9LzHE8aRot",
+      "from": "Banana",
+      "to": "CT"
+    },
+    {
+      "id": "a2ITuReCiS",
+      "from": "Car",
+      "to": "CT"
+    },
+    {
+      "id": "xWSXzEwtxB",
+      "from": "T Spawn",
+      "to": "CT"
+    },
+    {
+      "id": "qNO7ZhaDsF",
+      "from": "Banana",
+      "to": "B Site"
+    },
+    {
+      "id": "pIccMstcPL",
+      "from": "Alt-Mid",
+      "to": "Moto"
+    },
+    {
+      "id": "0vUqr9Rn5a",
+      "from": "Pit",
+      "to": "Moto"
+    },
+    {
+      "id": "Yh2HU8M4Vy",
+      "from": "T Spawn",
+      "to": "Top Mid"
+    },
+    {
+      "id": "5qWZ8MUYZh",
+      "from": "Mid",
+      "to": "Arches"
+    },
+    {
+      "id": "M2Rp3LbcAE",
+      "from": "Moto",
+      "to": "B Entrance"
+    },
+    {
+      "id": "82tBqZEL7f",
+      "from": "CT Spawn",
+      "to": "Half Wall"
+    },
+    {
+      "id": "xW7r3rJT5R",
+      "from": "CT",
+      "to": "B Entrance"
+    },
+    {
+      "id": "ByTtdpC7XM",
+      "from": "Alt Mid",
+      "to": "Arch"
+    },
+    {
+      "id": "M8clAgezGq",
+      "from": "Alt Mid",
+      "to": "Boiler"
+    },
+    {
+      "id": "AWr3PkVWhL",
+      "from": "CT Spawn",
+      "to": "Top Mid"
+    },
+    {
+      "id": "vOap5qahQC",
+      "from": "Apts",
+      "to": "Hay"
+    },
+    {
+      "id": "ay7l9UkgGA",
+      "from": "CT Spawn",
+      "to": "Stairs"
+    },
+    {
+      "id": "G1sPcgBbK0",
+      "from": "Alt Mid",
+      "to": "Library"
+    },
+    {
+      "id": "cNz4v6tVZQ",
+      "from": "Arch",
+      "to": "Front Graveyard"
+    },
+    {
+      "id": "u3NCVJG0JH",
+      "from": "T Spawn",
+      "to": "Arch"
+    },
+    {
+      "id": "mTMBhbR0iR",
+      "from": "Alt Mid",
+      "to": "Pit"
+    },
+    {
+      "id": "vfHHD9pJt8",
+      "from": "Banana",
+      "to": "CT Boost"
+    },
+    {
+      "id": "UQfTMUPKem",
+      "from": "Church",
+      "to": "Half Wall"
+    },
+    {
+      "id": "BtH6tPkqYm",
+      "from": "Banana",
+      "to": "CT"
+    },
+    {
+      "id": "URLZU6RJ7l",
+      "from": "Coffins",
+      "to": "B Entrace"
+    },
+    {
+      "id": "bQVeCMaQwx",
+      "from": "T Spawn",
+      "to": "Library"
+    },
+    {
+      "id": "k5jULvBFML",
+      "from": "T Spawn",
+      "to": "Boiler"
+    },
+    {
+      "id": "qdcOvzCX8w",
+      "from": "Coffins",
+      "to": "Half Wall"
+    },
+    {
+      "id": "j6asRNfisY",
+      "from": "Banana",
+      "to": "Coffins"
+    },
+    {
+      "id": "ipZ1tVF1mt",
+      "from": "Alt Mid",
+      "to": "Pit"
+    },
+    {
+      "id": "VCVX6g8WOr",
+      "from": "Logs",
+      "to": "CT Boost"
+    },
+    {
+      "id": "aN2t0v5FyI",
+      "from": "Car",
+      "to": "Deep CT"
+    },
+    {
+      "id": "77AxfBlsxx",
+      "from": "Under Light Room",
+      "to": "Arches"
+    },
+    {
+      "id": "33iQIKAwyW",
+      "from": "Mid",
+      "to": "Mid Arches"
+    },
+    {
+      "id": "jvorlkMg1S",
+      "from": "Bottom Mid",
+      "to": "Arch"
+    },
+    {
+      "id": "zkVzks05M0",
+      "from": "Bottom Mid",
+      "to": "Library"
+    },
+    {
+      "id": "oLEvWOzraA",
+      "from": "Alt Mid",
+      "to": "Hay"
+    },
+    {
+      "id": "VQ8AtRXPRN",
+      "from": "Alt Mid",
+      "to": "Moto"
+    },
+    {
+      "id": "CPLZyHbtU8",
+      "from": "Alt Mid",
+      "to": "Arches"
+    },
+    {
+      "id": "seQXr2d7Ui",
+      "from": "Mid",
+      "to": "Pit"
+    },
+    {
+      "id": "eDNUDqdPmz",
+      "from": "Boiler",
+      "to": "Moto"
+    },
+    {
+      "id": "vTGxzPpPDo",
+      "from": "Banana",
+      "to": "Coffins"
+    },
+    {
+      "id": "jIqye94djf",
+      "from": "CT Spawn 1",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "khejmQfra9",
+      "from": "CT Spawn 2",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "IyBm2IX3Bx",
+      "from": "CT Spawn 3",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "kC3t00uG2a",
+      "from": "CT Spawn 4",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "8QnwQEjbCK",
+      "from": "CT Spawn 5",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "DUNByPn5nX",
+      "from": "CT Spawn 6",
+      "to": "Bottom Mid"
+    }
+  ],
+  "nuke": [
+    {
+      "id": "Ox2V20EXl2",
+      "from": "T Spawn",
+      "to": "Secret Close"
+    },
+    {
+      "id": "Sswwq7kpV9",
+      "from": "Under Silo",
+      "to": "Secret Far"
+    },
+    {
+      "id": "faS2qYaA3o",
+      "from": "Outside T Spawn",
+      "to": "Secret Far"
+    },
+    {
+      "id": "EsLX408n4d",
+      "from": "T Spawn",
+      "to": "Secret Far"
+    },
+    {
+      "id": "l3koCgeoHZ",
+      "from": "Under Silo",
+      "to": "Garage"
+    },
+    {
+      "id": "6T37K29Fos",
+      "from": "T Spawn",
+      "to": "Vent"
+    },
+    {
+      "id": "Q9fOLapNdW",
+      "from": "T Spawn",
+      "to": "Vent"
+    },
+    {
+      "id": "SeoQHvk150",
+      "from": "Under Silo",
+      "to": "T Red"
+    },
+    {
+      "id": "EYwJuFOVfp",
+      "from": "Under Silo",
+      "to": "CT Red"
+    },
+    {
+      "id": "EO2jbfxk5s",
+      "from": "T Roof",
+      "to": "A Main"
+    },
+    {
+      "id": "zz31RtrBm0",
+      "from": "Outside T Spawn",
+      "to": "Outside Main"
+    },
+    {
+      "id": "0qZP5UcuWj",
+      "from": "Outside T Spawn",
+      "to": "Garage"
+    },
+    {
+      "id": "ZcYGFCKa39",
+      "from": "Silo",
+      "to": "Heaven"
+    },
+    {
+      "id": "reQfiYAbzB",
+      "from": "T Spawn",
+      "to": "Lockers"
+    },
+    {
+      "id": "5bFhaOVLPr",
+      "from": "T Spawn",
+      "to": "Top A Main"
+    },
+    {
+      "id": "GnMSqEPcto",
+      "from": "Trophy",
+      "to": "Ramp"
+    },
+    {
+      "id": "Bsu1xam1dU",
+      "from": "Under Silo",
+      "to": "Secret Close"
+    },
+    {
+      "id": "zymHn4R06u",
+      "from": "Under Silo",
+      "to": "A Main"
+    },
+    {
+      "id": "PAOl9mzPQl",
+      "from": "Trophy",
+      "to": "Ramp"
+    },
+    {
+      "id": "1uACe4vrWx",
+      "from": "CT Red",
+      "to": "T Red"
+    },
+    {
+      "id": "QefmQzSwxJ",
+      "from": "Heaven",
+      "to": "Squeaky"
+    },
+    {
+      "id": "JDCgnyYtib",
+      "from": "CT Spawn",
+      "to": "Top Silo"
+    },
+    {
+      "id": "gTyE7QMmuZ",
+      "from": "T Spawn",
+      "to": "Lockers"
+    },
+    {
+      "id": "FHo8HsdYw3",
+      "from": "B Ramp",
+      "to": "Double Doors"
+    },
+    {
+      "id": "zJkjg0rC5k",
+      "from": "Back Vents",
+      "to": "Decon Cross"
+    },
+    {
+      "id": "zKQpJWn98w",
+      "from": "Outside T Spawn",
+      "to": "Secret Close"
+    },
+    {
+      "id": "uoJKDJyZyX",
+      "from": "T Roof",
+      "to": "A Main"
+    },
+    {
+      "id": "QF0xiuEV4h",
+      "from": "Outside T Spawn",
+      "to": "Outside Garage"
+    },
+    {
+      "id": "2JmRiLmQdS",
+      "from": "Ramp",
+      "to": "Trophy"
+    },
+    {
+      "id": "ck29zmBBrh",
+      "from": "Under Silo",
+      "to": "Lockers"
+    },
+    {
+      "id": "MoplRcxNea",
+      "from": "T Spawn",
+      "to": "Secret Far"
+    },
+    {
+      "id": "jcmcyFHa9p",
+      "from": "T Spawn",
+      "to": "Outside Main"
+    },
+    {
+      "id": "UqQ4ZNd5Wl",
+      "from": "T Spawn",
+      "to": "Front Garage"
+    },
+    {
+      "id": "TEd89iP1CU",
+      "from": "T Spawn",
+      "to": "Top Main"
+    },
+    {
+      "id": "zZPGIOTm49",
+      "from": "T Spawn",
+      "to": "Outside Main"
+    },
+    {
+      "id": "7wUdSDCEfa",
+      "from": "T Spawn",
+      "to": "Front Garage"
+    },
+    {
+      "id": "0OhvBCnyNW",
+      "from": "T Roof",
+      "to": "A Main"
+    }
+  ],
+  "ancient": [
+    {
+      "id": "mhHNTLDnNw",
+      "from": "T Spawn",
+      "to": "Top Mid"
+    },
+    {
+      "id": "05JJVnP8AP",
+      "from": "Outside A",
+      "to": "CT"
+    },
+    {
+      "id": "T3Mseb88b9",
+      "from": "Ruins",
+      "to": "Back Alley"
+    },
+    {
+      "id": "0JpsvFLFbE",
+      "from": "Outside A",
+      "to": "Donut Tunnel"
+    },
+    {
+      "id": "jRgHHBZPeJ",
+      "from": "Outside A",
+      "to": "Temple"
+    },
+    {
+      "id": "SHv86icIFy",
+      "from": "CT Spawn",
+      "to": "A Stairs"
+    },
+    {
+      "id": "nQ0TRW2zEy",
+      "from": "Outside A",
+      "to": "Plat"
+    },
+    {
+      "id": "hxqGWlgsf1",
+      "from": "Elbow",
+      "to": "Top Mid"
+    },
+    {
+      "id": "3jqGZRf1yP",
+      "from": "CT Spawn",
+      "to": "Elbow"
+    },
+    {
+      "id": "epkiyQGoi3",
+      "from": "CT Spawn",
+      "to": "B Ramp"
+    },
+    {
+      "id": "8lGFrrndCd",
+      "from": "Top Mid",
+      "to": "Elbow"
+    },
+    {
+      "id": "TNzch9HB1o",
+      "from": "A Site",
+      "to": "Elbow"
+    },
+    {
+      "id": "wituBpGQ5V",
+      "from": "A Site",
+      "to": "A Long"
+    },
+    {
+      "id": "VUZHW05YXm",
+      "from": "Big Box",
+      "to": "A Main"
+    },
+    {
+      "id": "ddbpjQNuSO",
+      "from": "Catwalk",
+      "to": "Back Alley"
+    },
+    {
+      "id": "BBn4uOY7hg",
+      "from": "Ruins",
+      "to": "Back Alley"
+    },
+    {
+      "id": "wf1H9QRXfP",
+      "from": "Ruins",
+      "to": "CT Alley"
+    },
+    {
+      "id": "6XV43iP8Ov",
+      "from": "B Site",
+      "to": "T Upper"
+    },
+    {
+      "id": "dhIFotCS7m",
+      "from": "T Spawn",
+      "to": "Cubby"
+    },
+    {
+      "id": "IwEF5ftdPL",
+      "from": "T Spawn",
+      "to": "Cat"
+    },
+    {
+      "id": "Ngiw5TnkCG",
+      "from": "B Entry",
+      "to": "B Ramp"
+    },
+    {
+      "id": "I7c4pmQBTz",
+      "from": "Ruins",
+      "to": "Cave"
+    },
+    {
+      "id": "fzxLAH5TyC",
+      "from": "Ruins",
+      "to": "Cave"
+    },
+    {
+      "id": "8Crp5Fa7w0",
+      "from": "Ruins",
+      "to": "B Alley"
+    },
+    {
+      "id": "yEROPSxK12",
+      "from": "T Spawn",
+      "to": "Jaguar"
+    },
+    {
+      "id": "Yr2VfEcZss",
+      "from": "B Site",
+      "to": "B Doors"
+    },
+    {
+      "id": "4RX6fnru6x",
+      "from": "T Mid",
+      "to": "Donut"
+    },
+    {
+      "id": "osar56YWBw",
+      "from": "T Spawn",
+      "to": "Donut"
+    },
+    {
+      "id": "Go34L8rsHT",
+      "from": "Outside A",
+      "to": "Temple"
+    },
+    {
+      "id": "ZLHdJAA89r",
+      "from": "Outside Mid",
+      "to": "Deep Donut"
+    },
+    {
+      "id": "mFCBZO2oOL",
+      "from": "Outside A Main",
+      "to": "Deep Donut"
+    },
+    {
+      "id": "jOq7lirwft",
+      "from": "Ruins",
+      "to": "Top Mid"
+    },
+    {
+      "id": "DKbev47eUO",
+      "from": "CT Spawn 1",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "7F5RpJDcbN",
+      "from": "CT Spawn 3",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "9Jp9jkCVZg",
+      "from": "CT Spawn 2",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "EprgGB7THU",
+      "from": "CT Spawn 4",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "XAkiqQuwHt",
+      "from": "CT Spawn 5",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "07WJxJp8cm",
+      "from": "T Spawn",
+      "to": "CT"
+    },
+    {
+      "id": "g3Gw8TZjVK",
+      "from": "Catwalk",
+      "to": "Back Alley"
+    },
+    {
+      "id": "rGU2IdMrZe",
+      "from": "T Spawn 2",
+      "to": "Top Mid"
+    },
+    {
+      "id": "pBv8NHGQnk",
+      "from": "T Spawn 1",
+      "to": "Top Mid"
+    },
+    {
+      "id": "EwZonj76dq",
+      "from": "T Spawn 3",
+      "to": "Top Mid"
+    },
+    {
+      "id": "GR1ErMJxpY",
+      "from": "T Spawn 4",
+      "to": "Top Mid"
+    },
+    {
+      "id": "xHB6lxcJNi",
+      "from": "T Spawn 5",
+      "to": "Top Mid"
+    },
+    {
+      "id": "8L41jsIA4r",
+      "from": "Ruins",
+      "to": "CT Alley"
+    },
+    {
+      "id": "uR2DDMbr71",
+      "from": "CT Spawn",
+      "to": "B Doors"
+    },
+    {
+      "id": "h7XwZH6m4J",
+      "from": "CT Spawn 1",
+      "to": "B Doors"
+    },
+    {
+      "id": "VNLxyJObZH",
+      "from": "CT Spawn 2",
+      "to": "B Doors"
+    },
+    {
+      "id": "AAWlyb6FJx",
+      "from": "CT Spawn 3",
+      "to": "B Doors"
+    },
+    {
+      "id": "u4mhf6cZrq",
+      "from": "CT Spawn 4",
+      "to": "B Doors"
+    },
+    {
+      "id": "40hcyB96h2",
+      "from": "CT Spawn 5",
+      "to": "B Doors"
+    },
+    {
+      "id": "zNXZSmfTle",
+      "from": "CT Spawn 5",
+      "to": "Bottom Mid"
+    },
+    {
+      "id": "wv1ue6ho5F",
+      "from": "CT Spawn",
+      "to": "A Main"
+    },
+    {
+      "id": "pr1WRAbbJK",
+      "from": "CT Spawn",
+      "to": "Donut Tunnel"
+    },
+    {
+      "id": "mi2oPe9LOl",
+      "from": "CT Spawn",
+      "to": "A Site"
+    },
+    {
+      "id": "RaQoKwzoKG",
+      "from": "Back Alley",
+      "to": "B Ramp"
+    },
+    {
+      "id": "5kfRErTtVu",
+      "from": "CT Spawn",
+      "to": "A Main"
+    },
+    {
+      "id": "ixtbKDfSkE",
+      "from": "CT Spawn",
+      "to": "A Main"
+    },
+    {
+      "id": "Q5Do1ICmyx",
+      "from": "CT Spawn",
+      "to": "A Main"
+    },
+    {
+      "id": "kJ6etT2jEJ",
+      "from": "CT Spawn",
+      "to": "Donut Tunnel"
+    }
+  ],
+  "anubis": [
+    {
+      "id": "RPRA6boGge",
+      "from": "T Spawn",
+      "to": "Top Mid"
+    },
+    {
+      "id": "kmlXeKSDJM",
+      "from": "Water",
+      "to": "Heaven"
+    },
+    {
+      "id": "0MzIjwXEIJ",
+      "from": "T Spawn",
+      "to": "EBox"
+    },
+    {
+      "id": "ZQ0D2bZhk7",
+      "from": "Door",
+      "to": "Heaven"
+    },
+    {
+      "id": "JbhR4dxPHd",
+      "from": "Water",
+      "to": "Heaven"
+    },
+    {
+      "id": "aQBt4qCxLI",
+      "from": "T Upper",
+      "to": "Heaven"
+    },
+    {
+      "id": "Qoj34RwWIE",
+      "from": "T Upper",
+      "to": "Connector"
+    },
+    {
+      "id": "i0V3IGxV72",
+      "from": "CT Spawn",
+      "to": "A Main"
+    },
+    {
+      "id": "9m7ZJDVzDW",
+      "from": "Water",
+      "to": "Platform"
+    },
+    {
+      "id": "Uc2dqMbjkm",
+      "from": "Street",
+      "to": "Mid B Door"
+    },
+    {
+      "id": "SS2YPrXfMr",
+      "from": "T Spawn",
+      "to": "Mid"
+    },
+    {
+      "id": "6LlChTThp0",
+      "from": "T Spawn",
+      "to": "Mid"
+    },
+    {
+      "id": "YJNUQ1gNxc",
+      "from": "Mid",
+      "to": "Bridge"
+    },
+    {
+      "id": "y4RgwsxY6Q",
+      "from": "CT Spawn",
+      "to": "Bridge"
+    },
+    {
+      "id": "oI8eAqgyow",
+      "from": "T Spawn",
+      "to": "EBox"
+    },
+    {
+      "id": "wXzMjIi9M8",
+      "from": "Ruins",
+      "to": "Temple"
+    },
+    {
+      "id": "OQStoSa2V5",
+      "from": "Ruins",
+      "to": "EBox"
+    },
+    {
+      "id": "lhSKBRkXS1",
+      "from": "Ruins",
+      "to": "B Site"
+    },
+    {
+      "id": "oCcD8J93Ae",
+      "from": "Ruins",
+      "to": "B Site"
+    },
+    {
+      "id": "AYQkrOmc0o",
+      "from": "Ruins",
+      "to": "CT"
+    },
+    {
+      "id": "vLTXkLHHIV",
+      "from": "Canals",
+      "to": "Temple"
+    },
+    {
+      "id": "cavgkYZmHY",
+      "from": "Ruins",
+      "to": "CT"
+    },
+    {
+      "id": "rsA5JpZMH4",
+      "from": "Ruins",
+      "to": "Temple"
+    },
+    {
+      "id": "YOkVxnONtW",
+      "from": "Ruins",
+      "to": "Back Site"
+    },
+    {
+      "id": "8oCpEq4LnY",
+      "from": "Ruins",
+      "to": "B Site"
+    },
+    {
+      "id": "T1HaCXURLB",
+      "from": "T Spawn",
+      "to": "Top Mid"
+    },
+    {
+      "id": "irru6YOyDc",
+      "from": "Ruins",
+      "to": "EBox"
+    },
+    {
+      "id": "fNvvDhRVVZ",
+      "from": "Ruins",
+      "to": "Back Site"
+    },
+    {
+      "id": "3gJyYKeEcH",
+      "from": "Ruins",
+      "to": "B Site"
+    },
+    {
+      "id": "bfJHfp6fMc",
+      "from": "CT Spawn",
+      "to": "B Main"
+    },
+    {
+      "id": "WUx8aE8rB6",
+      "from": "Outside Mid",
+      "to": "Top Mid"
+    },
+    {
+      "id": "R5H1zCIjD7",
+      "from": "T Spawn",
+      "to": "Temple"
+    },
+    {
+      "id": "g4Qwh78VHD",
+      "from": "T Spawn",
+      "to": "B Site"
+    },
+    {
+      "id": "m9S8IKaahP",
+      "from": "T Spawn",
+      "to": "EBox"
+    },
+    {
+      "id": "owYTc6eqBo",
+      "from": "T Spawn 1",
+      "to": "Top Mid"
+    },
+    {
+      "id": "W6NRLXljHF",
+      "from": "T Spawn 2",
+      "to": "Top Mid"
+    },
+    {
+      "id": "oKqpFCPVN1",
+      "from": "T Spawn 3",
+      "to": "Top Mid"
+    },
+    {
+      "id": "Udc0feGYO6",
+      "from": "T Spawn 4",
+      "to": "Top Mid"
+    },
+    {
+      "id": "IHwVdkkfag",
+      "from": "T Spawn 6",
+      "to": "Top Mid"
+    },
+    {
+      "id": "whlw5ywyGI",
+      "from": "T Spawn 5",
+      "to": "Top Mid"
+    },
+    {
+      "id": "9jXopir8qG",
+      "from": "T Spawn 7",
+      "to": "Top Mid"
+    },
+    {
+      "id": "FkaIpU3AI6",
+      "from": "T Spawn 10",
+      "to": "Top Mid"
+    },
+    {
+      "id": "MVj0nbSEsX",
+      "from": "T Spawn 8",
+      "to": "Top Mid"
+    },
+    {
+      "id": "CQgLMN6hw5",
+      "from": "T Spawn 9",
+      "to": "Top Mid"
+    },
+    {
+      "id": "WIZcQiRuHt",
+      "from": "T Spawn 11",
+      "to": "Top Mid"
+    },
+    {
+      "id": "yUbR92HOCs",
+      "from": "CT Spawn",
+      "to": "Canals"
+    },
+    {
+      "id": "BEWAShEAm3",
+      "from": "T Spawn",
+      "to": "EBox"
+    },
+    {
+      "id": "kBDHAlSvdZ",
+      "from": "Mid Doors",
+      "to": "Connector"
+    },
+    {
+      "id": "Do44jH3aiI",
+      "from": "T Spawn",
+      "to": "Window"
+    }
+  ],
+  "vertigo": [
+    {
+      "id": "kLpQfwtnrZ",
+      "from": "B Stairs",
+      "to": "EBox"
+    },
+    {
+      "id": "LZ7w8nAhRU",
+      "from": "Ramp",
+      "to": "A Site"
+    },
+    {
+      "id": "u2AcCDRYoM",
+      "from": "CT Mid",
+      "to": "A Ramp"
+    },
+    {
+      "id": "T7wlpObMtB",
+      "from": "Heaven",
+      "to": "Top A Ramp"
+    },
+    {
+      "id": "qMX7mv9E5v",
+      "from": "A Site",
+      "to": "Tarp"
+    },
+    {
+      "id": "cOpgHeMF27",
+      "from": "Ramp",
+      "to": "A Site Right"
+    },
+    {
+      "id": "ynNaNJ7Ga9",
+      "from": "Ramp",
+      "to": "A Site Left"
+    },
+    {
+      "id": "GtVlFr6AV1",
+      "from": "A Site",
+      "to": "Crane"
+    },
+    {
+      "id": "EkYjo3n3Dj",
+      "from": "Tarp",
+      "to": "A Entry"
+    },
+    {
+      "id": "MdynVcVs2e",
+      "from": "Mid",
+      "to": "Top Mid"
+    },
+    {
+      "id": "fgahXx0KyV",
+      "from": "A Ramp",
+      "to": "Headshot"
+    },
+    {
+      "id": "IeKwajySMF",
+      "from": "Mid",
+      "to": "B Connector"
+    },
+    {
+      "id": "i7KNkUQ8kz",
+      "from": "Mid",
+      "to": "CT"
+    },
+    {
+      "id": "s2EG2EtZWU",
+      "from": "Mid",
+      "to": "A Conn"
+    },
+    {
+      "id": "ECkJMakj5x",
+      "from": "CT",
+      "to": "Mid"
+    },
+    {
+      "id": "oUEmuLqsn5",
+      "from": "CT Spawn",
+      "to": "B Main"
+    },
+    {
+      "id": "27bmxMi0pS",
+      "from": "T Spawn",
+      "to": "Sidewalk"
+    },
+    {
+      "id": "cdq3ldLxa3",
+      "from": "Stairs",
+      "to": "CT Spawn"
+    },
+    {
+      "id": "p4Sgmzaaw1",
+      "from": "Ramp",
+      "to": "Sniper's Nest"
+    },
+    {
+      "id": "eya1wSKuCZ",
+      "from": "Tarp",
+      "to": "Sniper's Nest"
+    },
+    {
+      "id": "PQ1pgZ84Kb",
+      "from": "Stairs",
+      "to": "B Cross"
+    },
+    {
+      "id": "0cna4sznKf",
+      "from": "B Site",
+      "to": "Bottom B Main"
+    },
+    {
+      "id": "7i9hAxSqdw",
+      "from": "Stairs",
+      "to": "Generator Left"
+    },
+    {
+      "id": "OCWUxlteIP",
+      "from": "A Conn",
+      "to": "A Ramp"
+    },
+    {
+      "id": "0rGQhkDC5z",
+      "from": "T Spawn",
+      "to": "B Cross"
+    },
+    {
+      "id": "a4G5X7OX8f",
+      "from": "T Spawn",
+      "to": "Generator Left"
+    },
+    {
+      "id": "d4Fi8e5fMw",
+      "from": "T Spawn",
+      "to": "Generator Right"
+    },
+    {
+      "id": "6uslwKvIeA",
+      "from": "Mid Iron",
+      "to": "Generator Left"
+    },
+    {
+      "id": "eFNgTkYBaM",
+      "from": "Stairs",
+      "to": "B Headshot"
+    },
+    {
+      "id": "dYZc5WmSg0",
+      "from": "Stairs",
+      "to": "Generator Left"
+    },
+    {
+      "id": "TEYNbRIHID",
+      "from": "T Spawn",
+      "to": "A Site"
+    },
+    {
+      "id": "F4Byo6FWod",
+      "from": "CT Spawn",
+      "to": "B Main"
+    },
+    {
+      "id": "9hmj4yj4R3",
+      "from": "Ramp",
+      "to": "Elevator"
+    },
+    {
+      "id": "5EXvkuPydU",
+      "from": "Ramp",
+      "to": "Heaven"
+    },
+    {
+      "id": "7aaSJs7qds",
+      "from": "Bridge",
+      "to": "Ramp Lurk"
+    },
+    {
+      "id": "tpGDzrmtUP",
+      "from": "Ramp",
+      "to": "Front Elevator"
+    },
+    {
+      "id": "MPtQAQhFSg",
+      "from": "Ramp",
+      "to": "Front Elevator"
+    },
+    {
+      "id": "p7fOlTmomB",
+      "from": "Ramp",
+      "to": "Heaven"
+    },
+    {
+      "id": "Hys7uCz0Qx",
+      "from": "Elevator",
+      "to": "Bottom Ramp"
+    }
+  ]
+}
