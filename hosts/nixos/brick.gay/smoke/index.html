@@ -21,7 +21,8 @@ h1{color:#66FFFF;font-size:28px;text-align:center;margin-bottom:8px}
 .smoke-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
 .smoke-card{background:#0a0a20;border:1px solid #333;border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .2s}
 .smoke-card:hover{border-color:#FF0099}
-.smoke-card .img{width:100%;aspect-ratio:16/9;background:#111;display:flex;align-items:center;justify-content:center;color:#444;font-size:12px;overflow:hidden}
+.smoke-card .img{width:100%;aspect-ratio:16/9;background:#111;display:block;overflow:hidden;position:relative}
+.smoke-card .img svg{width:100%;height:100%;display:block}
 .smoke-card .img img{width:100%;height:100%;object-fit:cover}
 .smoke-card .info{padding:10px}
 .smoke-card .info .name{color:#FFCC66;font-size:13px;font-weight:bold}
