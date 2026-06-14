@@ -516,5 +516,79 @@
       "to": "B Main",
       "desc": "Stand at B connector entrance, aim at B main doorway top, left-click"
     }
+  ],
+  "overpass": [
+    {
+      "id": "x4raBj1eU8",
+      "to": "Dumpster",
+      "from": "Divider Bench",
+      "desc": "Stand at divider bench, aim at tree branch above dumpster, left-click jump-throw"
+    },
+    {
+      "id": "llf0aMz8eZ",
+      "to": "Monster",
+      "from": "CT Spawn",
+      "desc": "Stand at CT spawn, aim at sky above monster, left-click jump-throw"
+    },
+    {
+      "id": "EaPPLs012T",
+      "to": "Heaven",
+      "from": "Water",
+      "desc": "Stand in water, aim at heaven window edge, left-click jump-throw"
+    },
+    {
+      "id": "eCO7Vtzsti",
+      "to": "T Ramp",
+      "from": "A Main",
+      "desc": "Stand at A main exit, aim at top of T ramp wall, left-click"
+    },
+    {
+      "id": "g16IMY8nLM",
+      "to": "Bridge",
+      "from": "Water",
+      "desc": "Stand in water, aim at bridge support pillar, left-click jump-throw"
+    },
+    {
+      "id": "NNVnTxgCrM",
+      "to": "Barrels",
+      "from": "Short Tunnel",
+      "desc": "Stand in short tunnel, aim at barrel corner, left-click"
+    },
+    {
+      "id": "KDIW8gzk9u",
+      "to": "Dumpster",
+      "from": "Long",
+      "desc": "Stand at long, aim at dumpster top edge, left-click jump-throw"
+    },
+    {
+      "id": "CPVEFs8irq",
+      "to": "Truck",
+      "from": "Divider Bench",
+      "desc": "Stand at divider bench, aim at truck roof, left-click"
+    },
+    {
+      "id": "XXK0Lr7CNf",
+      "to": "Bank",
+      "from": "A Short",
+      "desc": "Stand at A short, aim at bank window, left-click jump-throw"
+    },
+    {
+      "id": "YsNXaYkg5B",
+      "to": "Pit",
+      "from": "Water",
+      "desc": "Stand in water, aim at pit entrance, left-click"
+    },
+    {
+      "id": "MsO4XkvJyn",
+      "to": "Heaven",
+      "from": "Water",
+      "desc": "Stand in water, aim at heaven roof, left-click jump-throw"
+    },
+    {
+      "id": "HgbYmEntUM",
+      "to": "Barrels",
+      "from": "Water",
+      "desc": "Stand in water, aim at barrels, left-click"
+    }
   ]
 }
