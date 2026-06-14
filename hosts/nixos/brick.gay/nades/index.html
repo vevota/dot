@@ -72,7 +72,7 @@ function renderNades(){
     media.appendChild(img);media.appendChild(pb);media.appendChild(vid);
     media.onclick=function(){openLightbox(n.id,currentMap);};
     const info=document.createElement("div");info.className="info";
-    info.innerHTML='<div class="from">'+n.from+'</div><div class="label">STAND HERE</div><div class="to">\u2192 '+n.to+'</div>';
+    info.innerHTML='<div class="to">'+n.to+'</div><div class="label">FROM</div><div class="from">'+n.from+'</div>';
     card.appendChild(media);card.appendChild(info);
     g.appendChild(card);
   }
