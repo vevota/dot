@@ -2,260 +2,260 @@
   "mirage": [
     {
       "id": "EHvVQ0Ebqm",
-      "from": "?",
-      "to": "?"
+      "from": "Tetris",
+      "to": "Ticket Booth"
     },
     {
       "id": "wsMc7skGQh",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "Top Mid"
     },
     {
       "id": "h4RLQbKgkO",
-      "from": "?",
-      "to": "?"
+      "from": "Top Mid",
+      "to": "Catwalk"
     },
     {
       "id": "I60PpERA4N",
-      "from": "?",
-      "to": "?"
+      "from": "Back Alley",
+      "to": "Market Window"
     },
     {
       "id": "6UrrcOsJSD",
-      "from": "?",
-      "to": "?"
+      "from": "A Ramp",
+      "to": "Ticket Booth"
     },
     {
       "id": "5NzRMI354j",
-      "from": "?",
-      "to": "?"
+      "from": "Tetris",
+      "to": "Jungle"
     },
     {
       "id": "UJiXtqvbkb",
-      "from": "?",
-      "to": "?"
+      "from": "Back Alley",
+      "to": "Market Door"
     }
   ],
   "dust2": [
     {
       "id": "epau9Q3Dll",
-      "from": "?",
-      "to": "?"
+      "from": "Lower Tunnels",
+      "to": "XBox"
     },
     {
       "id": "MrTSxptCeA",
-      "from": "?",
-      "to": "?"
+      "from": "CT Mid",
+      "to": "Bottom Mid"
     },
     {
       "id": "HupX3P0FUE",
-      "from": "?",
-      "to": "?"
+      "from": "Outside A Long",
+      "to": "Car"
     },
     {
       "id": "QUSiBuN0RC",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn Corner",
+      "to": "XBox"
     },
     {
       "id": "dBt2lcA3vc",
-      "from": "?",
-      "to": "?"
+      "from": "Long Doors",
+      "to": "A Cross"
     },
     {
       "id": "KuDym6tvW2",
-      "from": "?",
-      "to": "?"
+      "from": "A Long",
+      "to": "A Cross"
     },
     {
       "id": "pXWCQLmYhk",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "XBox"
     }
   ],
   "inferno": [
     {
       "id": "MrAFqNRIOT",
-      "from": "?",
-      "to": "?"
+      "from": "Banana",
+      "to": "CT"
     },
     {
       "id": "Fomlq5TPso",
-      "from": "?",
-      "to": "?"
+      "from": "Half-Wall",
+      "to": "Coffins"
     },
     {
       "id": "oDxbaepICU",
-      "from": "?",
-      "to": "?"
+      "from": "Alt Mid",
+      "to": "Arches"
     },
     {
       "id": "9LzHE8aRot",
-      "from": "?",
-      "to": "?"
+      "from": "Banana",
+      "to": "CT"
     },
     {
       "id": "a2ITuReCiS",
-      "from": "?",
-      "to": "?"
+      "from": "Car",
+      "to": "CT"
     },
     {
       "id": "xWSXzEwtxB",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "CT"
     },
     {
       "id": "qNO7ZhaDsF",
-      "from": "?",
-      "to": "?"
+      "from": "Banana",
+      "to": "B Site"
     }
   ],
   "nuke": [
     {
       "id": "Ox2V20EXl2",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "Secret Close"
     },
     {
       "id": "Sswwq7kpV9",
-      "from": "?",
-      "to": "?"
+      "from": "Under Silo",
+      "to": "Secret Far"
     },
     {
       "id": "faS2qYaA3o",
-      "from": "?",
-      "to": "?"
+      "from": "Outside T Spawn",
+      "to": "Secret Far"
     },
     {
       "id": "EsLX408n4d",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "Secret Far"
     },
     {
       "id": "l3koCgeoHZ",
-      "from": "?",
-      "to": "?"
+      "from": "Under Silo",
+      "to": "Garage"
     },
     {
       "id": "6T37K29Fos",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "Vent"
     },
     {
       "id": "Q9fOLapNdW",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "Vent"
     }
   ],
   "ancient": [
     {
       "id": "mhHNTLDnNw",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "Top Mid"
     },
     {
       "id": "05JJVnP8AP",
-      "from": "?",
-      "to": "?"
+      "from": "Outside A",
+      "to": "CT"
     },
     {
       "id": "T3Mseb88b9",
-      "from": "?",
-      "to": "?"
+      "from": "Ruins",
+      "to": "Back Alley"
     },
     {
       "id": "0JpsvFLFbE",
-      "from": "?",
-      "to": "?"
+      "from": "Outside A",
+      "to": "Donut Tunnel"
     },
     {
       "id": "jRgHHBZPeJ",
-      "from": "?",
-      "to": "?"
+      "from": "Outside A",
+      "to": "Temple"
     },
     {
       "id": "SHv86icIFy",
-      "from": "?",
-      "to": "?"
+      "from": "CT Spawn",
+      "to": "A Stairs"
     },
     {
       "id": "nQ0TRW2zEy",
-      "from": "?",
-      "to": "?"
+      "from": "Outside A",
+      "to": "Plat"
     }
   ],
   "anubis": [
     {
       "id": "RPRA6boGge",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "Top Mid"
     },
     {
       "id": "kmlXeKSDJM",
-      "from": "?",
-      "to": "?"
+      "from": "Water",
+      "to": "Heaven"
     },
     {
       "id": "0MzIjwXEIJ",
-      "from": "?",
-      "to": "?"
+      "from": "T Spawn",
+      "to": "EBox"
     },
     {
       "id": "ZQ0D2bZhk7",
-      "from": "?",
-      "to": "?"
+      "from": "Door",
+      "to": "Heaven"
     },
     {
       "id": "JbhR4dxPHd",
-      "from": "?",
-      "to": "?"
+      "from": "Water",
+      "to": "Heaven"
     },
     {
       "id": "aQBt4qCxLI",
-      "from": "?",
-      "to": "?"
+      "from": "T Upper",
+      "to": "Heaven"
     },
     {
       "id": "Qoj34RwWIE",
-      "from": "?",
-      "to": "?"
+      "from": "T Upper",
+      "to": "Connector"
     }
   ],
   "vertigo": [
     {
       "id": "kLpQfwtnrZ",
-      "from": "?",
-      "to": "?"
+      "from": "B Stairs",
+      "to": "EBox"
     },
     {
       "id": "LZ7w8nAhRU",
-      "from": "?",
-      "to": "?"
+      "from": "Ramp",
+      "to": "A Site"
     },
     {
       "id": "u2AcCDRYoM",
-      "from": "?",
-      "to": "?"
+      "from": "CT Mid",
+      "to": "A Ramp"
     },
     {
       "id": "T7wlpObMtB",
-      "from": "?",
-      "to": "?"
+      "from": "Heaven",
+      "to": "Top A Ramp"
     },
     {
       "id": "qMX7mv9E5v",
-      "from": "?",
-      "to": "?"
+      "from": "A Site",
+      "to": "Tarp"
     },
     {
       "id": "cOpgHeMF27",
-      "from": "?",
-      "to": "?"
+      "from": "Ramp",
+      "to": "A Site Right"
     },
     {
       "id": "ynNaNJ7Ga9",
-      "from": "?",
-      "to": "?"
+      "from": "Ramp",
+      "to": "A Site Left"
     }
   ]
 }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@ h1{color:#66FFFF;font-size:28px;text-align:center;margin-bottom:8px}
 .nade-card .info{padding:10px}
 .nade-card .info .from{color:#FFCC66;font-size:13px;font-weight:bold}
 .nade-card .info .to{color:#66FFFF;font-size:12px}
-.nade-card .info .arrow{color:#888;font-size:12px;margin:2px 0}
+.nade-card .info .label{color:#888;font-size:10px;margin:2px 0}
 </style>
 </head>
 <body>
@@ -38,7 +39,7 @@ h1{color:#66FFFF;font-size:28px;text-align:center;margin-bottom:8px}
 <video id="lbVideo" style="max-width:90vw;max-height:85vh" controls autoplay playsinline></video>
 </div>
 <script>
-const nadeData={"mirage":[{"id":"EHvVQ0Ebqm","from":"?","to":"?"},{"id":"wsMc7skGQh","from":"?","to":"?"},{"id":"h4RLQbKgkO","from":"?","to":"?"},{"id":"I60PpERA4N","from":"?","to":"?"},{"id":"6UrrcOsJSD","from":"?","to":"?"},{"id":"5NzRMI354j","from":"?","to":"?"},{"id":"UJiXtqvbkb","from":"?","to":"?"}],"dust2":[{"id":"epau9Q3Dll","from":"?","to":"?"},{"id":"MrTSxptCeA","from":"?","to":"?"},{"id":"HupX3P0FUE","from":"?","to":"?"},{"id":"QUSiBuN0RC","from":"?","to":"?"},{"id":"dBt2lcA3vc","from":"?","to":"?"},{"id":"KuDym6tvW2","from":"?","to":"?"},{"id":"pXWCQLmYhk","from":"?","to":"?"}],"inferno":[{"id":"MrAFqNRIOT","from":"?","to":"?"},{"id":"Fomlq5TPso","from":"?","to":"?"},{"id":"oDxbaepICU","from":"?","to":"?"},{"id":"9LzHE8aRot","from":"?","to":"?"},{"id":"a2ITuReCiS","from":"?","to":"?"},{"id":"xWSXzEwtxB","from":"?","to":"?"},{"id":"qNO7ZhaDsF","from":"?","to":"?"}],"nuke":[{"id":"Ox2V20EXl2","from":"?","to":"?"},{"id":"Sswwq7kpV9","from":"?","to":"?"},{"id":"faS2qYaA3o","from":"?","to":"?"},{"id":"EsLX408n4d","from":"?","to":"?"},{"id":"l3koCgeoHZ","from":"?","to":"?"},{"id":"6T37K29Fos","from":"?","to":"?"},{"id":"Q9fOLapNdW","from":"?","to":"?"}],"ancient":[{"id":"mhHNTLDnNw","from":"?","to":"?"},{"id":"05JJVnP8AP","from":"?","to":"?"},{"id":"T3Mseb88b9","from":"?","to":"?"},{"id":"0JpsvFLFbE","from":"?","to":"?"},{"id":"jRgHHBZPeJ","from":"?","to":"?"},{"id":"SHv86icIFy","from":"?","to":"?"},{"id":"nQ0TRW2zEy","from":"?","to":"?"}],"anubis":[{"id":"RPRA6boGge","from":"?","to":"?"},{"id":"kmlXeKSDJM","from":"?","to":"?"},{"id":"0MzIjwXEIJ","from":"?","to":"?"},{"id":"ZQ0D2bZhk7","from":"?","to":"?"},{"id":"JbhR4dxPHd","from":"?","to":"?"},{"id":"aQBt4qCxLI","from":"?","to":"?"},{"id":"Qoj34RwWIE","from":"?","to":"?"}],"vertigo":[{"id":"kLpQfwtnrZ","from":"?","to":"?"},{"id":"LZ7w8nAhRU","from":"?","to":"?"},{"id":"u2AcCDRYoM","from":"?","to":"?"},{"id":"T7wlpObMtB","from":"?","to":"?"},{"id":"qMX7mv9E5v","from":"?","to":"?"},{"id":"cOpgHeMF27","from":"?","to":"?"},{"id":"ynNaNJ7Ga9","from":"?","to":"?"}]};
+const nadeData={"mirage":[{"id":"EHvVQ0Ebqm","from":"Tetris","to":"Ticket Booth"},{"id":"wsMc7skGQh","from":"T Spawn","to":"Top Mid"},{"id":"h4RLQbKgkO","from":"Top Mid","to":"Catwalk"},{"id":"I60PpERA4N","from":"Back Alley","to":"Market Window"},{"id":"6UrrcOsJSD","from":"A Ramp","to":"Ticket Booth"},{"id":"5NzRMI354j","from":"Tetris","to":"Jungle"},{"id":"UJiXtqvbkb","from":"Back Alley","to":"Market Door"}],"dust2":[{"id":"epau9Q3Dll","from":"Lower Tunnels","to":"XBox"},{"id":"MrTSxptCeA","from":"CT Mid","to":"Bottom Mid"},{"id":"HupX3P0FUE","from":"Outside A Long","to":"Car"},{"id":"QUSiBuN0RC","from":"T Spawn Corner","to":"XBox"},{"id":"dBt2lcA3vc","from":"Long Doors","to":"A Cross"},{"id":"KuDym6tvW2","from":"A Long","to":"A Cross"},{"id":"pXWCQLmYhk","from":"T Spawn","to":"XBox"}],"inferno":[{"id":"MrAFqNRIOT","from":"Banana","to":"CT"},{"id":"Fomlq5TPso","from":"Half-Wall","to":"Coffins"},{"id":"oDxbaepICU","from":"Alt Mid","to":"Arches"},{"id":"9LzHE8aRot","from":"Banana","to":"CT"},{"id":"a2ITuReCiS","from":"Car","to":"CT"},{"id":"xWSXzEwtxB","from":"T Spawn","to":"CT"},{"id":"qNO7ZhaDsF","from":"Banana","to":"B Site"}],"nuke":[{"id":"Ox2V20EXl2","from":"T Spawn","to":"Secret Close"},{"id":"Sswwq7kpV9","from":"Under Silo","to":"Secret Far"},{"id":"faS2qYaA3o","from":"Outside T Spawn","to":"Secret Far"},{"id":"EsLX408n4d","from":"T Spawn","to":"Secret Far"},{"id":"l3koCgeoHZ","from":"Under Silo","to":"Garage"},{"id":"6T37K29Fos","from":"T Spawn","to":"Vent"},{"id":"Q9fOLapNdW","from":"T Spawn","to":"Vent"}],"ancient":[{"id":"mhHNTLDnNw","from":"T Spawn","to":"Top Mid"},{"id":"05JJVnP8AP","from":"Outside A","to":"CT"},{"id":"T3Mseb88b9","from":"Ruins","to":"Back Alley"},{"id":"0JpsvFLFbE","from":"Outside A","to":"Donut Tunnel"},{"id":"jRgHHBZPeJ","from":"Outside A","to":"Temple"},{"id":"SHv86icIFy","from":"CT Spawn","to":"A Stairs"},{"id":"nQ0TRW2zEy","from":"Outside A","to":"Plat"}],"anubis":[{"id":"RPRA6boGge","from":"T Spawn","to":"Top Mid"},{"id":"kmlXeKSDJM","from":"Water","to":"Heaven"},{"id":"0MzIjwXEIJ","from":"T Spawn","to":"EBox"},{"id":"ZQ0D2bZhk7","from":"Door","to":"Heaven"},{"id":"JbhR4dxPHd","from":"Water","to":"Heaven"},{"id":"aQBt4qCxLI","from":"T Upper","to":"Heaven"},{"id":"Qoj34RwWIE","from":"T Upper","to":"Connector"}],"vertigo":[{"id":"kLpQfwtnrZ","from":"B Stairs","to":"EBox"},{"id":"LZ7w8nAhRU","from":"Ramp","to":"A Site"},{"id":"u2AcCDRYoM","from":"CT Mid","to":"A Ramp"},{"id":"T7wlpObMtB","from":"Heaven","to":"Top A Ramp"},{"id":"qMX7mv9E5v","from":"A Site","to":"Tarp"},{"id":"cOpgHeMF27","from":"Ramp","to":"A Site Right"},{"id":"ynNaNJ7Ga9","from":"Ramp","to":"A Site Left"}]};
 const mapLabels={"mirage":"Mirage","dust2":"Dust II","inferno":"Inferno","nuke":"Nuke","ancient":"Ancient","anubis":"Anubis","vertigo":"Vertigo"};
 const mapKeys=Object.keys(nadeData);
 let currentMap="mirage";
@@ -71,7 +72,7 @@ function renderNades(){
     media.appendChild(img);media.appendChild(pb);media.appendChild(vid);
     media.onclick=function(){openLightbox(n.id,currentMap);};
     const info=document.createElement("div");info.className="info";
-    info.innerHTML='<div class="from">'+n.from+'</div><div class="arrow">\u2193 THROW FROM</div><div class="to">\u2192 '+n.to+'</div>';
+    info.innerHTML='<div class="from">'+n.from+'</div><div class="label">STAND HERE</div><div class="to">\u2192 '+n.to+'</div>';
     card.appendChild(media);card.appendChild(info);
     g.appendChild(card);
   }
