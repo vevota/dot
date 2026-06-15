@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48">
+  <defs>
+    <clipPath id="sphere">
+      <circle cx="32" cy="32" r="28"/>
+    </clipPath>
+    <style>
+      @keyframes spin { from { transform: translateX(-112px); } to { transform: translateX(0); } }
+      .globe { animation: spin 4s linear infinite; }
+    </style>
+  </defs>
+  <circle cx="32" cy="32" r="28" fill="#2244AA"/>
+  <g clip-path="url(#sphere)" class="globe">
+    <rect x="-112" y="0" width="112" height="64" fill="#22AA44" opacity="0.7"/>
+    <rect x="-80" y="15" width="30" height="20" fill="#22AA44" opacity="0.7" rx="5"/>
+    <rect x="-50" y="5" width="25" height="35" fill="#22AA44" opacity="0.7" rx="8"/>
+    <rect x="-70" y="38" width="20" height="15" fill="#22AA44" opacity="0.7" rx="4"/>
+    <rect x="-30" y="25" width="28" height="15" fill="#22AA44" opacity="0.7" rx="5"/>
+    <rect x-"10" y="10" width="20" height="18" fill="#22AA44" opacity="0.7" rx="6"/>
+    <rect x="-20" y="0" width="22" height="12" fill="#22AA44" opacity="0.7" rx="4"/>
+  </g>
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#4488FF" stroke-width="2"/>
+  <ellipse cx="32" cy="32" rx="28" ry="8" fill="none" stroke="#4488FF" stroke-width="0.5" opacity="0.3"/>
+</svg>
