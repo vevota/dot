@@ -4,73 +4,85 @@
       "id": "3sRuAaqnas",
       "from": "T Spawn",
       "to": "Mid Window",
-      "desc": "Stand at T spawn near boxes, aim at left edge of window frame, jump-throw"
+      "desc": "Stand at T spawn near boxes, aim at left edge of window frame, jump-throw",
+      "team": "t"
     },
     {
       "id": "azNiRzhJVG",
       "from": "T Roof",
       "to": "Jungle And Connector",
-      "desc": "Stand at T roof corner, aim at right edge of palace pillar, left-click stationary"
+      "desc": "Stand at T roof corner, aim at right edge of palace pillar, left-click stationary",
+      "team": "t"
     },
     {
       "id": "FmNaL1KYD4",
       "from": "A Ramp",
       "to": "Stairs",
-      "desc": "Stand against left wall at A ramp, aim at top-left corner of stairs cubby, left-click"
+      "desc": "Stand against left wall at A ramp, aim at top-left corner of stairs cubby, left-click",
+      "team": "t"
     },
     {
       "id": "6UrrcOsJSD",
       "from": "A Ramp",
       "to": "Ticket Booth",
-      "desc": "Stand behind ramp box, aim at dark mark on wall above, jump-throw"
+      "desc": "Stand behind ramp box, aim at dark mark on wall above, jump-throw",
+      "team": "t"
     },
     {
       "id": "I60PpERA4N",
       "from": "Back Alley",
       "to": "Market Window",
-      "desc": "Stand against wall outside market, aim at edge of window frame, jump-throw"
+      "desc": "Stand against wall outside market, aim at edge of window frame, jump-throw",
+      "team": "t"
     },
     {
       "id": "JZ6XtQiGhz",
       "from": "Back Alley",
       "to": "Bench",
-      "desc": "Stand at bottom of B apps stairs, aim at top-left corner of doorway, left-click"
+      "desc": "Stand at bottom of B apps stairs, aim at top-left corner of doorway, left-click",
+      "team": "t"
     },
     {
       "id": "MR4TqzEwYg",
       "from": "Back Alley",
       "to": "Right Arch",
-      "desc": "Same as bench smoke, aim at right edge of arch, left-click"
+      "desc": "Same as bench smoke, aim at right edge of arch, left-click",
+      "team": "t"
     },
     {
       "id": "gb1XEv9QbE",
       "from": "Apts Ramp",
       "to": "Bottom Connector",
-      "desc": "Stand at pillar in B apts ramp, align with lamp, jump-throw"
+      "desc": "Stand at pillar in B apts ramp, align with lamp, jump-throw",
+      "team": "t"
     },
     {
       "id": "wsMc7skGQh",
       "from": "T Spawn",
       "to": "Top Mid",
-      "desc": "Stand behind T spawn boxes, align with top of palace wall, left-click"
+      "desc": "Stand behind T spawn boxes, align with top of palace wall, left-click",
+      "team": "t"
     },
     {
       "id": "RiIimkK4X7",
       "from": "CT Spawn",
       "to": "Palace",
-      "desc": "Stand at edge of CT spawn, aim at left roof edge above palace, jump-throw"
+      "desc": "Stand at edge of CT spawn, aim at left roof edge above palace, jump-throw",
+      "team": "ct"
     },
     {
       "id": "Sskz7Ye3wy",
       "from": "Trash",
       "to": "B Apts",
-      "desc": "Stand at trash pile, aim at right edge of B apps doorway, left-click"
+      "desc": "Stand at trash pile, aim at right edge of B apps doorway, left-click",
+      "team": "ct"
     },
     {
       "id": "EcLXg7YIUo",
       "from": "B Short",
       "to": "Catwalk",
-      "desc": "Stand at B short, aim at top corner of catwalk railing, left-click"
+      "desc": "Stand at B short, aim at top corner of catwalk railing, left-click",
+      "team": "ct"
     }
   ],
   "dust2": [
@@ -78,73 +90,85 @@
       "id": "pXWCQLmYhk",
       "from": "T Spawn",
       "to": "XBox",
-      "desc": "Stand at right pillar in T spawn, aim at left edge of double doors, jump-throw"
+      "desc": "Stand at right pillar in T spawn, aim at left edge of double doors, jump-throw",
+      "team": "t"
     },
     {
       "id": "XMJVOfP5Ca",
       "from": "XBox",
       "to": "CT Spawn",
-      "desc": "Stand behind XBox on catwalk side, aim at top of CT spawn wall, left-click"
+      "desc": "Stand behind XBox on catwalk side, aim at top of CT spawn wall, left-click",
+      "team": "t"
     },
     {
       "id": "IkLU41rFxM",
       "from": "XBox",
       "to": "CT Spawn Boost",
-      "desc": "Same spot, aim slightly higher than CT spawn smoke, jump-throw"
+      "desc": "Same spot, aim slightly higher than CT spawn smoke, jump-throw",
+      "team": "t"
     },
     {
       "id": "dBt2lcA3vc",
       "from": "Long Doors",
       "to": "A Cross",
-      "desc": "Stand inside long doors, aim at bottom edge of cloud on wall, left-click running"
+      "desc": "Stand inside long doors, aim at bottom edge of cloud on wall, left-click running",
+      "team": "t"
     },
     {
       "id": "bIBJix167W",
       "from": "Short",
       "to": "Short",
-      "desc": "Stand at short corner, aim at tip of A site box, left-click"
+      "desc": "Stand at short corner, aim at tip of A site box, left-click",
+      "team": "t"
     },
     {
       "id": "7KwvY4vQcC",
       "from": "Upper Tunnels",
       "to": "B Doors",
-      "desc": "Stand at tunnel exit, align top of door frame with sky, jump-throw"
+      "desc": "Stand at tunnel exit, align top of door frame with sky, jump-throw",
+      "team": "t"
     },
     {
       "id": "MtLiZmb0gQ",
       "from": "Outside B Tunnels",
       "to": "B Window",
-      "desc": "Same tunnel exit, aim at right edge of B window, jump-throw"
+      "desc": "Same tunnel exit, aim at right edge of B window, jump-throw",
+      "team": "t"
     },
     {
       "id": "Hmj3j6hIlI",
       "from": "Elevator",
       "to": "Long Doors",
-      "desc": "Stand on elevator pad, aim at top-right of long doors, jump-throw"
+      "desc": "Stand on elevator pad, aim at top-right of long doors, jump-throw",
+      "team": "ct"
     },
     {
       "id": "6dZH5zTBd9",
       "from": "CT Mid",
       "to": "B Tunnels",
-      "desc": "Stand at CT mid, aim at top edge of tunnel entrance, jump-throw"
+      "desc": "Stand at CT mid, aim at top edge of tunnel entrance, jump-throw",
+      "team": "ct"
     },
     {
       "id": "U4Lv2Xi4iS",
       "from": "CT Spawn",
       "to": "Mid Doors",
-      "desc": "Stand at CT spawn wall, aim at top of CT mid ramp wall, left-click"
+      "desc": "Stand at CT spawn wall, aim at top of CT mid ramp wall, left-click",
+      "team": "ct"
     },
     {
       "id": "MrTSxptCeA",
       "from": "CT Mid",
       "to": "Bottom Mid",
-      "desc": "Stand on boost box in CT mid, aim at lower gap of mid doors, left-click"
+      "desc": "Stand on boost box in CT mid, aim at lower gap of mid doors, left-click",
+      "team": "ct"
     },
     {
       "id": "2dOJ9MUZUf",
       "from": "CT Spawn",
       "to": "CT Mid",
-      "desc": "Stand at CT spawn, aim at sky above CT mid ramp, left-click"
+      "desc": "Stand at CT spawn, aim at sky above CT mid ramp, left-click",
+      "team": "ct"
     }
   ],
   "inferno": [
@@ -152,73 +176,85 @@
       "id": "VQ8AtRXPRN",
       "from": "Alt Mid",
       "to": "Moto",
-      "desc": "Stand at palm tree in alt-mid, align with roof line, jump-throw"
+      "desc": "Stand at palm tree in alt-mid, align with roof line, jump-throw",
+      "team": "t"
     },
     {
       "id": "oDxbaepICU",
       "from": "Alt Mid",
       "to": "Arches",
-      "desc": "Same palm tree position, aim at left edge of arches, jump-throw"
+      "desc": "Same palm tree position, aim at left edge of arches, jump-throw",
+      "team": "t"
     },
     {
       "id": "mTMBhbR0iR",
       "from": "Alt Mid",
       "to": "Pit",
-      "desc": "Same palm tree, aim between two buildings above wall, jump-throw"
+      "desc": "Same palm tree, aim between two buildings above wall, jump-throw",
+      "team": "t"
     },
     {
       "id": "M8clAgezGq",
       "from": "Alt Mid",
       "to": "Boiler",
-      "desc": "Stand under alt-mid window, aim at top of boiler roof, left-click"
+      "desc": "Stand under alt-mid window, aim at top of boiler roof, left-click",
+      "team": "t"
     },
     {
       "id": "MrAFqNRIOT",
       "from": "Banana",
       "to": "CT",
-      "desc": "Stand behind car in banana, aim at top of CT box, left-click"
+      "desc": "Stand behind car in banana, aim at top of CT box, left-click",
+      "team": "t"
     },
     {
       "id": "Fomlq5TPso",
       "from": "Half-Wall",
       "to": "Coffins",
-      "desc": "Stand at half-wall, align with corner of coffins, jump-throw"
+      "desc": "Stand at half-wall, align with corner of coffins, jump-throw",
+      "team": "t"
     },
     {
       "id": "5qWZ8MUYZh",
       "from": "Mid",
       "to": "Arches",
-      "desc": "Stand at bottom of mid, align with arch corner, jump-throw running"
+      "desc": "Stand at bottom of mid, align with arch corner, jump-throw running",
+      "team": "t"
     },
     {
       "id": "AWr3PkVWhL",
       "from": "CT Spawn",
       "to": "Top Mid",
-      "desc": "Stand at right wall by CT spawn, aim at tree line above top mid, jump-throw"
+      "desc": "Stand at right wall by CT spawn, aim at tree line above top mid, jump-throw",
+      "team": "ct"
     },
     {
       "id": "0vUqr9Rn5a",
       "from": "Pit",
       "to": "Moto",
-      "desc": "Stand in pit, aim at top edge of moto roof, jump-throw both click"
+      "desc": "Stand in pit, aim at top edge of moto roof, jump-throw both click",
+      "team": "any"
     },
     {
       "id": "M2Rp3LbcAE",
       "from": "Moto",
       "to": "B Entrance",
-      "desc": "Stand near CT spawn B entrance, aim at top of B door frame, left-click"
+      "desc": "Stand near CT spawn B entrance, aim at top of B door frame, left-click",
+      "team": "ct"
     },
     {
       "id": "82tBqZEL7f",
       "from": "CT Spawn",
       "to": "Half Wall",
-      "desc": "Stand against CT spawn right wall, aim at lamp, jump-throw"
+      "desc": "Stand against CT spawn right wall, aim at lamp, jump-throw",
+      "team": "ct"
     },
     {
       "id": "cNz4v6tVZQ",
       "from": "Arch",
       "to": "Front Graveyard",
-      "desc": "Stand at arch on A site, aim at top of graveyard wall, jump-throw"
+      "desc": "Stand at arch on A site, aim at top of graveyard wall, jump-throw",
+      "team": "any"
     }
   ],
   "nuke": [
@@ -226,73 +262,85 @@
       "id": "EO2jbfxk5s",
       "from": "T Roof",
       "to": "A Main",
-      "desc": "Stand on T roof near silo, aim at sky above A main roof edge, jump-throw"
+      "desc": "Stand on T roof near silo, aim at sky above A main roof edge, jump-throw",
+      "team": "t"
     },
     {
       "id": "GnMSqEPcto",
       "from": "Trophy",
       "to": "Ramp",
-      "desc": "Stand in trophy room doorway, aim at top of ramp wall, left-click running"
+      "desc": "Stand in trophy room doorway, aim at top of ramp wall, left-click running",
+      "team": "t"
     },
     {
       "id": "Ox2V20EXl2",
       "from": "T Spawn",
       "to": "Secret Close",
-      "desc": "Stand at T spawn left wall, align with radio tower, jump-throw"
+      "desc": "Stand at T spawn left wall, align with radio tower, jump-throw",
+      "team": "t"
     },
     {
       "id": "faS2qYaA3o",
       "from": "Outside T Spawn",
       "to": "Secret Far",
-      "desc": "Stand outside garage door, align with roof edge, jump-throw"
+      "desc": "Stand outside garage door, align with roof edge, jump-throw",
+      "team": "t"
     },
     {
       "id": "0qZP5UcuWj",
       "from": "Outside T Spawn",
       "to": "Garage",
-      "desc": "Stand outside T spawn, aim at vent above garage doors, jump-throw"
+      "desc": "Stand outside T spawn, aim at vent above garage doors, jump-throw",
+      "team": "t"
     },
     {
       "id": "QefmQzSwxJ",
       "from": "Heaven",
       "to": "Squeaky",
-      "desc": "Stand in heaven, aim at squeaky door frame upper edge, left-click"
+      "desc": "Stand in heaven, aim at squeaky door frame upper edge, left-click",
+      "team": "ct"
     },
     {
       "id": "FHo8HsdYw3",
       "from": "B Ramp",
       "to": "Double Doors",
-      "desc": "Stand at mid-ramp, aim at gap above double doors, left-click running"
+      "desc": "Stand at mid-ramp, aim at gap above double doors, left-click running",
+      "team": "ct"
     },
     {
       "id": "SeoQHvk150",
       "from": "Under Silo",
       "to": "T Red",
-      "desc": "Stand under silo, aim at T red wall edge, left-click running"
+      "desc": "Stand under silo, aim at T red wall edge, left-click running",
+      "team": "t"
     },
     {
       "id": "JDCgnyYtib",
       "from": "CT Spawn",
       "to": "Top Silo",
-      "desc": "Stand at CT spawn, aim at top of silo, jump-throw"
+      "desc": "Stand at CT spawn, aim at top of silo, jump-throw",
+      "team": "ct"
     },
     {
       "id": "EO2jbfxk5s",
       "from": "T Roof",
       "to": "A Main",
-      "desc": "Stand on T roof near hut, aim at roof edge of A main, jump-throw"
+      "desc": "Stand on T roof near hut, aim at roof edge of A main, jump-throw",
+      "team": "t"
     },
     {
       "id": "ZcYGFCKa39",
       "from": "Silo",
       "to": "Heaven",
-      "desc": "Stand at silo, aim at heaven window edge, jump-throw"
+      "desc": "Stand at silo, aim at heaven window edge, jump-throw",
+      "team": "t"
     },
     {
       "id": "GnMSqEPcto",
       "from": "Trophy",
       "to": "Ramp",
-      "desc": "Stand on T roof silo side, aim at sky above ramp entrance, jump-throw"
+      "desc": "Stand on T roof silo side, aim at sky above ramp entrance, jump-throw",
+      "team": "t"
     }
   ],
   "ancient": [
@@ -300,73 +348,85 @@
       "id": "mhHNTLDnNw",
       "from": "T Spawn",
       "to": "Top Mid",
-      "desc": "Stand at T spawn right wall, align with tree, jump-throw"
+      "desc": "Stand at T spawn right wall, align with tree, jump-throw",
+      "team": "t"
     },
     {
       "id": "05JJVnP8AP",
       "from": "Outside A",
       "to": "CT",
-      "desc": "Stand just outside A main, aim at top-left corner of CT box, jump-throw"
+      "desc": "Stand just outside A main, aim at top-left corner of CT box, jump-throw",
+      "team": "t"
     },
     {
       "id": "0JpsvFLFbE",
       "from": "Outside A",
       "to": "Donut Tunnel",
-      "desc": "Same position, aim at rock above donut tunnel, jump-throw"
+      "desc": "Same position, aim at rock above donut tunnel, jump-throw",
+      "team": "t"
     },
     {
       "id": "jRgHHBZPeJ",
       "from": "Outside A",
       "to": "Temple",
-      "desc": "Stand against left wall outside A, aim at temple roof peak, jump-throw"
+      "desc": "Stand against left wall outside A, aim at temple roof peak, jump-throw",
+      "team": "t"
     },
     {
       "id": "4RX6fnru6x",
       "from": "T Mid",
       "to": "Donut",
-      "desc": "Stand at T mid donut entrance, aim at top of donut arch, left-click"
+      "desc": "Stand at T mid donut entrance, aim at top of donut arch, left-click",
+      "team": "t"
     },
     {
       "id": "T3Mseb88b9",
       "from": "Ruins",
       "to": "Back Alley",
-      "desc": "Stand on corner box in ruins, aim at B alley wall top, jump-throw"
+      "desc": "Stand on corner box in ruins, aim at B alley wall top, jump-throw",
+      "team": "t"
     },
     {
       "id": "8Crp5Fa7w0",
       "from": "Ruins",
       "to": "B Alley",
-      "desc": "Same ruins corner box, aim at right edge of B site entrance, jump-throw"
+      "desc": "Same ruins corner box, aim at right edge of B site entrance, jump-throw",
+      "team": "t"
     },
     {
       "id": "VUZHW05YXm",
       "from": "Big Box",
       "to": "A Main",
-      "desc": "Stand behind big box on A, aim at top of A main gate, left-click"
+      "desc": "Stand behind big box on A, aim at top of A main gate, left-click",
+      "team": "ct"
     },
     {
       "id": "SHv86icIFy",
       "from": "CT Spawn",
       "to": "A Stairs",
-      "desc": "Stand at CT spawn pillar, aim at sky above A stairs, jump-throw"
+      "desc": "Stand at CT spawn pillar, aim at sky above A stairs, jump-throw",
+      "team": "ct"
     },
     {
       "id": "epkiyQGoi3",
       "from": "CT Spawn",
       "to": "B Ramp",
-      "desc": "Stand at elevator in CT spawn, aim at ramp roof edge, jump-throw"
+      "desc": "Stand at elevator in CT spawn, aim at ramp roof edge, jump-throw",
+      "team": "ct"
     },
     {
       "id": "6XV43iP8Ov",
       "from": "B Site",
       "to": "T Upper",
-      "desc": "Stand under B site pillar, aim at T upper gap, left-click walking"
+      "desc": "Stand under B site pillar, aim at T upper gap, left-click walking",
+      "team": "ct"
     },
     {
       "id": "8lGFrrndCd",
       "from": "Top Mid",
       "to": "Elbow",
-      "desc": "Stand behind mid pillar, aim at elbow wall corner, left-click"
+      "desc": "Stand behind mid pillar, aim at elbow wall corner, left-click",
+      "team": "ct"
     }
   ],
   "anubis": [
@@ -374,73 +434,85 @@
       "id": "RPRA6boGge",
       "from": "T Spawn",
       "to": "Top Mid",
-      "desc": "Stand at left wall in T spawn, align with mid arch, jump-throw"
+      "desc": "Stand at left wall in T spawn, align with mid arch, jump-throw",
+      "team": "t"
     },
     {
       "id": "0MzIjwXEIJ",
       "from": "T Spawn",
       "to": "EBox",
-      "desc": "Stand at bridge side of T spawn, aim at canal roof edge, jump-throw"
+      "desc": "Stand at bridge side of T spawn, aim at canal roof edge, jump-throw",
+      "team": "t"
     },
     {
       "id": "kmlXeKSDJM",
       "from": "Water",
       "to": "Heaven",
-      "desc": "Stand in water in A main, aim at heaven window, jump-throw"
+      "desc": "Stand in water in A main, aim at heaven window, jump-throw",
+      "team": "t"
     },
     {
       "id": "9m7ZJDVzDW",
       "from": "Water",
       "to": "Platform",
-      "desc": "Same water spot, aim at right edge of platform, jump-throw"
+      "desc": "Same water spot, aim at right edge of platform, jump-throw",
+      "team": "t"
     },
     {
       "id": "i0V3IGxV72",
       "from": "CT Spawn",
       "to": "A Main",
-      "desc": "Stand at CT spawn stairs, aim at A main gate top, jump-throw"
+      "desc": "Stand at CT spawn stairs, aim at A main gate top, jump-throw",
+      "team": "ct"
     },
     {
       "id": "OQStoSa2V5",
       "from": "Ruins",
       "to": "EBox",
-      "desc": "Stand in B long ruins, aim at EBox top corner, left-click"
+      "desc": "Stand in B long ruins, aim at EBox top corner, left-click",
+      "team": "t"
     },
     {
       "id": "YOkVxnONtW",
       "from": "Ruins",
       "to": "Back Site",
-      "desc": "Same ruins position, aim at back-site corner, jump-throw"
+      "desc": "Same ruins position, aim at back-site corner, jump-throw",
+      "team": "t"
     },
     {
       "id": "lhSKBRkXS1",
       "from": "Ruins",
       "to": "B Site",
-      "desc": "Same ruins position, aim at center B area, jump-throw"
+      "desc": "Same ruins position, aim at center B area, jump-throw",
+      "team": "t"
     },
     {
       "id": "bfJHfp6fMc",
       "from": "CT Spawn",
       "to": "B Main",
-      "desc": "Stand at elevator side of CT spawn, aim at sky above B main, jump-throw"
+      "desc": "Stand at elevator side of CT spawn, aim at sky above B main, jump-throw",
+      "team": "ct"
     },
     {
       "id": "YJNUQ1gNxc",
       "from": "Mid",
       "to": "Bridge",
-      "desc": "Stand under mid bridge, aim at bottom edge of bridge, left-click"
+      "desc": "Stand under mid bridge, aim at bottom edge of bridge, left-click",
+      "team": "ct"
     },
     {
       "id": "y4RgwsxY6Q",
       "from": "CT Spawn",
       "to": "Bridge",
-      "desc": "Stand at CT spawn double doors, aim at bridge roof, jump-throw"
+      "desc": "Stand at CT spawn double doors, aim at bridge roof, jump-throw",
+      "team": "ct"
     },
     {
       "id": "Qoj34RwWIE",
       "from": "T Upper",
       "to": "Connector",
-      "desc": "Stand at T upper, aim at connector entrance, left-click"
+      "desc": "Stand at T upper, aim at connector entrance, left-click",
+      "team": "t"
     }
   ],
   "vertigo": [
@@ -448,73 +520,85 @@
       "id": "LZ7w8nAhRU",
       "from": "Ramp",
       "to": "A Site",
-      "desc": "Stand at bottom of A ramp stairs, aim at sky above default, jump-throw walking"
+      "desc": "Stand at bottom of A ramp stairs, aim at sky above default, jump-throw walking",
+      "team": "t"
     },
     {
       "id": "EkYjo3n3Dj",
       "from": "Tarp",
       "to": "A Entry",
-      "desc": "Stand behind tarp, aim at top of ramp entry, jump-throw"
+      "desc": "Stand behind tarp, aim at top of ramp entry, jump-throw",
+      "team": "t"
     },
     {
       "id": "p4Sgmzaaw1",
       "from": "Ramp",
       "to": "Sniper's Nest",
-      "desc": "Stand mid-ramp, aim at nest window top, left-click"
+      "desc": "Stand mid-ramp, aim at nest window top, left-click",
+      "team": "t"
     },
     {
       "id": "kLpQfwtnrZ",
       "from": "B Stairs",
       "to": "EBox",
-      "desc": "Stand at B stairs exit, aim at EBox top, left-click"
+      "desc": "Stand at B stairs exit, aim at EBox top, left-click",
+      "team": "t"
     },
     {
       "id": "7i9hAxSqdw",
       "from": "Stairs",
       "to": "Generator Left",
-      "desc": "Same B stairs, aim at left side of generator, jump-throw crouched"
+      "desc": "Same B stairs, aim at left side of generator, jump-throw crouched",
+      "team": "t"
     },
     {
       "id": "PQ1pgZ84Kb",
       "from": "Stairs",
       "to": "B Cross",
-      "desc": "Same B stairs, aim at cross/connector opening, left-click"
+      "desc": "Same B stairs, aim at cross/connector opening, left-click",
+      "team": "t"
     },
     {
       "id": "eFNgTkYBaM",
       "from": "Stairs",
       "to": "B Headshot",
-      "desc": "Same B stairs, aim at headshot box area, left-click"
+      "desc": "Same B stairs, aim at headshot box area, left-click",
+      "team": "t"
     },
     {
       "id": "IeKwajySMF",
       "from": "Mid",
       "to": "B Connector",
-      "desc": "Stand at T mid ramps, aim at B connector door top, left-click"
+      "desc": "Stand at T mid ramps, aim at B connector door top, left-click",
+      "team": "t"
     },
     {
       "id": "MdynVcVs2e",
       "from": "Mid",
       "to": "Top Mid",
-      "desc": "Stand in T mid, aim at sky above top mid, jump-throw running"
+      "desc": "Stand in T mid, aim at sky above top mid, jump-throw running",
+      "team": "t"
     },
     {
       "id": "i7KNkUQ8kz",
       "from": "Mid",
       "to": "CT",
-      "desc": "Stand at T mid ramps, aim at CT wall corner, left-click"
+      "desc": "Stand at T mid ramps, aim at CT wall corner, left-click",
+      "team": "t"
     },
     {
       "id": "u2AcCDRYoM",
       "from": "CT Mid",
       "to": "A Ramp",
-      "desc": "Stand at CT mid elevator, aim at top of A ramp, left-click running"
+      "desc": "Stand at CT mid elevator, aim at top of A ramp, left-click running",
+      "team": "ct"
     },
     {
       "id": "oUEmuLqsn5",
       "from": "CT Spawn",
       "to": "B Main",
-      "desc": "Stand at B connector entrance, aim at B main doorway top, left-click"
+      "desc": "Stand at B connector entrance, aim at B main doorway top, left-click",
+      "team": "ct"
     }
   ],
   "overpass": [
@@ -522,73 +606,85 @@
       "id": "x4raBj1eU8",
       "to": "Dumpster",
       "from": "Divider Bench",
-      "desc": "Stand at divider bench, aim at tree branch above dumpster, left-click jump-throw"
+      "desc": "Stand at divider bench, aim at tree branch above dumpster, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "llf0aMz8eZ",
       "to": "Monster",
       "from": "CT Spawn",
-      "desc": "Stand at CT spawn, aim at sky above monster, left-click jump-throw"
+      "desc": "Stand at CT spawn, aim at sky above monster, left-click jump-throw",
+      "team": "ct"
     },
     {
       "id": "EaPPLs012T",
       "to": "Heaven",
       "from": "Water",
-      "desc": "Stand in water, aim at heaven window edge, left-click jump-throw"
+      "desc": "Stand in water, aim at heaven window edge, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "eCO7Vtzsti",
       "to": "T Ramp",
       "from": "A Main",
-      "desc": "Stand at A main exit, aim at top of T ramp wall, left-click"
+      "desc": "Stand at A main exit, aim at top of T ramp wall, left-click",
+      "team": "ct"
     },
     {
       "id": "g16IMY8nLM",
       "to": "Bridge",
       "from": "Water",
-      "desc": "Stand in water, aim at bridge support pillar, left-click jump-throw"
+      "desc": "Stand in water, aim at bridge support pillar, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "NNVnTxgCrM",
       "to": "Barrels",
       "from": "Short Tunnel",
-      "desc": "Stand in short tunnel, aim at barrel corner, left-click"
+      "desc": "Stand in short tunnel, aim at barrel corner, left-click",
+      "team": "t"
     },
     {
       "id": "KDIW8gzk9u",
       "to": "Dumpster",
       "from": "Long",
-      "desc": "Stand at long, aim at dumpster top edge, left-click jump-throw"
+      "desc": "Stand at long, aim at dumpster top edge, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "CPVEFs8irq",
       "to": "Truck",
       "from": "Divider Bench",
-      "desc": "Stand at divider bench, aim at truck roof, left-click"
+      "desc": "Stand at divider bench, aim at truck roof, left-click",
+      "team": "t"
     },
     {
       "id": "XXK0Lr7CNf",
       "to": "Bank",
       "from": "A Short",
-      "desc": "Stand at A short, aim at bank window, left-click jump-throw"
+      "desc": "Stand at A short, aim at bank window, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "YsNXaYkg5B",
       "to": "Pit",
       "from": "Water",
-      "desc": "Stand in water, aim at pit entrance, left-click"
+      "desc": "Stand in water, aim at pit entrance, left-click",
+      "team": "t"
     },
     {
       "id": "MsO4XkvJyn",
       "to": "Heaven",
       "from": "Water",
-      "desc": "Stand in water, aim at heaven roof, left-click jump-throw"
+      "desc": "Stand in water, aim at heaven roof, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "HgbYmEntUM",
       "to": "Barrels",
       "from": "Water",
-      "desc": "Stand in water, aim at barrels, left-click"
+      "desc": "Stand in water, aim at barrels, left-click",
+      "team": "t"
     }
   ],
   "train": [
@@ -596,73 +692,85 @@
       "id": "EeLgT4GxlF",
       "from": "Outside A Main",
       "to": "Sandwich",
-      "desc": "Stand at Outside A Main, aim at top of Sandwich area, left-click jump-throw"
+      "desc": "Stand at Outside A Main, aim at top of Sandwich area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "6nptB4NQqY",
       "from": "Dumpster",
       "to": "Front Red",
-      "desc": "Stand at Dumpster, aim at top of Front Red area, left-click jump-throw"
+      "desc": "Stand at Dumpster, aim at top of Front Red area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "LkxHCz8FFD",
       "from": "Dumpster",
       "to": "Popdog",
-      "desc": "Stand at Dumpster, aim at top of Popdog area, left-click jump-throw"
+      "desc": "Stand at Dumpster, aim at top of Popdog area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "3XOLKX9E2S",
       "from": "Dumpster",
       "to": "Connector",
-      "desc": "Stand at Dumpster, aim at top of Connector area, left-click jump-throw"
+      "desc": "Stand at Dumpster, aim at top of Connector area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "f1n6wv2eh4",
       "from": "Halls",
       "to": "Connector",
-      "desc": "Stand at Halls, aim at top of Connector area, left-click jump-throw"
+      "desc": "Stand at Halls, aim at top of Connector area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "5kw3aEdpF8",
       "from": "Halls",
       "to": "Left Bomb",
-      "desc": "Stand at Halls, aim at top of Left Bomb area, left-click jump-throw"
+      "desc": "Stand at Halls, aim at top of Left Bomb area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "gQgtwOvere",
       "from": "Halls",
       "to": "Left Bomb",
-      "desc": "Stand at Halls, aim at top of Left Bomb area, left-click jump-throw"
+      "desc": "Stand at Halls, aim at top of Left Bomb area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "BhiuxHzEEh",
       "from": "Outside T Spawn",
       "to": "Connector",
-      "desc": "Stand at Outside T Spawn, aim at top of Connector area, left-click jump-throw"
+      "desc": "Stand at Outside T Spawn, aim at top of Connector area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "peNzpp2c5I",
       "from": "T Spawn",
       "to": "Camera",
-      "desc": "Stand at T Spawn, aim at top of Camera area, left-click jump-throw"
+      "desc": "Stand at T Spawn, aim at top of Camera area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "dxAHFrffrr",
       "from": "T Spawn",
       "to": "Connector",
-      "desc": "Stand at T Spawn, aim at top of Connector area, left-click jump-throw"
+      "desc": "Stand at T Spawn, aim at top of Connector area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "5dw9Pi4nqF",
       "from": "Radio",
       "to": "Ebox",
-      "desc": "Stand at Radio, aim at top of Ebox area, left-click jump-throw"
+      "desc": "Stand at Radio, aim at top of Ebox area, left-click jump-throw",
+      "team": "t"
     },
     {
       "id": "4b9WtqfjUq",
       "from": "Outside T Spawn",
       "to": "Popdog",
-      "desc": "Stand at Outside T Spawn, aim at top of Popdog area, left-click jump-throw"
+      "desc": "Stand at Outside T Spawn, aim at top of Popdog area, left-click jump-throw",
+      "team": "t"
     }
   ]
 }
