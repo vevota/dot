@@ -772,5 +772,263 @@
       "desc": "Stand at Outside T Spawn, aim at top of Popdog area, left-click jump-throw",
       "team": "t"
     }
+  ],
+  "cache": [
+    {
+      "id": "cLA5HHVtEQ",
+      "from": "B Halls",
+      "to": "B Main",
+      "team": "t",
+      "desc": "Stand at B Halls, aim at top of B Main area, left-click jump-throw"
+    },
+    {
+      "id": "ORDvnr5ctw",
+      "from": "Sun Room",
+      "to": "CT",
+      "team": "t",
+      "desc": "Stand at Sun Room, aim at top of CT area, left-click jump-throw"
+    },
+    {
+      "id": "S08ZVVqf2I",
+      "from": "Quad",
+      "to": "A Main",
+      "team": "ct",
+      "desc": "Stand at Quad, aim at top of A Main area, left-click jump-throw"
+    },
+    {
+      "id": "AnS1KivT8R",
+      "from": "Connector",
+      "to": "Garage",
+      "team": "ct",
+      "desc": "Stand at Connector, aim at top of Garage area, left-click jump-throw"
+    },
+    {
+      "id": "jGQQKaFTMo",
+      "from": "Heaven",
+      "to": "B Main",
+      "team": "ct",
+      "desc": "Stand at Heaven, aim at top of B Main area, left-click jump-throw"
+    },
+    {
+      "id": "Bm0pxctIts",
+      "from": "Outside Squeaky",
+      "to": "Forklift",
+      "team": "t",
+      "desc": "Stand at Outside Squeaky, aim at top of Forklift area, left-click jump-throw"
+    },
+    {
+      "id": "mMK97AyqvZ",
+      "from": "Outside Squeaky",
+      "to": "Back A Site",
+      "team": "t",
+      "desc": "Stand at Outside Squeaky, aim at top of Back A Site area, left-click jump-throw"
+    },
+    {
+      "id": "Q2aaUdfSnO",
+      "from": "Garage",
+      "to": "Left Mid",
+      "team": "any",
+      "desc": "Stand at Garage, aim at top of Left Mid area, left-click jump-throw"
+    },
+    {
+      "id": "55kRlH53et",
+      "from": "A Main",
+      "to": "Forklift",
+      "team": "t",
+      "desc": "Stand at A Main, aim at top of Forklift area, left-click jump-throw"
+    },
+    {
+      "id": "B5bCYxZUEW",
+      "from": "Truck",
+      "to": "A Main",
+      "team": "ct",
+      "desc": "Stand at Truck, aim at top of A Main area, left-click jump-throw"
+    },
+    {
+      "id": "0CRKYU9cDw",
+      "from": "Garage",
+      "to": "Right Mid",
+      "team": "t",
+      "desc": "Stand at Garage, aim at top of Right Mid area, left-click jump-throw"
+    },
+    {
+      "id": "IAUCaCQh6J",
+      "from": "T Spawn",
+      "to": "Connector",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of Connector area, left-click jump-throw"
+    }
+  ],
+  "thera": [
+    {
+      "id": "nTr2Ala9Rk",
+      "from": "T Spawn",
+      "to": "Window",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of Window area, left-click jump-throw"
+    },
+    {
+      "id": "HIonZJN4Pt",
+      "from": "T Spawn",
+      "to": "B Doors",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of B Doors area, left-click jump-throw"
+    },
+    {
+      "id": "WaYSUIaqDK",
+      "from": "T Spawn",
+      "to": "Window",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of Window area, left-click jump-throw"
+    },
+    {
+      "id": "ZEqSSR6BzE",
+      "from": "Outside B Tunnel",
+      "to": "B Ramp",
+      "team": "t",
+      "desc": "Stand at Outside B Tunnel, aim at top of B Ramp area, left-click jump-throw"
+    },
+    {
+      "id": "vfxmsWLKkx",
+      "from": "Outside B Tunnel",
+      "to": "B Stairs",
+      "team": "t",
+      "desc": "Stand at Outside B Tunnel, aim at top of B Stairs area, left-click jump-throw"
+    },
+    {
+      "id": "P29UBGN1hM",
+      "from": "Outside A",
+      "to": "Piano",
+      "team": "t",
+      "desc": "Stand at Outside A, aim at top of Piano area, left-click jump-throw"
+    },
+    {
+      "id": "2Y5koJYBBV",
+      "from": "Outside A",
+      "to": "CT",
+      "team": "t",
+      "desc": "Stand at Outside A, aim at top of CT area, left-click jump-throw"
+    },
+    {
+      "id": "f295MK7o4Q",
+      "from": "Outside A",
+      "to": "A Doors",
+      "team": "t",
+      "desc": "Stand at Outside A, aim at top of A Doors area, left-click jump-throw"
+    },
+    {
+      "id": "RYqIDW9T0H",
+      "from": "T Spawn",
+      "to": "A Conn",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of A Conn area, left-click jump-throw"
+    },
+    {
+      "id": "o6HG3t72QQ",
+      "from": "T Spawn",
+      "to": "A Conn",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of A Conn area, left-click jump-throw"
+    },
+    {
+      "id": "FkgebdA9zv",
+      "from": "Outside A",
+      "to": "CT",
+      "team": "t",
+      "desc": "Stand at Outside A, aim at top of CT area, left-click jump-throw"
+    },
+    {
+      "id": "fTflKY5I2J",
+      "from": "Outside A",
+      "to": "Z",
+      "team": "t",
+      "desc": "Stand at Outside A, aim at top of Z area, left-click jump-throw"
+    }
+  ],
+  "mills": [
+    {
+      "id": "QvjhP05BlQ",
+      "from": "T Spawn",
+      "to": "Wine",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of Wine area, left-click jump-throw"
+    },
+    {
+      "id": "INZtLXSzvU",
+      "from": "T Spawn",
+      "to": "Top Mid",
+      "team": "t",
+      "desc": "Stand at T Spawn, aim at top of Top Mid area, left-click jump-throw"
+    },
+    {
+      "id": "uK0LGstQxR",
+      "from": "Hell",
+      "to": "Arches",
+      "team": "t",
+      "desc": "Stand at Hell, aim at top of Arches area, left-click jump-throw"
+    },
+    {
+      "id": "mooGczNBpv",
+      "from": "Hell",
+      "to": "Boost",
+      "team": "t",
+      "desc": "Stand at Hell, aim at top of Boost area, left-click jump-throw"
+    },
+    {
+      "id": "zI4q2PtRiv",
+      "from": "Hell",
+      "to": "B Site",
+      "team": "t",
+      "desc": "Stand at Hell, aim at top of B Site area, left-click jump-throw"
+    },
+    {
+      "id": "xSBnKS63MA",
+      "from": "B Long",
+      "to": "Arches",
+      "team": "t",
+      "desc": "Stand at B Long, aim at top of Arches area, left-click jump-throw"
+    },
+    {
+      "id": "nqYa5qcoJ1",
+      "from": "B Long",
+      "to": "B Site",
+      "team": "t",
+      "desc": "Stand at B Long, aim at top of B Site area, left-click jump-throw"
+    },
+    {
+      "id": "zU24oL0xVH",
+      "from": "Church",
+      "to": "Wine",
+      "team": "t",
+      "desc": "Stand at Church, aim at top of Wine area, left-click jump-throw"
+    },
+    {
+      "id": "cOer5qw6IZ",
+      "from": "Forklift",
+      "to": "Stairs",
+      "team": "t",
+      "desc": "Stand at Forklift, aim at top of Stairs area, left-click jump-throw"
+    },
+    {
+      "id": "mJIrvbFWoq",
+      "from": "Forklift",
+      "to": "Hotel",
+      "team": "t",
+      "desc": "Stand at Forklift, aim at top of Hotel area, left-click jump-throw"
+    },
+    {
+      "id": "2rV2WW6YLm",
+      "from": "Truck",
+      "to": "Triple",
+      "team": "t",
+      "desc": "Stand at Truck, aim at top of Triple area, left-click jump-throw"
+    },
+    {
+      "id": "w1oYp99eBp",
+      "from": "Top Mid",
+      "to": "Bottom Mid",
+      "team": "ct",
+      "desc": "Stand at Top Mid, aim at top of Bottom Mid area, left-click jump-throw"
+    }
   ]
 }
