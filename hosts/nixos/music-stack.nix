@@ -442,6 +442,17 @@ in {
     };
   };
 
+  # --- Steam game monitor: stop slskd when playing CS2/Overwatch/TF2 ---
+  systemd.services.steam-game-monitor = {
+    description = "Stop slskd when playing Counter-Strike 2, Overwatch, or Team Fortress 2";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "/var/lib/music/steam-game-check.sh";
+      Restart = "always";
+      RestartSec = "5s";
+    };
+  };
+
   # --- slskd share rescan at 6am daily ---
   systemd.services.slskd-rescan = {
     description = "Trigger slskd share rescan";
