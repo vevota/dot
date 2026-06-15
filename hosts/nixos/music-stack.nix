@@ -234,6 +234,7 @@ in {
     "a /mnt/melody/media/Importing - - - d:u:lidarr:rwx"
     "d /mnt/melody/media/Importing/.incomplete 0775 slskd slskd - -"
     "L+ /var/lib/slskd/shared - - - - /mnt/melody/media/slskd-cache/shared"
+    "f /var/lib/brick-counter/count 0644 root root -"
     "d ${musicRoot}/explo       0775 root music - -"
     "a /mnt/melody/media/Music - - - u:navidrome:rwx"
     "a /mnt/melody/media/Music - - - u:lidarr:rwx"
@@ -303,6 +304,9 @@ in {
         };
         locations."= /stats/history.jsonl" = {
           alias = "/var/lib/collection-stats/history.jsonl";
+        };
+        locations."= /counter" = {
+          proxyPass = "http://127.0.0.1:9999";
         };
       };
       "stack.brick.gay" = {
@@ -439,6 +443,17 @@ in {
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
+    };
+  };
+
+  # --- Visitor counter server ---
+  systemd.services.brick-counter = {
+    description = "Visitor counter server for brick.gay";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "/var/lib/brick-counter/server.py";
+      Restart = "always";
+      RestartSec = "3s";
     };
   };
 
