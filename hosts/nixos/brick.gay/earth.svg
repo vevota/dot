@@ -4,20 +4,27 @@
       <circle cx="32" cy="32" r="28"/>
     </clipPath>
     <style>
-      @keyframes spin { from { transform: translateX(-112px); } to { transform: translateX(0); } }
-      .globe { animation: spin 4s linear infinite; }
+      @keyframes spin { 0% { transform: translateX(0); } 100% { transform: translateX(-112px); } }
+      .globe { animation: spin 3s linear infinite; }
     </style>
   </defs>
-  <circle cx="32" cy="32" r="28" fill="#2244AA"/>
+  <circle cx="32" cy="32" r="28" fill="#1a3366"/>
   <g clip-path="url(#sphere)" class="globe">
-    <rect x="-112" y="0" width="112" height="64" fill="#22AA44" opacity="0.7"/>
-    <rect x="-80" y="15" width="30" height="20" fill="#22AA44" opacity="0.7" rx="5"/>
-    <rect x="-50" y="5" width="25" height="35" fill="#22AA44" opacity="0.7" rx="8"/>
-    <rect x="-70" y="38" width="20" height="15" fill="#22AA44" opacity="0.7" rx="4"/>
-    <rect x="-30" y="25" width="28" height="15" fill="#22AA44" opacity="0.7" rx="5"/>
-    <rect x-"10" y="10" width="20" height="18" fill="#22AA44" opacity="0.7" rx="6"/>
-    <rect x="-20" y="0" width="22" height="12" fill="#22AA44" opacity="0.7" rx="4"/>
+    <!-- First copy of continents -->
+    <rect x="-10" y="12" width="22" height="16" fill="#2d8a4e" opacity="0.8" rx="5"/>
+    <rect x="-30" y="8" width="18" height="12" fill="#2d8a4e" opacity="0.8" rx="4"/>
+    <rect x="-50" y="20" width="25" height="28" fill="#2d8a4e" opacity="0.8" rx="7"/>
+    <rect x="-70" y="8" width="18" height="15" fill="#2d8a4e" opacity="0.8" rx="5"/>
+    <rect x="-90" y="18" width="20" height="20" fill="#2d8a4e" opacity="0.8" rx="6"/>
+    <rect x="-110" y="8" width="18" height="14" fill="#2d8a4e" opacity="0.8" rx="4"/>
+    <!-- Second copy (identical, for seamless loop) -->
+    <rect x="102" y="12" width="22" height="16" fill="#2d8a4e" opacity="0.8" rx="5"/>
+    <rect x="82" y="8" width="18" height="12" fill="#2d8a4e" opacity="0.8" rx="4"/>
+    <rect x="62" y="20" width="25" height="28" fill="#2d8a4e" opacity="0.8" rx="7"/>
+    <rect x="42" y="8" width="18" height="15" fill="#2d8a4e" opacity="0.8" rx="5"/>
+    <rect x="22" y="18" width="20" height="20" fill="#2d8a4e" opacity="0.8" rx="6"/>
+    <rect x="2" y="8" width="18" height="14" fill="#2d8a4e" opacity="0.8" rx="4"/>
   </g>
-  <circle cx="32" cy="32" r="28" fill="none" stroke="#4488FF" stroke-width="2"/>
-  <ellipse cx="32" cy="32" rx="28" ry="8" fill="none" stroke="#4488FF" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#4488FF" stroke-width="1.5"/>
+  <ellipse cx="32" cy="32" rx="28" ry="7" fill="none" stroke="#4488FF" stroke-width="0.5" opacity="0.3"/>
 </svg>
