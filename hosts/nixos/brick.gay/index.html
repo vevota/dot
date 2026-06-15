@@ -75,6 +75,6 @@ var sc=focal/s.z,sx=s.x*sc+w/2,sy=s.y*sc+h/2;if(sx<-100||sx>w+100||sy<-100||sy>h
 var tw=0.5+0.5*Math.sin(time*s.ts+s.to+1),al=Math.min(1,(maxZ-s.z)/(maxZ*0.8))*(0.7+0.3*tw),sz=s.r*Math.max(0.3,sc);drawStar(ctx,sx,sy,sz,s.c,al,sc);}
 ctx.globalAlpha=1;requestAnimationFrame(draw);}draw();})();
 </script>
-<div style="text-align:center;padding:20px;font-family:monospace;color:#666;font-size:11px"><img src="/earth.gif" alt="earth" style="vertical-align:middle;margin-right:8px">YOU ARE VISITOR<br><img src="/counter" alt="counter" style="image-rendering:pixelated;margin-top:4px"></div>
+<div style="text-align:center;padding:20px;font-family:monospace;color:#666;font-size:11px">YOU ARE VISITOR<br><img src="/earth.gif" alt="earth" style="vertical-align:middle;margin-right:4px"><img src="/counter" alt="counter" style="image-rendering:pixelated;vertical-align:middle"></div>
 </body>
 </html>
