@@ -182,6 +182,8 @@
     automatic = true;
     options = "--delete-older-than 7d";
   };
+
+  services.journald.extraConfig = "SystemMaxUse=500M";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib zlib openssl ];
