@@ -165,6 +165,8 @@ in {
       LogLevel = "info";
       Address = "0.0.0.0";
       Port = 4533;
+      CoverArtPriority = "cover.*, folder.*";
+      DevFastAccessCoverArt = true;
       # Scrobbling — enable in Navidrome UI after first login
       LastFM.Enabled = true;
       ListenBrainz.Enabled = true;
