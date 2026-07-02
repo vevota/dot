@@ -165,7 +165,7 @@ in {
       LogLevel = "info";
       Address = "0.0.0.0";
       Port = 4533;
-      CoverArtPriority = "cover.*, folder.*";
+      CoverArtPriority = "cover.jpg";
       DevFastAccessCoverArt = true;
       # Scrobbling — enable in Navidrome UI after first login
       LastFM.Enabled = true;
@@ -208,7 +208,7 @@ in {
       };
       web.port = 5030;
       global.upload.slots = 2;
-      global.upload.speed_limit = 512;
+      global.upload.speed_limit = 2048;
       global.download.speed_limit = 10240;
       global.download.max_downloads = 15;
       flags.no_share_scan = false;
