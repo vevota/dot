@@ -476,40 +476,6 @@ in {
     };
   };
 
-  # --- Night shutdown: stop slskd + lidarr 3am-9am PST (11:00-17:00 UTC) ---
-  systemd.services.slskd-lidarr-night-stop = {
-    description = "Stop slskd and lidarr at 3am PST";
-    serviceConfig.Type = "oneshot";
-    script = ''
-      systemctl stop slskd
-      systemctl stop podman-lidarr
-    '';
-  };
-  systemd.timers.slskd-lidarr-night-stop = {
-    description = "Nightly shutdown at 3am PST";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*-*-* 03:00:00";
-      Persistent = true;
-    };
-  };
-  systemd.services.slskd-lidarr-night-start = {
-    description = "Start slskd and lidarr at 9am PST";
-    serviceConfig.Type = "oneshot";
-    script = ''
-      systemctl start slskd
-      systemctl start podman-lidarr
-    '';
-  };
-  systemd.timers.slskd-lidarr-night-start = {
-    description = "Morning startup at 9am PST";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*-*-* 09:00:00";
-      Persistent = true;
-    };
-  };
-
   # --- Optional: reverse proxy hint ---
   # To expose these services via nginx/caddy, add virtualHost entries.
   # Example with services.nginx:
