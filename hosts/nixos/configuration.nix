@@ -210,12 +210,12 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  systemd.services.dbus-broker.serviceConfig.TimeoutStopSec = 10;
-
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+  };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 2049 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
