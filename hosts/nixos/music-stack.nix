@@ -159,6 +159,7 @@ in {
   # --- Navidrome — music streaming server ---
   services.navidrome = {
     enable = true;
+    environmentFile = "/var/lib/music/secrets/lastfm.env";
     settings = {
       MusicFolder = "/mnt/melody/media/Music";
       DataFolder = "/var/lib/navidrome/data";
@@ -167,6 +168,7 @@ in {
       Port = 4533;
       CoverArtPriority = "cover.jpg";
       DevFastAccessCoverArt = true;
+      UILoginBackgroundUrl = "https://melody.brick.gay/login.gif";
       # Scrobbling — enable in Navidrome UI after first login
       LastFM.Enabled = true;
       ListenBrainz.Enabled = true;
@@ -208,10 +210,11 @@ in {
       };
       web.port = 5030;
       global.upload.slots = 2;
-      global.upload.speed_limit = 2048;
+      global.upload.speed_limit = 512;
       global.download.speed_limit = 10240;
-      global.download.max_downloads = 15;
+      global.download.max_downloads = 3;
       flags.no_share_scan = false;
+      flags.distributed_network = false;
       # Share music back to the network (optional — set to false to leech only)
       shares.directories = ["/mnt/melody/media/Music"];
       soulseek.description = "👻";
@@ -389,6 +392,23 @@ in {
         locations."/" = {
           root = builtins.dirOf smokeHtml;
           index = "index.html";
+        };
+      };
+      "melody.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:4533";
+        };
+        locations."= /login.gif" = {
+          alias = "/var/lib/navidrome/data/login.gif";
+        };
+      };
+      "sync.brick.gay" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:3883";
         };
       };
       "jf.brick.gay" = {
