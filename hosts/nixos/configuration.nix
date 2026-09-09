@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./music-stack.nix
+      ./brick-listen.nix
     ];
 
   # --- Mount Phantom drive at system path ---
