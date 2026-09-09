@@ -8,7 +8,7 @@ let
 in
 {
   # node for building + running the app
-  environment.systemPackages = [ pkgs.nodejs_20 ];
+  environment.systemPackages = [ pkgs.nodejs_22 ];
 
   systemd.tmpfiles.settings.brickListen."${stateDir}" = {
     d = { mode = "0750"; user = "mrmusic"; group = "users"; };
@@ -24,7 +24,7 @@ in
       User = "mrmusic";
       Group = "users";
       WorkingDirectory = appDir;
-      ExecStart = "${pkgs.nodejs_20}/bin/node ${appDir}/node_modules/.bin/tsx server.ts";
+      ExecStart = "${pkgs.nodejs_22}/bin/node ${appDir}/node_modules/.bin/tsx server.ts";
       Restart = "always";
       RestartSec = "4";
       EnvironmentFile = lib.mkIf (lib.pathExists "${stateDir}/env") "${stateDir}/env";
