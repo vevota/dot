@@ -27,7 +27,7 @@ in
       ExecStart = "${pkgs.nodejs_22}/bin/node ${appDir}/node_modules/.bin/tsx server.ts";
       Restart = "always";
       RestartSec = "4";
-      EnvironmentFile = lib.mkIf (lib.pathExists "${stateDir}/env") "${stateDir}/env";
+      EnvironmentFile = "-${stateDir}/env";
       NoNewPrivileges = true;
       ProtectSystem = "full";
       PrivateTmp = true;
