@@ -194,6 +194,7 @@
   environment.systemPackages = with pkgs; [
     flac
     git
+    gh
     vim
     wget
       micro
