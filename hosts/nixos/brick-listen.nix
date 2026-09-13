@@ -3,7 +3,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  appDir = "/home/mrmusic/brick-listen";
+  appDir = "/home/mrmusic/brick-listen-prod";
   stateDir = "/var/lib/brick-listen";
 in
 {
