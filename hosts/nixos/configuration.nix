@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./music-stack.nix
       ./brick-listen.nix
+      ./jukebox.nix
     ];
 
   # --- Mount Phantom drive at system path ---
