@@ -108,6 +108,7 @@ let
       --ao=pulse --audio-device=pulse/jukebox-yt \
       --input-ipc-server=/var/lib/brick-listen/jukebox-yt.sock \
       --ytdl-format='bestvideo[height<=1080]+bestaudio/best[height<=1080]' \
+      --ytdl-raw-options=extractor-args=youtube:player_client=web_embedded \
       --msg-level=all=warn
   '';
 
