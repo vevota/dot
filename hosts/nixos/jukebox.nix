@@ -95,19 +95,32 @@ let
   # Headless mpv + yt-dlp plays YouTube audio into its own "jukebox-yt" sink,
   # captured by its own bridges and republished on /stream-yt. Nothing here
   # touches the Spotify sink, Soloist, or /stream.
+  ytXvfb = pkgs.writeShellScript "jukebox-yt-xvfb.sh" ''
+    exec ${pkgs.xvfb}/bin/Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp
+  '';
+
+  # mpv renders video to the virtual display (Xvfb :99); audio goes to the
+  # jukebox-yt sink as before. Best source up to 1080p.
   ytMpvRun = pkgs.writeShellScript "jukebox-yt-mpv.sh" ''
     exec ${pkgs.mpv}/bin/mpv \
-      --no-config --no-video --force-window=no --idle=yes --keep-open=no \
+      --no-config --idle=yes --keep-open=no \
+      --vo=x11 --geometry=1920x1080+0+0 --no-osc --no-border --no-input-default-bindings \
       --ao=pulse --audio-device=pulse/jukebox-yt \
       --input-ipc-server=/var/lib/brick-listen/jukebox-yt.sock \
-      --ytdl-format=bestaudio/best \
+      --ytdl-format='bestvideo[height<=1080]+bestaudio/best[height<=1080]' \
       --msg-level=all=warn
   '';
 
+  # Capture the virtual display (mpv's video) plus the jukebox-yt audio monitor
+  # and publish H.264 + Opus over RTSP for MediaMTX/WebRTC.
   bridgeYt = pkgs.writeShellScript "jukebox-yt-bridge.sh" ''
-    exec ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel warning \
+    exec ${pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner -loglevel warning \
+      -f x11grab -draw_mouse 0 -video_size 1920x1080 -framerate 30 -i :99.0 \
       -f pulse -i jukebox-yt.monitor \
-      -ac 2 -ar 48000 -c:a libopus -b:a 128k -application lowdelay \
+      -map 0:v -map 1:a \
+      -c:v libx264 -preset superfast -tune zerolatency -pix_fmt yuv420p \
+      -g 60 -keyint_min 60 -sc_threshold 0 -crf 23 -maxrate 6M -bufsize 12M \
+      -c:a libopus -b:a 128k -application lowdelay \
       -f rtsp -rtsp_transport tcp \
       rtsp://127.0.0.1:8554/jukebox-yt
   '';
@@ -265,16 +278,26 @@ in
     };
   };
 
+  systemd.user.services.jukebox-yt-xvfb = {
+    description = "Virtual X display for the jukebox-yt video player";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = "3";
+      ExecStart = ytXvfb;
+    };
+  };
+
   systemd.user.services.jukebox-yt-mpv = {
     description = "Headless YouTube player for the jukebox-yt stream";
-    after = [ "pipewire-pulse.service" ];
-    wants = [ "pipewire-pulse.service" ];
+    after = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
+    wants = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
     partOf = [ "pipewire-pulse.service" ];
     wantedBy = [ "default.target" ];
     serviceConfig = {
       Restart = "always";
       RestartSec = "3";
-      Environment = [ "PATH=${lib.makeBinPath [ pkgs.yt-dlp pkgs.ffmpeg pkgs.coreutils ]}" ];
+      Environment = [ "DISPLAY=:99" "PATH=${lib.makeBinPath [ pkgs.yt-dlp pkgs.ffmpeg pkgs.coreutils ]}" ];
       ExecStartPre = "${pkgs.coreutils}/bin/rm -f /var/lib/brick-listen/jukebox-yt.sock";
       ExecStart = ytMpvRun;
     };
@@ -282,13 +305,14 @@ in
 
   systemd.user.services.jukebox-yt-bridge = {
     description = "Jukebox-yt PipeWire -> MediaMTX bridge";
-    after = [ "pipewire-pulse.service" ];
-    wants = [ "pipewire-pulse.service" ];
+    after = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
+    wants = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
     partOf = [ "pipewire-pulse.service" ];
     wantedBy = [ "default.target" ];
     serviceConfig = {
       Restart = "always";
       RestartSec = "3";
+      Environment = [ "DISPLAY=:99" ];
       ExecStart = bridgeYt;
     };
   };
