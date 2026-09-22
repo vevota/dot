@@ -107,7 +107,8 @@ let
       --vo=x11 --geometry=1920x1080+0+0 --no-osc --no-border --no-input-default-bindings \
       --ao=pulse --audio-device=pulse/jukebox-yt \
       --input-ipc-server=/var/lib/brick-listen/jukebox-yt.sock \
-      --ytdl-format='bestvideo[height<=1080]+bestaudio/best[height<=1080]' \
+      --cache-secs=2 \
+      --ytdl-format='bestvideo[height<=1080][vcodec^=avc1]+bestaudio/bestvideo[height<=1080]+bestaudio/best[height<=1080]' \
       --ytdl-raw-options=extractor-args=youtube:player_client=web_embedded \
       --msg-level=all=warn
   '';
@@ -119,8 +120,9 @@ let
       -f x11grab -draw_mouse 0 -video_size 1920x1080 -framerate 30 -i :99.0 \
       -f pulse -i jukebox-yt.monitor \
       -map 0:v -map 1:a \
-      -c:v libx264 -preset superfast -tune zerolatency -pix_fmt yuv420p \
-      -g 60 -keyint_min 60 -sc_threshold 0 -crf 23 -maxrate 6M -bufsize 12M \
+      -vf scale=-2:720 \
+      -c:v libx264 -preset veryfast -tune zerolatency -pix_fmt yuv420p \
+      -g 60 -keyint_min 60 -sc_threshold 0 -crf 26 -maxrate 2M -bufsize 4M \
       -c:a libopus -b:a 128k -application lowdelay \
       -f rtsp -rtsp_transport tcp \
       rtsp://127.0.0.1:8554/jukebox-yt
