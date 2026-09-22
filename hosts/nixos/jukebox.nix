@@ -70,6 +70,8 @@ let
     paths:
       jukebox:
         source: publisher
+      jukebox-yt:
+        source: publisher
   '';
 
   bridge = pkgs.writeShellScript "jukebox-bridge.sh" ''
@@ -87,6 +89,35 @@ let
       -ac 2 -ar 48000 -c:a libmp3lame -b:a 192k \
       -content_type audio/mpeg -f mp3 \
       icecast://source:${sourcePass}@127.0.0.1:8000/jukebox.mp3
+  '';
+
+  # --- YouTube central player (fully separate from the Spotify jukebox) ---
+  # Headless mpv + yt-dlp plays YouTube audio into its own "jukebox-yt" sink,
+  # captured by its own bridges and republished on /stream-yt. Nothing here
+  # touches the Spotify sink, Soloist, or /stream.
+  ytMpvRun = pkgs.writeShellScript "jukebox-yt-mpv.sh" ''
+    exec ${pkgs.mpv}/bin/mpv \
+      --no-config --no-video --force-window=no --idle=yes --keep-open=no \
+      --ao=pulse --audio-device=pulse/jukebox-yt \
+      --input-ipc-server=/var/lib/brick-listen/jukebox-yt.sock \
+      --ytdl-format=bestaudio/best \
+      --msg-level=all=warn
+  '';
+
+  bridgeYt = pkgs.writeShellScript "jukebox-yt-bridge.sh" ''
+    exec ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel warning \
+      -f pulse -i jukebox-yt.monitor \
+      -ac 2 -ar 48000 -c:a libopus -b:a 128k -application lowdelay \
+      -f rtsp -rtsp_transport tcp \
+      rtsp://127.0.0.1:8554/jukebox-yt
+  '';
+
+  bridgeYtMp3 = pkgs.writeShellScript "jukebox-yt-bridge-mp3.sh" ''
+    exec ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel warning \
+      -f pulse -i jukebox-yt.monitor \
+      -ac 2 -ar 48000 -c:a libmp3lame -b:a 192k \
+      -content_type audio/mpeg -f mp3 \
+      icecast://source:${sourcePass}@127.0.0.1:8000/jukebox-yt.mp3
   '';
 
   # Fetch/refresh the Spotify Soloist binary. Vendor builds expire ~90 days
@@ -160,6 +191,17 @@ in
             "audio.position" = [ "FL" "FR" ];
           };
         }
+        {
+          factory = "adapter";
+          args = {
+            "factory.name" = "support.null-audio-sink";
+            "node.name" = "jukebox-yt";
+            "node.description" = "Jukebox YouTube Sink";
+            "media.class" = "Audio/Sink";
+            "object.linger" = true;
+            "audio.position" = [ "FL" "FR" ];
+          };
+        }
       ];
     };
   };
@@ -220,6 +262,47 @@ in
       Restart = "always";
       RestartSec = "3";
       ExecStart = bridgeMp3;
+    };
+  };
+
+  systemd.user.services.jukebox-yt-mpv = {
+    description = "Headless YouTube player for the jukebox-yt stream";
+    after = [ "pipewire-pulse.service" ];
+    wants = [ "pipewire-pulse.service" ];
+    partOf = [ "pipewire-pulse.service" ];
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = "3";
+      Environment = [ "PATH=${lib.makeBinPath [ pkgs.yt-dlp pkgs.ffmpeg pkgs.coreutils ]}" ];
+      ExecStartPre = "${pkgs.coreutils}/bin/rm -f /var/lib/brick-listen/jukebox-yt.sock";
+      ExecStart = ytMpvRun;
+    };
+  };
+
+  systemd.user.services.jukebox-yt-bridge = {
+    description = "Jukebox-yt PipeWire -> MediaMTX bridge";
+    after = [ "pipewire-pulse.service" ];
+    wants = [ "pipewire-pulse.service" ];
+    partOf = [ "pipewire-pulse.service" ];
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = "3";
+      ExecStart = bridgeYt;
+    };
+  };
+
+  systemd.user.services.jukebox-yt-bridge-mp3 = {
+    description = "Jukebox-yt PipeWire -> Icecast MP3 fallback bridge";
+    after = [ "pipewire-pulse.service" ];
+    wants = [ "pipewire-pulse.service" ];
+    partOf = [ "pipewire-pulse.service" ];
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = "3";
+      ExecStart = bridgeYtMp3;
     };
   };
 
@@ -328,6 +411,22 @@ in
 
     locations."= /stream.mp3" = {
       proxyPass = "http://127.0.0.1:8000/jukebox.mp3";
+      extraConfig = ''
+        proxy_buffering off;
+        add_header Cache-Control no-cache;
+      '';
+    };
+
+    # YouTube central player stream (test only for now; inert until driven).
+    locations."= /stream-yt/whep" = {
+      proxyPass = "http://127.0.0.1:8889/jukebox-yt/whep";
+      extraConfig = ''
+        proxy_http_version 1.1;
+        add_header Cache-Control no-cache;
+      '';
+    };
+    locations."= /stream-yt.mp3" = {
+      proxyPass = "http://127.0.0.1:8000/jukebox-yt.mp3";
       extraConfig = ''
         proxy_buffering off;
         add_header Cache-Control no-cache;
