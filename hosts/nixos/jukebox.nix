@@ -70,8 +70,6 @@ let
     paths:
       jukebox:
         source: publisher
-      jukebox-yt:
-        source: publisher
   '';
 
   bridge = pkgs.writeShellScript "jukebox-bridge.sh" ''
@@ -89,51 +87,6 @@ let
       -ac 2 -ar 48000 -c:a libmp3lame -b:a 192k \
       -content_type audio/mpeg -f mp3 \
       icecast://source:${sourcePass}@127.0.0.1:8000/jukebox.mp3
-  '';
-
-  # --- YouTube central player (fully separate from the Spotify jukebox) ---
-  # Headless mpv + yt-dlp plays YouTube audio into its own "jukebox-yt" sink,
-  # captured by its own bridges and republished on /stream-yt. Nothing here
-  # touches the Spotify sink, Soloist, or /stream.
-  ytXvfb = pkgs.writeShellScript "jukebox-yt-xvfb.sh" ''
-    exec ${pkgs.xvfb}/bin/Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp
-  '';
-
-  # mpv renders video to the virtual display (Xvfb :99); audio goes to the
-  # jukebox-yt sink as before. Best source up to 1080p.
-  ytMpvRun = pkgs.writeShellScript "jukebox-yt-mpv.sh" ''
-    exec ${pkgs.mpv}/bin/mpv \
-      --no-config --idle=yes --keep-open=no \
-      --vo=x11 --geometry=1920x1080+0+0 --no-osc --no-border --no-input-default-bindings \
-      --ao=pulse --audio-device=pulse/jukebox-yt \
-      --input-ipc-server=/var/lib/brick-listen/jukebox-yt.sock \
-      --cache-secs=2 \
-      --ytdl-format='bestvideo[height<=1080][vcodec^=avc1]+bestaudio/bestvideo[height<=1080]+bestaudio/best[height<=1080]' \
-      --ytdl-raw-options=extractor-args=youtube:player_client=web_embedded \
-      --msg-level=all=warn
-  '';
-
-  # Capture the virtual display (mpv's video) plus the jukebox-yt audio monitor
-  # and publish H.264 + Opus over RTSP for MediaMTX/WebRTC.
-  bridgeYt = pkgs.writeShellScript "jukebox-yt-bridge.sh" ''
-    exec ${pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner -loglevel warning \
-      -f x11grab -draw_mouse 0 -video_size 1920x1080 -framerate 30 -i :99.0 \
-      -f pulse -i jukebox-yt.monitor \
-      -map 0:v -map 1:a \
-      -vf scale=-2:720 \
-      -c:v libx264 -preset veryfast -tune zerolatency -pix_fmt yuv420p \
-      -g 60 -keyint_min 60 -sc_threshold 0 -crf 26 -maxrate 2M -bufsize 4M \
-      -c:a libopus -b:a 128k -application lowdelay \
-      -f rtsp -rtsp_transport tcp \
-      rtsp://127.0.0.1:8554/jukebox-yt
-  '';
-
-  bridgeYtMp3 = pkgs.writeShellScript "jukebox-yt-bridge-mp3.sh" ''
-    exec ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel warning \
-      -f pulse -i jukebox-yt.monitor \
-      -ac 2 -ar 48000 -c:a libmp3lame -b:a 192k \
-      -content_type audio/mpeg -f mp3 \
-      icecast://source:${sourcePass}@127.0.0.1:8000/jukebox-yt.mp3
   '';
 
   # Fetch/refresh the Spotify Soloist binary. Vendor builds expire ~90 days
@@ -207,17 +160,6 @@ in
             "audio.position" = [ "FL" "FR" ];
           };
         }
-        {
-          factory = "adapter";
-          args = {
-            "factory.name" = "support.null-audio-sink";
-            "node.name" = "jukebox-yt";
-            "node.description" = "Jukebox YouTube Sink";
-            "media.class" = "Audio/Sink";
-            "object.linger" = true;
-            "audio.position" = [ "FL" "FR" ];
-          };
-        }
       ];
     };
   };
@@ -278,58 +220,6 @@ in
       Restart = "always";
       RestartSec = "3";
       ExecStart = bridgeMp3;
-    };
-  };
-
-  systemd.user.services.jukebox-yt-xvfb = {
-    description = "Virtual X display for the jukebox-yt video player";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = "3";
-      ExecStart = ytXvfb;
-    };
-  };
-
-  systemd.user.services.jukebox-yt-mpv = {
-    description = "Headless YouTube player for the jukebox-yt stream";
-    after = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
-    wants = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
-    partOf = [ "pipewire-pulse.service" ];
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = "3";
-      Environment = [ "DISPLAY=:99" "PATH=${lib.makeBinPath [ pkgs.yt-dlp pkgs.ffmpeg pkgs.coreutils ]}" ];
-      ExecStartPre = "${pkgs.coreutils}/bin/rm -f /var/lib/brick-listen/jukebox-yt.sock";
-      ExecStart = ytMpvRun;
-    };
-  };
-
-  systemd.user.services.jukebox-yt-bridge = {
-    description = "Jukebox-yt PipeWire -> MediaMTX bridge";
-    after = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
-    wants = [ "pipewire-pulse.service" "jukebox-yt-xvfb.service" ];
-    partOf = [ "pipewire-pulse.service" ];
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = "3";
-      Environment = [ "DISPLAY=:99" ];
-      ExecStart = bridgeYt;
-    };
-  };
-
-  systemd.user.services.jukebox-yt-bridge-mp3 = {
-    description = "Jukebox-yt PipeWire -> Icecast MP3 fallback bridge";
-    after = [ "pipewire-pulse.service" ];
-    wants = [ "pipewire-pulse.service" ];
-    partOf = [ "pipewire-pulse.service" ];
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = "3";
-      ExecStart = bridgeYtMp3;
     };
   };
 
@@ -438,22 +328,6 @@ in
 
     locations."= /stream.mp3" = {
       proxyPass = "http://127.0.0.1:8000/jukebox.mp3";
-      extraConfig = ''
-        proxy_buffering off;
-        add_header Cache-Control no-cache;
-      '';
-    };
-
-    # YouTube central player stream (test only for now; inert until driven).
-    locations."= /stream-yt/whep" = {
-      proxyPass = "http://127.0.0.1:8889/jukebox-yt/whep";
-      extraConfig = ''
-        proxy_http_version 1.1;
-        add_header Cache-Control no-cache;
-      '';
-    };
-    locations."= /stream-yt.mp3" = {
-      proxyPass = "http://127.0.0.1:8000/jukebox-yt.mp3";
       extraConfig = ''
         proxy_buffering off;
         add_header Cache-Control no-cache;
