@@ -258,6 +258,8 @@ in {
   systemd.services.slskd = {
     requires = [ "systemd-tmpfiles-setup.service" ];
     after = [ "systemd-tmpfiles-setup.service" ];
+    # taken down (was causing load); remove this line to bring it back
+    wantedBy = lib.mkForce [ ];
     serviceConfig = {
       ProtectSystem = lib.mkForce false;
       PrivateMounts = lib.mkForce false;
